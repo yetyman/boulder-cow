@@ -5,5 +5,5 @@ public enum Arrangement {
     VERTICAL,
     CIRCULAR,
     OVERLAP,
-    OFFSET_OVERLAP;
+    OFFSET_OVERLAP
 }

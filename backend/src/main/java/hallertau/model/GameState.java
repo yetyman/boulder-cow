@@ -2,7 +2,6 @@ package bouldercow.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import bouldercow.flow.Table;
-import bouldercow.player.Player;
 
 import java.util.List;
 import java.util.ArrayList;
