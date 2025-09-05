@@ -1,4 +1,4 @@
-package bouldercow.playerboard;
+package bouldercow.areas.playerboard;
 
 import bouldercow.card.Card;
 import java.util.ArrayList;

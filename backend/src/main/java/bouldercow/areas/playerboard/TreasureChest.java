@@ -1,4 +1,4 @@
-package bouldercow.playerboard;
+package bouldercow.areas.playerboard;
 
 
 

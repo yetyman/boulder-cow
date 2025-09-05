@@ -5,15 +5,14 @@ const api = new Api()
 
 // Global reactive game state
 const globalGameState = reactive<GameState>({
-  players: [],
   table: {
+    currentPlayerIndex: 0,
     sharedBoard: {
       resourceTiles: [],
       deckTiles: []
     },
     playerAreas: []
   },
-  currentPlayerIndex: 0,
   version: 0
 });
 
@@ -45,7 +44,7 @@ export const GameStateStore = {
   },
   
   get players(): Player[] {
-    return globalGameState.players || []
+    return globalGameState.table.playerAreas.map(p=>p.player) || []
   },
   
   get table(): Table {
@@ -53,7 +52,7 @@ export const GameStateStore = {
   },
   
   get currentPlayer(): number {
-    return globalGameState.currentPlayerIndex || 0
+    return globalGameState.table.currentPlayerIndex || 0
   },
   
   get loading(): boolean {
@@ -73,13 +72,21 @@ function connectWebSocket() {
   websocket.onmessage = (event) => {
     try {
       const data = JSON.parse(event.data)
-      if (data.diff && Array.isArray(data.diff) && data.diff.length > 0) {
-        applyJsonPatch(globalGameState, data.diff)
+      console.log('WebSocket received:', data)
+      if (data.diff && Array.isArray(data.diff)) {
+        if (data.diff.length > 0) {
+          console.log('Applying diff:', data.diff)
+          applyJsonPatch(globalGameState, data.diff)
+        } else {
+          console.log('Empty diff - client already in sync')
+        }
         globalGameState.version = data.serverVersion
         lastServerVersion = data.serverVersion
+      } else {
+        console.log('Skipping WebSocket message - no valid diff')
       }
     } catch (err) {
-      console.error('WebSocket message error:', err)
+      console.error('WebSocket message error:', err, event.data)
     }
   }
   
@@ -150,16 +157,28 @@ export function useGameState() {
         lastServerVersion
       }
       
+      console.log('Sending patch:', patches)
       const response = await fetch('http://localhost:8080/api/game/patch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
       const result = await response.json()
+      console.log('Patch result:', result)
+      
       if (result.success) {
+        // Apply our own patch since server accepted it
+        console.log('Applying own patch to client state')
+        applyJsonPatch(globalGameState, patches)
+        globalGameState.version = result.serverVersion
         lastServerVersion = result.serverVersion
-        // Server tells us what it thinks our last version was
         console.log(`Server last knew client version: ${result.lastClientVersion}`)
+      } else if (result.alignmentPatch) {
+        // Handle conflict by applying alignment patch
+        console.log('Conflict detected, applying alignment patch')
+        applyJsonPatch(globalGameState, result.alignmentPatch)
+        globalGameState.version = result.serverVersion
+        lastServerVersion = result.serverVersion
       }
       return result
     } catch (err: any) {

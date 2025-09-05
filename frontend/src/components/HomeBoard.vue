@@ -12,23 +12,23 @@
         </template>
         
         <template v-for="(row, i) in boulders" :key="i">
-          <div v-for="boulder in row" 
+          <div v-for="(boulder, j) in row" 
                :key="`boulder-${i}-${boulder.col}`" 
                class="boulder"
-               :style="{ gridRow: boulder.row + 1, gridColumn: boulder.col + 1 }">
+               :style="{ gridRow: boulder.row + 1, gridColumn: boulder.col + 1 }"
+               @click="moveBoulder(i, j)">
           </div>
         </template>
         
-        <div v-for="(req, i) in feedingRequirements" 
-             :key="i" 
-             class="feeding-req" 
-             :style="{ 
-               gridRow: i + 1, 
-               gridColumn: '1 / 3'
-             }"
-             @click="moveRequirement(i)">
-          Feed {{ i + 1 }}
-        </div>
+        <FeedingRequirementTile v-for="(req, i) in feedingRequirements" 
+                                :key="i" 
+                                :requirement="req"
+                                :index="i"
+                                :style="{ 
+                                  gridRow: i + 1, 
+                                  gridColumn: `${(req.position || 0) + 1} / ${(req.position || 0) + 3}`
+                                }"
+                                @click="moveRequirement(i)" />
       </div>
     </div>
   </div>
@@ -36,7 +36,8 @@
 
 <script setup lang="ts">
 import TitleText from './TitleText.vue'
-import { GameStateStore } from '../composables/useGameState'
+import FeedingRequirementTile from './FeedingRequirementTile.vue'
+import { GameStateStore, useGameState } from '../composables/useGameState'
 import { computed } from 'vue'
 import type { HomeBoard, Boulder, BoulderPlacementLocation, FeedingRequirement } from '../types/api'
 
@@ -45,6 +46,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { sendPatch } = useGameState()
 
 const homeBoardData = computed((): HomeBoard => {
   return GameStateStore.table.playerAreas?.[props.playerIndex]?.homeBoard || {} as HomeBoard
@@ -62,9 +64,33 @@ const feedingRequirements = computed((): FeedingRequirement[] => {
   return homeBoardData.value.feedingRequirements || Array(5).fill({})
 })
 
-const moveRequirement = (index: number) => {
-  // TODO: Handle feeding requirement movement
-  console.log(`Moving requirement ${index + 1}`)
+const moveRequirement = async (index: number) => {
+  const currentPos = feedingRequirements.value[index]?.position || 0
+  const newPos = currentPos + 1
+  
+  // Check if boulder is blocking the movement
+  const requirementRow = index
+  const blockingBoulder = boulders.value[requirementRow]?.find(boulder => boulder.col === newPos + 1)
+  if (blockingBoulder) {
+    alert('Boulder is blocking this movement! Move the boulder first.')
+    return
+  }
+  
+  await sendPatch([{ op: 'replace', path: `/table/playerAreas/${props.playerIndex}/homeBoard/feedingRequirements/${index}/position`, value: newPos }])
+}
+
+const moveBoulder = async (rowIndex: number, colIndex: number) => {
+  const boulder = boulders.value[rowIndex][colIndex]
+  const newCol = boulder.col + 1
+  
+  // Check if another boulder is blocking the movement
+  const blockingBoulder = boulders.value[rowIndex]?.find(b => b.col === newCol)
+  if (blockingBoulder) {
+    alert('Another boulder is blocking this movement!')
+    return
+  }
+  
+  await sendPatch([{ op: 'replace', path: `/table/playerAreas/${props.playerIndex}/homeBoard/boulders/${rowIndex}/${colIndex}/col`, value: newCol }])
 }
 </script>
 

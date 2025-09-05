@@ -42,7 +42,10 @@ export interface Card {
 
 export type CardPlacementLocation = any;
 
-export type Counter = any;
+export interface Counter {
+  /** @format int32 */
+  worth?: number;
+}
 
 export interface DeckTile {
   row2?: WorkerPlacementLocation[];
@@ -56,7 +59,10 @@ export interface FarmLand {
 
 export type FarmPlacementLocation = any;
 
-export type FeedingRequirement = any;
+export interface FeedingRequirement {
+  /** @format int32 */
+  position?: number;
+}
 
 export interface GameState {
   table?: Table;

@@ -2,7 +2,7 @@ package bouldercow.flow;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import bouldercow.board.SharedBoard;
-import bouldercow.playerboard.PlayerArea;
+import bouldercow.areas.playerboard.PlayerArea;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,7 +15,8 @@
             <FarmTile v-for="(tile, j) in row" 
                       :key="`${i}-${j}`" 
                       :tile="tile"
-                      :style="{ gridRow: i + 1, gridColumn: j + 2 }" />
+                      :style="{ gridRow: i + 1, gridColumn: j + 2 }"
+                       />
           </template>
           
           <div v-for="(land, landIndex) in farmLands" 
@@ -24,7 +25,8 @@
                :style="{ 
                  gridRow: (6 - land.value), 
                  gridColumn: landIndex + 2 
-               }">
+               }"
+               @click="moveTile((6 - land.value), landIndex + 2)">
             Land {{ land.value }}
           </div>
         </div>
@@ -41,7 +43,7 @@
 import TitleText from './TitleText.vue'
 import FarmTile from './FarmTile.vue'
 import LoadingPlaceholder from './LoadingPlaceholder.vue'
-import { GameStateStore } from '../composables/useGameState'
+import { GameStateStore, useGameState } from '../composables/useGameState'
 import { computed } from 'vue'
 import type { ResourceTracker, Counter, FarmPlacementLocation, FarmLand } from '../types/api'
 
@@ -50,6 +52,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { sendPatch } = useGameState()
 
 const resourceData = computed((): ResourceTracker => {
   return GameStateStore.table.playerAreas?.[props.playerIndex]?.resourceTracker || {} as ResourceTracker
@@ -66,6 +69,14 @@ const farmGrid = computed((): FarmPlacementLocation[][] => {
 const farmLands = computed((): FarmLand[] => {
   return resourceData.value.farmLand || [{}, {}, {}] as FarmLand[]
 })
+
+const moveTile = async (row: number, col: number) => {
+  const landIndex = col - 2
+  const currentValue = farmLands.value[landIndex]?.value || 1
+  const newValue = currentValue === 2 ? 5 : currentValue - 1
+  
+  await sendPatch([{ op: 'replace', path: `/table/playerAreas/${props.playerIndex}/resourceTracker/farmLand/${landIndex}/value`, value: newValue }])
+}
 </script>
 
 <style scoped>

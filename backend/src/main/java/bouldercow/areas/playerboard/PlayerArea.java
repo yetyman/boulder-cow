@@ -1,4 +1,4 @@
-package bouldercow.playerboard;
+package bouldercow.areas.playerboard;
 
 import bouldercow.player.Player;
 
@@ -11,6 +11,7 @@ public class PlayerArea {
     public ResourceTracker resourceTracker = new ResourceTracker();
     public Hand hand = new Hand();
 
+    public PlayerArea() {}
     public PlayerArea(String name){
         this.player.setName(name);
     }

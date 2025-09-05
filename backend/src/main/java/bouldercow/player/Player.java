@@ -1,6 +1,6 @@
 package bouldercow.player;
 
-import bouldercow.playerboard.PlayerArea;
+import bouldercow.areas.playerboard.PlayerArea;
 
 public class Player {
     private String name;
