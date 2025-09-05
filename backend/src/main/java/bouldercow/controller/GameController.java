@@ -10,6 +10,7 @@ import bouldercow.model.PatchRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -30,6 +31,7 @@ public class GameController {
     private static JsonNode lastSnapshot = null;
     private static final Map<String, Long> clientVersions = new HashMap<>();
     private static final Map<String, JsonNode> clientStates = new HashMap<>();
+    private static final List<JsonNode> patchHistory = new ArrayList<>();
     {
         Table table = new Table();
         currentGame.setTable(table);
@@ -102,11 +104,15 @@ public class GameController {
             clientStates.put(clientId, mapper.valueToTree(currentGame));
             clientVersions.put(clientId, currentGame.getVersion());
             
-            // Broadcast changes to other clients
-            JsonNode diff = JsonDiff.asJson(currentState, newState);
-            GameWebSocketHandler.broadcastUpdate(mapper.writeValueAsString(
-                Map.of("serverVersion", currentGame.getVersion(), "diff", diff)
-            ));
+            // Store patches in history
+            patchHistory.add(request.getPatches());
+            
+            // Broadcast changes using original patches
+            String broadcastMessage = mapper.writeValueAsString(
+                Map.of("serverVersion", currentGame.getVersion(), "diff", request.getPatches())
+            );
+            System.out.println("Broadcasting to clients: " + broadcastMessage);
+            GameWebSocketHandler.broadcastUpdate(broadcastMessage);
             
             return Map.of("success", true, "serverVersion", currentGame.getVersion());
         } catch (Exception e) {

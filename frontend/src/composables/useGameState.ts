@@ -1,5 +1,6 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, triggerRef, isReactive } from 'vue'
 import { Api, GameState, Player, Table } from '../types/api'
+import { applyPatch } from 'fast-json-patch'
 
 const api = new Api()
 
@@ -25,14 +26,38 @@ const error = ref<string | null>(null)
 
 function applyJsonPatch(target: any, patches: any[]) {
   patches.forEach(patch => {
+    console.log('Applying patch:', patch)
     const path = patch.path.split('/').filter(Boolean)
     let obj = target
     
-    if (patch.op === 'replace' || patch.op === 'add') {
-      for (let i = 0; i < path.length - 1; i++) {
-        obj = obj[path[i]]
+    try {
+      if (patch.op === 'replace') {
+        for (let i = 0; i < path.length - 1; i++) {
+          obj = obj[path[i]]
+        }
+        obj[path[path.length - 1]] = patch.value
+      } else if (patch.op === 'add') {
+        for (let i = 0; i < path.length - 1; i++) {
+          if (!obj[path[i]]) {
+            const nextKey = path[i + 1]
+            obj[path[i]] = /^\d+$/.test(nextKey) ? [] : {}
+          }
+          obj = obj[path[i]]
+        }
+        obj[path[path.length - 1]] = patch.value
+      } else if (patch.op === 'remove') {
+        for (let i = 0; i < path.length - 1; i++) {
+          obj = obj[path[i]]
+        }
+        const key = path[path.length - 1]
+        if (Array.isArray(obj)) {
+          obj.splice(parseInt(key), 1)
+        } else {
+          delete obj[key]
+        }
       }
-      obj[path[path.length - 1]] = patch.value
+    } catch (err) {
+      console.error('Failed to apply patch:', patch, err)
     }
   })
 }
@@ -75,13 +100,15 @@ function connectWebSocket() {
       console.log('WebSocket received:', data)
       if (data.diff && Array.isArray(data.diff)) {
         if (data.diff.length > 0) {
-          console.log('Applying diff:', data.diff)
+          console.log(`Applying ${data.diff.length} patches:`, data.diff)
           applyJsonPatch(globalGameState, data.diff)
+          console.log('Patches applied successfully')
         } else {
           console.log('Empty diff - client already in sync')
         }
         globalGameState.version = data.serverVersion
         lastServerVersion = data.serverVersion
+        console.log(`Updated to server version: ${data.serverVersion}`)
       } else {
         console.log('Skipping WebSocket message - no valid diff')
       }
@@ -168,7 +195,7 @@ export function useGameState() {
       
       if (result.success) {
         // Apply our own patch since server accepted it
-        console.log('Applying own patch to client state')
+        console.log(`Applying own patch to client state (${patches.length} patches)`)
         applyJsonPatch(globalGameState, patches)
         globalGameState.version = result.serverVersion
         lastServerVersion = result.serverVersion
