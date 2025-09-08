@@ -7,25 +7,25 @@
       Deck Cards
     </div>
     <div class="tile-grid">
-      <div v-for="(location, i) in tile.row2" :key="`row2-${i}`" 
+      <div v-for="(location, i) in tile.row2.requiredWorkerCount" :key="`row2-${i}`"
            class="worker-slot"
            :class="{ 
-             'filled': location.playerId !== null && location.playerId !== undefined,
-             [`player-${location.playerId}`]: location.playerId !== null && location.playerId !== undefined,
-             'clickable': canClickRow(1)
-           }"
-           :style="{ gridRow: 1, gridColumn: i + 1 }"
-           @click="clickRow(1)">
-      </div>
-      <div v-for="(location, i) in tile.row1" :key="`row1-${i}`" 
-           class="worker-slot"
-           :class="{ 
-             'filled': location.playerId !== null && location.playerId !== undefined,
-             [`player-${location.playerId}`]: location.playerId !== null && location.playerId !== undefined,
+             'filled': tile.row2.playerId !== null && tile.row2.playerId !== undefined,
+             [`player-${tile.row2.playerId}`]: tile.row2.playerId !== null && tile.row2.playerId !== undefined,
              'clickable': canClickRow(2)
            }"
-           :style="{ gridRow: 2, gridColumn: i + 1 }"
+           :style="{ gridRow: 1, gridColumn: i + 1 }"
            @click="clickRow(2)">
+      </div>
+      <div v-for="(location, i) in tile.row1.requiredWorkerCount" :key="`row1-${i}`"
+           class="worker-slot"
+           :class="{ 
+             'filled': tile.row1.playerId !== null && tile.row1.playerId !== undefined,
+             [`player-${tile.row1.playerId}`]: tile.row1.playerId !== null && tile.row1.playerId !== undefined,
+             'clickable': canClickRow(1)
+           }"
+           :style="{ gridRow: 2, gridColumn: i + 1 }"
+           @click="clickRow(1)">
       </div>
     </div>
   </div>
@@ -49,27 +49,30 @@ const currentPlayer = computed(() => GameStateStore.currentPlayer)
 
 const canClickRow = (row: number) => {
   // Find the lowest unfilled row (row 2 is bottom for deck tiles)
-  const row1HasEmpty = props.tile.row1?.some(loc => loc.playerId === null || loc.playerId === undefined)
-  const row2HasEmpty = props.tile.row2?.some(loc => loc.playerId === null || loc.playerId === undefined)
-  
-  if (row1HasEmpty) return row === 2
-  if (row2HasEmpty) return row === 1
-  return false
+  const row1IsEmpty = props.tile.row1.playerId === null;
+  const row2IsEmpty = props.tile.row2.playerId === null;
+
+  if(row === 1 && row1IsEmpty)
+    return true;
+  else if (row === 2 && row2IsEmpty && !row1IsEmpty)
+    return true;
+  else
+    return false
 }
 
 const clickRow = async (row: number) => {
   if (!canClickRow(row)) return
   
-  const rowKey = row === 1 ? 'row2' : 'row1'
-  const rowData = props.tile[rowKey] || []
+  const rowKey = row === 1 ? 'row1' : 'row2'
+  const rowData = props.tile[rowKey];
   
-  const patches = rowData.map((_, i) => ({
+  const patches = {
     op: 'replace',
-    path: `/table/sharedBoard/deckTiles/${props.tileRow}/${props.tileCol}/${rowKey}/${i}/playerId`,
+    path: `/table/sharedBoard/deckTiles/${props.tileRow}/${props.tileCol}/${rowKey}/playerId`,
     value: currentPlayer.value
-  }))
+  };
   
-  await sendPatch(patches)
+  await sendPatch([patches])
 }
 </script>
 

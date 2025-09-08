@@ -3,21 +3,18 @@ package bouldercow.areas.playerboard;
 
 
 import bouldercow.card.Card;
-import bouldercow.card.CardPlacementLocation;
+import bouldercow.flow.effects.ResourceSet;
+import bouldercow.flow.effects.ResourceUnits;
 
 public class TurnTracker  {
-    public CardPlacementLocation[] turnLocations = new CardPlacementLocation[6];
-    public Card[] cards = new Card[6];
-    public SheepVictoryArea sheepVictoryArea = new SheepVictoryArea();
+    public final int rounds = 6;
+    public Card[] cards = new Card[rounds];
+    public ResourceSet[] sheeps = new ResourceSet[rounds];
 
     public TurnTracker(){
-        
-
-        for (int i = 0; i < turnLocations.length; i++) {
-            turnLocations[i] = new CardPlacementLocation();
+        for (int i = 0; i < rounds; i++) {
+            sheeps[i] = ResourceSet.of(ResourceUnits.sheep, 0);
         }
-
-
     }
 
 }

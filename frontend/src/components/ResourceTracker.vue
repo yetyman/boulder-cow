@@ -4,31 +4,33 @@
     <LoadingPlaceholder :data="resourceData" message="Loading resource tracker...">
       <div class="tracker-content">
         <div class="grid-container">
-          <div v-for="(counter, i) in counters.slice(0, farmGrid.length)" 
+          <div v-for="(counter, i) in resourceData.maxValue-1"
                :key="counter" 
                class="counter"
                :style="{ gridRow: i + 1, gridColumn: 1 }">
-            {{ 5-i }}
+            {{ 5-i }};
           </div>
           
-          <template v-for="(row, i) in farmGrid" :key="i">
-            <FarmTile v-for="(tile, j) in row" 
+          <template v-for="(col, i) in farmLocations" :key="i">
+            <FarmTile v-for="(row, j) in resourceData.maxValue-1"
                       :key="`${i}-${j}`" 
-                      :tile="tile"
-                      :style="{ gridRow: i + 1, gridColumn: j + 2 }"
+                      :tile="row"
+                      :style="{ gridRow: j + 1, gridColumn: i + 2 }"
                        />
           </template>
-          
-          <div v-for="(land, landIndex) in farmLands" 
-               :key="land" 
-               class="farm-land-overlay"
-               :style="{ 
-                 gridRow: (6 - land.value), 
-                 gridColumn: landIndex + 2 
-               }"
-               @click="moveTile((6 - land.value), landIndex + 2)">
-            Land {{ land.value }}
-          </div>
+
+          <template v-for="(farm, landIndex) in farmLocations"
+                    :key="landIndex">
+            <div v-if="farm !== null"
+                 class="farm-land-overlay"
+                 :style="{
+                   gridRow: (6 - farm.value),
+                   gridColumn: landIndex + 2
+                 }"
+                 @click="moveTile(farm, landIndex)">
+              Land {{ farm.value }}
+            </div>
+          </template>
         </div>
         <div class="one-row">
           <div class="one-counter">1</div>
@@ -45,7 +47,7 @@ import FarmTile from './FarmTile.vue'
 import LoadingPlaceholder from './LoadingPlaceholder.vue'
 import { GameStateStore, useGameState } from '../composables/useGameState'
 import { computed } from 'vue'
-import type { ResourceTracker, Counter, FarmPlacementLocation, FarmLand } from '../types/api'
+import type { ResourceTracker, FarmLand } from '../types/api'
 
 interface Props {
   playerIndex: number
@@ -58,24 +60,16 @@ const resourceData = computed((): ResourceTracker => {
   return GameStateStore.table.playerAreas?.[props.playerIndex]?.resourceTracker || {} as ResourceTracker
 })
 
-const counters = computed((): Counter[] => {
-  return resourceData.value.counters || [1, 2, 3, 4, 5] as Counter[]
+const farmLocations = computed((): FarmLand[] => {
+  return resourceData.value.farms || Array(7).fill({})
 })
 
-const farmGrid = computed((): FarmPlacementLocation[][] => {
-  return resourceData.value.farm || Array(4).fill(null).map(() => Array(7).fill({}))
-})
-
-const farmLands = computed((): FarmLand[] => {
-  return resourceData.value.farmLand || [{}, {}, {}] as FarmLand[]
-})
-
-const moveTile = async (row: number, col: number) => {
-  const landIndex = col - 2
-  const currentValue = farmLands.value[landIndex]?.value || 1
+const moveTile = async (farm: FarmLand, col: number) => {
+  const landIndex = col
+  const currentValue = farm.value || 1
   const newValue = currentValue === 2 ? 5 : currentValue - 1
   
-  await sendPatch([{ op: 'replace', path: `/table/playerAreas/${props.playerIndex}/resourceTracker/farmLand/${landIndex}/value`, value: newValue }])
+  await sendPatch([{ op: 'replace', path: `/table/playerAreas/${props.playerIndex}/resourceTracker/farms/${landIndex}/value`, value: newValue }])
 }
 </script>
 

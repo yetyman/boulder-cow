@@ -54,18 +54,12 @@ const clearTopRows = async () => {
   resourceTiles.value.forEach((row, i) => {
     row.forEach((tile, j) => {
       // Find topmost filled row (row3 is top)
-      if (tile.row3?.some(loc => loc.playerId !== null && loc.playerId !== undefined)) {
-        tile.row3.forEach((_, k) => {
-          patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row3/${k}/playerId`, value: null })
-        })
-      } else if (tile.row2?.some(loc => loc.playerId !== null && loc.playerId !== undefined)) {
-        tile.row2.forEach((_, k) => {
-          patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row2/${k}/playerId`, value: null })
-        })
-      } else if (tile.row1?.some(loc => loc.playerId !== null && loc.playerId !== undefined)) {
-        tile.row1.forEach((_, k) => {
-          patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row1/${k}/playerId`, value: null })
-        })
+      if (tile.row3?.playerId !== null) {
+        patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row3/playerId`, value: null })
+      } else if (tile.row2.playerId !== null) {
+        patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row2/playerId`, value: null })
+      } else if (tile.row1.playerId !== null) {
+        patches.push({ op: 'replace', path: `/table/sharedBoard/resourceTiles/${i}/${j}/row1/playerId`, value: null })
       }
     })
   })
@@ -74,14 +68,10 @@ const clearTopRows = async () => {
   deckTiles.value.forEach((row, i) => {
     row.forEach((tile, j) => {
       // Find topmost filled row (row2 is top for deck tiles)
-      if (tile.row2?.some(loc => loc.playerId !== null && loc.playerId !== undefined)) {
-        tile.row2.forEach((_, k) => {
-          patches.push({ op: 'replace', path: `/table/sharedBoard/deckTiles/${i}/${j}/row2/${k}/playerId`, value: null })
-        })
-      } else if (tile.row1?.some(loc => loc.playerId !== null && loc.playerId !== undefined)) {
-        tile.row1.forEach((_, k) => {
-          patches.push({ op: 'replace', path: `/table/sharedBoard/deckTiles/${i}/${j}/row1/${k}/playerId`, value: null })
-        })
+      if (tile.row2.playerId !== null) {
+        patches.push({ op: 'replace', path: `/table/sharedBoard/deckTiles/${i}/${j}/row2/playerId`, value: null })
+      } else if (tile.row1.playerId !== null) {
+        patches.push({ op: 'replace', path: `/table/sharedBoard/deckTiles/${i}/${j}/row1/playerId`, value: null })
       }
     })
   })

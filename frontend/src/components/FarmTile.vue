@@ -5,14 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import type { FarmPlacementLocation } from '../types/api'
 
 interface Props {
-  tile?: FarmPlacementLocation
+  resource?: string | null;
 }
 
 withDefaults(defineProps<Props>(), {
-  tile: () => ({} as FarmPlacementLocation)
+  resource: null
 })
 </script>
 

@@ -1,4 +1,4 @@
-package bouldercow.board;
+package bouldercow.areas.board;
 
 public class SharedBoard {
     public ResourceTile[][] resourceTiles = new ResourceTile[4][4];

@@ -1,17 +1,17 @@
 <template>
   <div class="game-table">
-    <GameBoard />
+    <GameBoardTile />
     <LoadingPlaceholder :data="gameState.table.playerAreas" message="Loading players...">
       <div class="player-areas">
-        <PlayerArea v-for="(playerArea, index) in gameState.table.playerAreas" :key="index" :player="playerArea.player" :playerIndex="index" />
+        <PlayerAreaTile v-for="(playerArea, index) in gameState.table.playerAreas" :key="index" :player="playerArea.player" :playerIndex="index" />
       </div>
     </LoadingPlaceholder>
   </div>
 </template>
 
 <script setup lang="ts">
-import GameBoard from './GameBoard.vue'
-import PlayerArea from './PlayerArea.vue'
+import GameBoardTile from './GameBoardTile.vue'
+import PlayerAreaTile from './PlayerAreaTile.vue'
 import LoadingPlaceholder from './LoadingPlaceholder.vue'
 import { useGameState } from '../composables/useGameState'
 import { onMounted } from 'vue'

@@ -1,40 +1,24 @@
 package bouldercow.flow.effects;
 
-public record ResourceSet(int meat, int milk, int wheat, int hops, int sheep, int magicBerry, int flax, int leather, int victoryPoints) {
+import java.util.Map;
 
-    public static ResourceSet ofMeat(int meat) {
-        return new ResourceSet(meat, 0, 0, 0, 0, 0, 0, 0, 0);
+public record ResourceSet(Map<ResourceUnits, Integer> resourceMap, boolean or) {
+    public static ResourceSet of(ResourceUnits resourceUnits, int num) {
+        return new ResourceSet(Map.of(resourceUnits, num), false);
     }
-    
-    public static ResourceSet ofMilk(int milk) {
-        return new ResourceSet(0, milk, 0, 0, 0, 0, 0, 0, 0);
+    public static ResourceSet of(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), false);
     }
-    
-    public static ResourceSet ofWheat(int wheat) {
-        return new ResourceSet(0, 0, wheat, 0, 0, 0, 0, 0, 0);
+    public static ResourceSet of(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), false);
     }
-    
-    public static ResourceSet ofHops(int hops) {
-        return new ResourceSet(0, 0, 0, hops, 0, 0, 0, 0, 0);
+    public static ResourceSet any(ResourceUnits resourceUnits, int num) {
+        return new ResourceSet(Map.of(resourceUnits, num), true);
     }
-    
-    public static ResourceSet ofSheep(int sheep) {
-        return new ResourceSet(0, 0, 0, 0, sheep, 0, 0, 0, 0);
+    public static ResourceSet any(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), true);
     }
-    
-    public static ResourceSet ofMagicBerry(int magicBerry) {
-        return new ResourceSet(0, 0, 0, 0, 0, magicBerry, 0, 0, 0);
-    }
-    
-    public static ResourceSet ofFlax(int flax) {
-        return new ResourceSet(0, 0, 0, 0, 0, 0, flax, 0, 0);
-    }
-    
-    public static ResourceSet ofLeather(int leather) {
-        return new ResourceSet(0, 0, 0, 0, 0, 0, 0, leather, 0);
-    }
-
-    public static ResourceSet ofVictoryPoints(int victoryPoints) {
-        return new ResourceSet(0, 0, 0, 0, 0, 0, 0, 0, victoryPoints);
+    public static ResourceSet any(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), true);
     }
 }

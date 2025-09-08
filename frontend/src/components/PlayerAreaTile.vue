@@ -3,7 +3,7 @@
     <TitleText :title="player.name" />
     <div class="player-content">
       <ResourceTracker :playerIndex="playerIndex" />
-      <HomeBoard :playerIndex="playerIndex" />
+      <HomeBoardTile :playerIndex="playerIndex" />
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import TitleText from './TitleText.vue'
 import ResourceTracker from './ResourceTracker.vue'
-import HomeBoard from './HomeBoard.vue'
+import HomeBoardTile from './HomeBoardTile.vue'
 import type { Player } from '../types/api'
 
 interface Props {

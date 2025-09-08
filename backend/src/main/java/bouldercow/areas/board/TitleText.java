@@ -1,4 +1,4 @@
-package bouldercow.board;
+package bouldercow.areas.board;
 
 public class TitleText {
     public String title = "";

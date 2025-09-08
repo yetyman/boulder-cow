@@ -1,7 +1,7 @@
 package bouldercow.controller;
 
+import bouldercow.areas.board.SharedBoard;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import bouldercow.board.SharedBoard;
 import bouldercow.flow.Table;
 import bouldercow.areas.playerboard.PlayerArea;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +34,8 @@ public class GameController {
     private static final List<JsonNode> patchHistory = new ArrayList<>();
     {
         Table table = new Table();
-        currentGame.setTable(table);
-        currentGame.getTable().setCurrentPlayerIndex(0);
+        currentGame.table = table;
+        currentGame.table.currentPlayerIndex = 0;
 
 
         table.playerAreas = new ArrayList<>();
@@ -59,7 +59,7 @@ public class GameController {
             // Cache client's known state
             String clientId = session.getId();
             clientStates.put(clientId, mapper.valueToTree(currentGame));
-            clientVersions.put(clientId, currentGame.getVersion());
+            clientVersions.put(clientId, currentGame.version);
         } catch (Exception e) {
             System.out.println("Error serializing game state: " + e.getMessage());
         }
@@ -90,7 +90,7 @@ public class GameController {
                     return Map.of(
                         "success", false, 
                         "error", "Conflict detected", 
-                        "serverVersion", currentGame.getVersion(),
+                        "serverVersion", currentGame.getClass(),
                         "alignmentPatch", alignmentPatch
                     );
                 }
@@ -102,19 +102,19 @@ public class GameController {
             
             // Update client cache
             clientStates.put(clientId, mapper.valueToTree(currentGame));
-            clientVersions.put(clientId, currentGame.getVersion());
+            clientVersions.put(clientId, currentGame.version);
             
             // Store patches in history
             patchHistory.add(request.getPatches());
             
             // Broadcast changes using original patches
             String broadcastMessage = mapper.writeValueAsString(
-                Map.of("serverVersion", currentGame.getVersion(), "diff", request.getPatches())
+                Map.of("serverVersion", currentGame.version, "diff", request.getPatches())
             );
             System.out.println("Broadcasting to clients: " + broadcastMessage);
             GameWebSocketHandler.broadcastUpdate(broadcastMessage);
             
-            return Map.of("success", true, "serverVersion", currentGame.getVersion());
+            return Map.of("success", true, "serverVersion", currentGame.version);
         } catch (Exception e) {
             return Map.of("success", false, "error", e.getMessage());
         }
@@ -143,13 +143,13 @@ public class GameController {
             
             // Update client cache
             clientStates.put(clientId, currentSnapshot);
-            clientVersions.put(clientId, currentGame.getVersion());
+            clientVersions.put(clientId, currentGame.version);
             
             if (since == null || lastSnapshot == null) {
                 lastSnapshot = currentSnapshot;
                 return Map.of(
-                    "serverVersion", currentGame.getVersion(),
-                    "table", currentGame.getTable()
+                    "serverVersion", currentGame.version,
+                    "table", currentGame.table
                 );
             }
             
@@ -157,7 +157,7 @@ public class GameController {
             lastSnapshot = currentSnapshot;
             
             return Map.of(
-                "serverVersion", currentGame.getVersion(),
+                "serverVersion", currentGame.version,
                 "diff", diff
             );
         } catch (Exception e) {

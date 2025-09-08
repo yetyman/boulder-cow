@@ -3,15 +3,9 @@ package bouldercow.player;
 import bouldercow.areas.playerboard.PlayerArea;
 
 public class Player {
-    private String name;
-    private PlayerArea resources;
+    public String name;
 
     public Player() {
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public PlayerArea getResources() { return resources; }
-    public void setResources(PlayerArea resources) { this.resources = resources; }
 }

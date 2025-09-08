@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import type { FeedingRequirement } from '../types/api'
+import type { Building } from '../types/api'
 
 interface Props {
-  requirement: FeedingRequirement
+  requirement: Building
   index: number
 }
 

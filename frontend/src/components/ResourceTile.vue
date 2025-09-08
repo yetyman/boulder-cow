@@ -4,31 +4,31 @@
       <div class="tile-title">{{ tile.title?.title || 'Resource' }}</div>
     </div>
     <div class="tile-grid">
-      <div v-for="(location, i) in tile.row3" :key="`row3-${i}`" 
+      <div v-for="(location, i) in 3" :key="`row3-${i}`"
            class="worker-slot"
            :class="{ 
-             'filled': location.playerId !== null && location.playerId !== undefined,
-             [`player-${location.playerId}`]: location.playerId !== null && location.playerId !== undefined,
+             'filled': tile.row3.playerId !== null,
+             [`player-${tile.row3.playerId}`]: tile.row3.playerId !== null,
              'clickable': canClickRow(1)
            }"
            :style="{ gridRow: 1, gridColumn: i + 1 }"
            @click="clickRow(1)">
       </div>
-      <div v-for="(location, i) in tile.row2" :key="`row2-${i}`" 
+      <div v-for="(location, i) in 2" :key="`row2-${i}`"
            class="worker-slot"
            :class="{ 
-             'filled': location.playerId !== null && location.playerId !== undefined,
-             [`player-${location.playerId}`]: location.playerId !== undefined,
+             'filled': tile.row2.playerId !== null,
+             [`player-${tile.row2.playerId}`]: tile.row2.playerId !== null,
              'clickable': canClickRow(2)
            }"
            :style="{ gridRow: 2, gridColumn: i + 1 }"
            @click="clickRow(2)">
       </div>
-      <div v-for="(location, i) in tile.row1" :key="`row1-${i}`" 
+      <div v-for="(location, i) in 1" :key="`row1-${i}`"
            class="worker-slot"
            :class="{ 
-             'filled': location.playerId !== null && location.playerId !== undefined,
-             [`player-${location.playerId}`]: location.playerId !== undefined,
+             'filled': tile.row1.playerId !== null,
+             [`player-${tile.row1.playerId}`]: tile.row1.playerId !== null,
              'clickable': canClickRow(3)
            }"
            :style="{ gridRow: 3, gridColumn: i + 1 }"
@@ -61,9 +61,9 @@ const currentPlayer = computed(() => GameStateStore.currentPlayer)
 
 const canClickRow = (row: number) => {
   // Find the lowest unfilled row (highest number since row 3 is bottom)
-  const row1HasEmpty = props.tile.row1?.some(loc => loc.playerId === null || loc.playerId === undefined)
-  const row2HasEmpty = props.tile.row2?.some(loc => loc.playerId === null || loc.playerId === undefined)
-  const row3HasEmpty = props.tile.row3?.some(loc => loc.playerId === null || loc.playerId === undefined)
+  const row1HasEmpty = props.tile.row1?.playerId === null
+  const row2HasEmpty = props.tile.row2?.playerId === null
+  const row3HasEmpty = props.tile.row3?.playerId === null
   
   if (row1HasEmpty) return row === 3
   if (row2HasEmpty) return row === 2
@@ -79,14 +79,14 @@ const clickRow = async (row: number) => {
   const rowData = props.tile[rowKey] || []
   console.log('Row data:', rowData, 'Current player:', currentPlayer.value)
   
-  const patches = rowData.map((_, i) => ({
+  const patches = {
     op: 'replace',
-    path: `/table/sharedBoard/resourceTiles/${props.tileRow}/${props.tileCol}/${rowKey}/${i}/playerId`,
+    path: `/table/sharedBoard/resourceTiles/${props.tileRow}/${props.tileCol}/${rowKey}/playerId`,
     value: currentPlayer.value
-  }))
+  };
   
   console.log('Sending patches:', patches)
-  await sendPatch(patches)
+  await sendPatch([patches])
 }
 </script>
 

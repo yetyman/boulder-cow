@@ -20,48 +20,107 @@ export interface PatchRequest {
   lastServerVersion?: number;
 }
 
-export interface ActiveCards {
-  cards?: Card[];
-}
-
 export interface Boulder {
   /** @format int32 */
-  row?: number;
-  /** @format int32 */
-  col?: number;
+  value?: number;
 }
 
-export type BoulderPlacementLocation = any;
+export interface Building {
+  /** @format int32 */
+  value?: number;
+  movement?: CauseAndEffect;
+}
+
+export interface BuildingTracker {
+  /** @format int32 */
+  maxValue?: number;
+  building?: Building;
+  boulder1?: Boulder;
+  boulder2?: Boulder;
+}
 
 export interface Card {
   title?: string;
+  causeAndEffect?: CauseAndEffect;
   cardImage?: ImageRef;
   description?: string;
   symbols?: SymbolicDisplay;
 }
 
-export type CardPlacementLocation = any;
-
-export interface Counter {
-  /** @format int32 */
-  worth?: number;
+export interface Cause {
+  consumesRequired?: boolean;
+  requiredPhase?:
+    | "turnStart"
+    | "refresh"
+    | "draw"
+    | "jelk"
+    | "selfTurn"
+    | "opponentTurn"
+    | "feed"
+    | "build";
+  requiredResources?: ResourceSet;
+  stagedResources?: ResourceSet[];
 }
 
+export interface CauseAndEffect {
+  req?: Cause;
+  effect?: Effect;
+}
+
+export type DeckImage = any;
+
 export interface DeckTile {
-  row2?: WorkerPlacementLocation[];
-  row1?: WorkerPlacementLocation[];
+  img?: DeckImage;
+  deck?: Card[];
+  title?: TitleText;
+  row2?: WorkerPlacementLocation;
+  row1?: WorkerPlacementLocation;
+  causeAndEffect?: CauseAndEffect;
+}
+
+export interface Effect {
+  givesResources?: ResourceSet;
+  repeats?: boolean;
+  repeatPhase?:
+    | "turnStart"
+    | "refresh"
+    | "draw"
+    | "jelk"
+    | "selfTurn"
+    | "opponentTurn"
+    | "feed"
+    | "build";
+  nonPassive?: boolean;
 }
 
 export interface FarmLand {
   /** @format int32 */
   value?: number;
-}
-
-export type FarmPlacementLocation = any;
-
-export interface FeedingRequirement {
   /** @format int32 */
-  position?: number;
+  maxValue?: number;
+  resource?:
+    | "meat"
+    | "milk"
+    | "wool"
+    | "wheat"
+    | "clay"
+    | "leather"
+    | "flax"
+    | "barley"
+    | "hops"
+    | "sheep"
+    | "victoryPoints"
+    | "jewelry"
+    | "boulder"
+    | "worker"
+    | "cock"
+    | "tool"
+    | "field"
+    | "gatewayCard"
+    | "farmyardCard"
+    | "bonusCard"
+    | "pointCard"
+    | "building";
 }
 
 export interface GameState {
@@ -70,18 +129,12 @@ export interface GameState {
   version?: number;
 }
 
-export interface Hand {
-  cards?: Card[];
-}
-
 export type HomeBGImage = any;
 
 export interface HomeBoard {
   homeBGImage?: HomeBGImage;
   homeImage?: HomeImage;
-  boulderGrid?: BoulderPlacementLocation[][];
-  boulders?: Boulder[][];
-  feedingRequirements?: FeedingRequirement[];
+  buildingRows?: BuildingTracker[];
 }
 
 export type HomeImage = any;
@@ -96,47 +149,43 @@ export interface ImageRef {
 
 export interface Player {
   name?: string;
-  resources?: any;
 }
 
 export interface PlayerArea {
   player?: Player;
-  activeCards?: ActiveCards;
+  activeCards?: Card[];
   homeBoard?: HomeBoard;
   treasureChest?: TreasureChest;
   turnTracker?: TurnTracker;
   resourceTracker?: ResourceTracker;
-  hand?: Hand;
+  hand?: Card[];
+}
+
+export interface ResourceSet {
+  resourceMap?: Record<string, number>;
+  or?: boolean;
 }
 
 export interface ResourceTile {
   image?: ImageRef;
   title?: TitleText;
-  row3?: WorkerPlacementLocation[];
-  row2?: WorkerPlacementLocation[];
-  row1?: WorkerPlacementLocation[];
+  row3?: WorkerPlacementLocation;
+  row2?: WorkerPlacementLocation;
+  row1?: WorkerPlacementLocation;
   symbolicDisplay?: SymbolicDisplay;
 }
 
 export interface ResourceTracker {
-  farm?: FarmPlacementLocation[][];
-  farmLand?: FarmLand[];
-  counter5?: Counter;
-  counter4?: Counter;
-  counter3?: Counter;
-  counter2?: Counter;
-  counter1?: Counter;
-  counters?: Counter[];
+  farms?: FarmLand[];
+  /** @format int32 */
+  maxValue?: number;
+  resources?: ResourceSet;
 }
-
-export type RingPlacementLocation = any;
 
 export interface SharedBoard {
   resourceTiles?: ResourceTile[][];
   deckTiles?: DeckTile[][];
 }
-
-export type SheepVictoryArea = any;
 
 export interface SymbolicDisplay {
   subSymbols?: any[];
@@ -162,18 +211,22 @@ export interface TitleText {
 }
 
 export interface TreasureChest {
-  ringLocations?: RingPlacementLocation[];
-  zeroLocation?: RingPlacementLocation;
-  consecutive?: RingPlacementLocation[];
+  rings?: ResourceSet;
 }
 
 export interface TurnTracker {
-  turnLocations?: CardPlacementLocation[];
+  /** @format int32 */
+  rounds?: number;
   cards?: Card[];
-  sheepVictoryArea?: SheepVictoryArea;
+  sheeps?: ResourceSet[];
 }
 
-export type WorkerPlacementLocation = any;
+export interface WorkerPlacementLocation {
+  /** @format int32 */
+  playerId?: number;
+  /** @format int32 */
+  requiredWorkerCount?: number;
+}
 
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
