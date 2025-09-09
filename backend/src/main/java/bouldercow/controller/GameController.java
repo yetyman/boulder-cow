@@ -1,6 +1,7 @@
 package bouldercow.controller;
 
 import bouldercow.areas.board.SharedBoard;
+import bouldercow.flow.UserAction;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import bouldercow.flow.Table;
 import bouldercow.areas.playerboard.PlayerArea;
@@ -67,7 +68,7 @@ public class GameController {
     }
     
     @PostMapping("/action")
-    public GameState performAction(@RequestBody String action) {
+    public GameState performAction(@RequestBody UserAction action) {
         currentGame.incrementVersion();
         return currentGame;
     }

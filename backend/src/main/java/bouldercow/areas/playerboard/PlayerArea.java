@@ -18,5 +18,9 @@ public class PlayerArea {
     public PlayerArea() {}
     public PlayerArea(String name){
         this.player.name = name;
+        hand.addAll(List.of(new Card("A"), new Card("B"), new Card("C"), new Card("D"), new Card("E"), new Card("F"), new Card("G")));
+        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
+        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
+        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
     }
 }

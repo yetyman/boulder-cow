@@ -9,6 +9,6 @@ public class ActiveCards {
 
     public ActiveCards(){
         for(int i = 0; i < 5; i++)
-            cards.add(new Card());
+            cards.add(new Card("A"));
     }
 }

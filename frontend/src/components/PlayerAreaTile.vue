@@ -4,6 +4,7 @@
     <div class="player-content">
       <ResourceTracker :playerIndex="playerIndex" />
       <HomeBoardTile :playerIndex="playerIndex" />
+      <HandOfCards :cards="playerHand" :is-current-player="playerIndex === currentPlayer" :player-index="playerIndex" />
     </div>
   </div>
 </template>
@@ -12,20 +13,29 @@
 import TitleText from './TitleText.vue'
 import ResourceTracker from './ResourceTracker.vue'
 import HomeBoardTile from './HomeBoardTile.vue'
-import type { Player } from '../types/api'
+import HandOfCards from './HandOfCards.vue'
+import { GameStateStore } from '../composables/useGameState'
+import { computed } from 'vue'
+import type { Player, Card } from '../types/api'
 
 interface Props {
   player: Player
   playerIndex: number
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const playerHand = computed((): Card[] => {
+  return GameStateStore.table.playerAreas?.[props.playerIndex]?.hand || []
+})
+
+const currentPlayer = computed(() => GameStateStore.currentPlayer)
 </script>
 
 <style scoped>
 .player-area {
   border: 1px solid #666;
-  padding: 15px;
+  padding: 8px;
   background: #fafafa;
   min-width: 300px;
 }
@@ -33,7 +43,7 @@ defineProps<Props>()
 .player-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .resource-tracker {
