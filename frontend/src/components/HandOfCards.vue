@@ -130,7 +130,14 @@ watch(() => props.cards, (newCards) => {
 
 .drag {
   opacity: 0;
+}
 
+.ghost ~ .card {
+  transform: rotate(9deg);
+}
+
+.card:has(~ .ghost) {
+  transform: rotate(-9deg);
 }
 
 
