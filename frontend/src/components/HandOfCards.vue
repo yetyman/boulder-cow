@@ -8,10 +8,7 @@
         v-for="(card, index) in localCards"
         :key="`card-${index}`"
         class="card"
-        :class="{ 'hovered': hoveredIndex === index && isCurrentPlayer }"
-        :style="{ zIndex: index }"
-        @mouseenter="hoveredIndex = index"
-        @mouseleave="hoveredIndex = -1">
+        :style="{ zIndex: index }">
         <div class="card-content">
           <div class="card-title">{{ card.title || `Card ${index + 1}` }}</div>
           <div class="card-description">{{ card.description || 'Card description' }}</div>
@@ -97,11 +94,6 @@ watch(() => props.cards, (newCards) => {
   -ms-user-select: none;
 }
 
-.card.hovered {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  z-index: 999 !important;
-}
-
 .card-content {
   padding: 8px;
   height: 100%;
@@ -121,23 +113,45 @@ watch(() => props.cards, (newCards) => {
   flex: 1;
 }
 
-.ghost {
+[draggable="true"] {
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.85;
   background: transparent !important;
   border: 2px dashed #333 !important;
+  z-index: 999 !important;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transform: translateY(-15px) !important;
+}
+
+.cards-container:not(:has([draggable="true"])) .card:hover {
+  /* CSS for when no drag exists */
+  z-index: 999 !important;
+  transform: translateY(-15px);
 }
 
 .drag {
-  opacity: 0;
+  opacity: 0 !important;
+  position: fixed;
+  left: -100%;
 }
 
-.ghost ~ .card {
-  transform: rotate(9deg);
+.cards-container:has([draggable="true"]) .card:not([draggable="true"]) {
 }
 
-.card:has(~ .ghost) {
-  transform: rotate(-9deg);
+[draggable="true"] ~ .card {
+  transform: rotate(8deg);
+}
+
+.card:has(~ [draggable="true"]) {
+  transform: rotate(-8deg);
+}
+
+[draggable="true"] + .card {
+  transform: rotate(4deg);
+}
+
+.card:has(+ [draggable="true"]) {
+  transform: rotate(-4deg);
 }
 
 
