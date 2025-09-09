@@ -1,25 +1,23 @@
 <template>
   <div class="hand-of-cards">
     <TitleText :title="'Hand'" />
-    <VueDraggable
+    <div ref="el"
         class="cards-container"
-        v-model="localCards"
-        animation="150"
-        ghostClass="ghost"
     >
-      <div
+      <div ref="items"
         v-for="(card, index) in localCards"
         :key="`card-${index}`"
         class="card"
-        :class="{ 'hovered': hoveredIndex === index }"
-        @mouseenter="props.isCurrentPlayer ? hoveredIndex = index : null"
-        @mouseleave="props.isCurrentPlayer ? hoveredIndex = -1 : null">
+        :class="{ 'hovered': hoveredIndex === index && isCurrentPlayer }"
+        :style="{ zIndex: index }"
+        @mouseenter="hoveredIndex = index"
+        @mouseleave="hoveredIndex = -1">
         <div class="card-content">
           <div class="card-title">{{ card.title || `Card ${index + 1}` }}</div>
           <div class="card-description">{{ card.description || 'Card description' }}</div>
         </div>
       </div>
-    </VueDraggable>
+    </div>
   </div>
 </template>
 
@@ -28,7 +26,7 @@ import TitleText from './TitleText.vue'
 import { ref, watch, computed } from 'vue'
 import { useGameState } from '../composables/useGameState'
 import type { Card } from '../types/api'
-import {VueDraggable} from "vue-draggable-plus";
+import {useDraggable, VueDraggable} from "vue-draggable-plus";
 
 interface Props {
   cards: Card[]
@@ -44,39 +42,28 @@ const { sendPatch } = useGameState()
 
 const localCards = ref([...props.cards])
 
+const el = ref();
+const draggable = useDraggable(el, localCards, {
+  animation: 150,
+  ghostClass: 'ghost',
+  dragClass: 'drag',
+  disabled: !props.isCurrentPlayer,
+  onEnd: () => {
+    if (props.isCurrentPlayer && props.playerIndex !== undefined) {
+      const patches = localCards.value.map((card, index) => ({
+        op: 'replace',
+        path: `/table/playerAreas/${props.playerIndex}/hand/${index}`,
+        value: card
+      }))
+      sendPatch(patches)
+    }
+  }
+});
+
 watch(() => props.cards, (newCards) => {
   localCards.value = [...newCards]
 }, { deep: true })
 
-const getCardStyle = (index: number) => {
-  const cardCount = props.cards.length
-  const maxSpacing = Math.min(40, 170 / Math.max(1, cardCount - 1))
-  const baseLeft = index * maxSpacing
-  
-  let left = baseLeft
-  let scale = 1
-  let translateY = 0
-  let zIndex = index
-
-  if (props.isCurrentPlayer && hoveredIndex.value !== -1) {
-    if (index === hoveredIndex.value) {
-      scale = 1.2
-      translateY = -20
-      zIndex = 100
-    } else if (index < hoveredIndex.value) {
-      left = baseLeft - 20
-    } else if (index > hoveredIndex.value) {
-      left = baseLeft + 20
-    }
-  }
-
-  return {
-    left: `${left}px`,
-    zIndex,
-    transform: `scale(${scale}) translateY(${translateY}px)`,
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-  }
-}
 </script>
 
 <style scoped>
@@ -89,14 +76,14 @@ const getCardStyle = (index: number) => {
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 20px);
+  grid-template-columns: repeat(auto-fit, 30px);
   height: 120px;
   margin-top: 10px;
   width: 250px;
 }
 
 .card {
-  margin-right: -50px;
+  margin-right: -20px;
   width: 80px;
   height: 100px;
   background: #fff;
@@ -112,6 +99,7 @@ const getCardStyle = (index: number) => {
 
 .card.hovered {
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 999 !important;
 }
 
 .card-content {
@@ -133,6 +121,17 @@ const getCardStyle = (index: number) => {
   flex: 1;
 }
 
+.ghost {
+  pointer-events: none;
+  opacity: 0.5;
+  background: transparent !important;
+  border: 2px dashed #333 !important;
+}
+
+.drag {
+  opacity: 0;
+
+}
 
 
 
