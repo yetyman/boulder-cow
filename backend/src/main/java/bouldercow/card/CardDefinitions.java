@@ -17,58 +17,368 @@ public class CardDefinitions {
     public Map<String, List<Card>> recommendedDecks;
 
     static {
-        List<Card> beginnerDeck = new ArrayList<>();//gateway cards
-        List<Card> advancedDeck = new ArrayList<>();//gateway cards
-        List<Card> expertDeck = new ArrayList<>();//gateway cards
-        List<Card> masterDeck = new ArrayList<>();//gateway cards
-        List<Card> hopsDeck = new ArrayList<>();//farmyard cards
-        List<Card> sheepDeck = new ArrayList<>();//farmyard cards
-        List<Card> fieldDeck = new ArrayList<>();//farmyard cards
-        List<Card> jewelryDeck = new ArrayList<>();//farmyard cards
-        List<Card> bonusDeck = new ArrayList<>();//bonus cards
-        List<Card> pointDeck = new ArrayList<>();//point cards
+        List<Card> beginnerDeck = new ArrayList<>();//gateway cards 0-30
+        List<Card> advancedDeck = new ArrayList<>();//gateway cards 101-130
+        List<Card> expertDeck = new ArrayList<>();//gateway cards 201-230
+        List<Card> masterDeck = new ArrayList<>();//gateway cards 301-330
+        List<Card> hopsDeck = new ArrayList<>();//farmyard cards 401-435
+        List<Card> sheepDeck = new ArrayList<>();//farmyard cards 501-535
+        List<Card> fieldDeck = new ArrayList<>();//farmyard cards 601-635
+        List<Card> jewelryDeck = new ArrayList<>();//farmyard cards 701-735
+        List<Card> bonusDeck = new ArrayList<>();//bonus cards 801-845
+        List<Card> pointDeck = new ArrayList<>();//point cards 901-925
 
         //the rules show 30 of each card type
         addCard(beginnerDeck, 0, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(beginnerDeck, 1, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(beginnerDeck, 2, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 3, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 4, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 5, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 6, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 7, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 8, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 9, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 10, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 11, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 12, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 13, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 14, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 15, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 16, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 17, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 18, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 19, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 20, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 21, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 22, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 23, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 24, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 25, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 26, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 27, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 28, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(beginnerDeck, 29, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(beginnerDeck, 30, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
 
         addCard(advancedDeck, 101, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
-        addCard(advancedDeck, 1, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 101, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 102, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 103, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 104, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 105, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 106, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 107, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 108, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 109, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 110, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 111, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 112, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 113, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 114, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 115, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 116, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 117, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 118, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 119, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 120, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 121, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 122, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 123, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 124, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 125, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 126, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 127, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 128, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(advancedDeck, 129, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(advancedDeck, 130, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
 
         addCard(expertDeck, 201, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
-        addCard(expertDeck, 1, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 201, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 202, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 203, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 204, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 205, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 206, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 207, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 208, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 209, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 210, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 211, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 212, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 213, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 214, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 215, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 216, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 217, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 218, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 219, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 220, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 221, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 222, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 223, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 224, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 225, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 226, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 227, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 228, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(expertDeck, 229, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(expertDeck, 230, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
 
         addCard(masterDeck, 301, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
-        addCard(masterDeck, 1, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 301, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 302, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 303, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 304, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 305, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 306, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 307, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 308, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 309, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 310, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 311, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 312, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 313, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 314, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 315, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 316, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 317, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 318, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 319, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 320, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 321, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 322, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 323, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 324, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 325, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 326, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 327, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 328, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
+        addCard(masterDeck, 329, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
         addCard(masterDeck, 330, of(of(sheep, 1), of(wheat, 1)), gatewayCard);
 
         addCard(hopsDeck, 401, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
-        addCard(hopsDeck, 1, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 401, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 402, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 403, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 404, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 405, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 406, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 407, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 408, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 409, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 410, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 411, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 412, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 413, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 414, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 415, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 416, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 417, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 418, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 419, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 420, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 421, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 422, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 423, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 424, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 425, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 426, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 427, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 428, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 429, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 430, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 431, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 432, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 433, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(hopsDeck, 434, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
         addCard(hopsDeck, 435, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
 
         addCard(sheepDeck, 501, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
-        addCard(sheepDeck, 1, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 501, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 502, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 503, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 504, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 505, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 506, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 507, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 508, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 509, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 510, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 511, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 512, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 513, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 514, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 515, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 516, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 517, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 518, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 519, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 520, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 521, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 522, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 523, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 524, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 525, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 526, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 527, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 528, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 529, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 530, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 531, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 532, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 533, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(sheepDeck, 534, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
         addCard(sheepDeck, 535, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
 
         addCard(fieldDeck, 601, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
-        addCard(fieldDeck, 1, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 601, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 602, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 603, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 604, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 605, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 606, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 607, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 608, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 609, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 610, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 611, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 612, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 613, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 614, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 615, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 616, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 617, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 618, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 619, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 620, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 621, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 622, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 623, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 624, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 625, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 626, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 627, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 628, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 629, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 630, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 631, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 632, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 633, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(fieldDeck, 634, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
         addCard(fieldDeck, 635, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
 
         addCard(jewelryDeck, 701, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
-        addCard(jewelryDeck, 1, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 701, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 702, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 703, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 704, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 705, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 706, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 707, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 708, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 709, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 710, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 711, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 712, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 713, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 714, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 715, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 716, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 717, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 718, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 719, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 720, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 721, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 722, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 723, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 724, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 725, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 726, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 727, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 728, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 729, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 730, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 731, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 732, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 733, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
+        addCard(jewelryDeck, 734, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
         addCard(jewelryDeck, 735, of(of(sheep, 1), of(wheat, 1)), farmyardCard);
 
         addCard(bonusDeck, 801, of(of(sheep, 1), of(wheat, 1)), bonusCard);
-        addCard(bonusDeck, 1, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 801, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 802, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 803, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 804, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 805, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 806, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 807, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 808, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 809, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 810, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 811, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 812, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 813, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 814, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 815, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 816, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 817, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 818, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 819, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 820, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 821, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 822, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 823, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 824, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 825, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 826, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 827, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 828, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 829, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 830, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 831, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 832, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 833, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 834, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 835, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 836, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 837, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 838, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 839, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 840, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 841, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 842, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 843, of(of(sheep, 1), of(wheat, 1)), bonusCard);
+        addCard(bonusDeck, 844, of(of(sheep, 1), of(wheat, 1)), bonusCard);
         addCard(bonusDeck, 845, of(of(sheep, 1), of(wheat, 1)), bonusCard);
 
         addCard(pointDeck, 901, of(of(sheep, 1), of(wheat, 1)), pointCard);
-        addCard(pointDeck, 1, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 901, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 902, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 903, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 904, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 905, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 906, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 907, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 908, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 909, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 910, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 911, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 912, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 913, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 914, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 915, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 916, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 917, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 918, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 919, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 920, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 921, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 922, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 923, of(of(sheep, 1), of(wheat, 1)), pointCard);
+        addCard(pointDeck, 924, of(of(sheep, 1), of(wheat, 1)), pointCard);
         addCard(pointDeck, 925, of(of(sheep, 1), of(wheat, 1)), pointCard);
+
     }
 
     private static Card addCard(List<Card> deck, int appendixIndex, CauseAndEffect causeEffect, ResourceUnits cardType) {
