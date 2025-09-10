@@ -20,10 +20,10 @@ public class HomeBoard  {
         }
     }
 
-    private CauseAndEffect getBuildingRequirement(int i) {
+    private ReqAndEffect getBuildingRequirement(int i) {
         Effect moveForward = Effect.of(ResourceSet.of(ResourceUnits.building, 1));
 
-        Cause cost = new Cause();
+        Requirement cost = new Requirement();
         //just for symbolic displays, include a resource set.
         // the 1max flax spot makes an object definition more complex than i want to encode in structure until i have a clearer picture
         cost.requiredResources = ResourceSet.of(ResourceUnits.wheat, 1, ResourceUnits.barley, 1);
@@ -39,6 +39,6 @@ public class HomeBoard  {
         cost.consumesRequired = true;
         cost.requiredPhase = Phase.build;
 
-        return new CauseAndEffect(cost, moveForward);
+        return new ReqAndEffect(cost, moveForward);
     }
 }

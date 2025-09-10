@@ -33,5 +33,7 @@ public enum ResourceUnits {
     bonusCard,
     pointCard,
     //refers to advancing a building.
-    building;
+    building,
+    //refers to how many workers are gained each round
+    workerSupply;
 }

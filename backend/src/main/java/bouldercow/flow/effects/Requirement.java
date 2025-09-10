@@ -5,7 +5,7 @@ import bouldercow.flow.Phase;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Cause {
+public class Requirement {
     public boolean consumesRequired = false;
     public Phase requiredPhase = null;
     //flips required phase to excluded phase.
@@ -15,7 +15,11 @@ public class Cause {
     private String description;
     private Predicate<ResourceSet> offering;
 
-    public static Cause of(ResourceSet required, boolean consumes) {
+    public static Requirement of(ResourceSet required, boolean consumes) {
+        return null;
+    }
+
+    public static Requirement of(ResourceSet[] staggeredSet) {
         return null;
     }
 

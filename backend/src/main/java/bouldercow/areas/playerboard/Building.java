@@ -1,14 +1,14 @@
 package bouldercow.areas.playerboard;
 
 
-import bouldercow.flow.effects.CauseAndEffect;
+import bouldercow.flow.effects.ReqAndEffect;
 
 public class Building {
     public int value = 0;
-    public CauseAndEffect movement;
+    public ReqAndEffect movement;
     
     public Building() {}
-    public Building(CauseAndEffect movement) {
+    public Building(ReqAndEffect movement) {
 
     }
 }

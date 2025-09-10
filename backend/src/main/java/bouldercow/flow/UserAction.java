@@ -1,11 +1,11 @@
 package bouldercow.flow;
 
-import bouldercow.flow.effects.CauseAndEffect;
+import bouldercow.flow.effects.ReqAndEffect;
 import bouldercow.model.GameState;
 
 public class UserAction {
     public int cardIndex;
-    public CauseAndEffect causeAndEffect;
+    public ReqAndEffect reqAndEffect;
     //more possible card actions
 
 
