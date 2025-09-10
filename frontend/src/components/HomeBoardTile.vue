@@ -26,7 +26,7 @@
              :index="i"
              :style="{
                 gridRow: i + 1,
-                gridColumn: `${(row.building.value || 0) + 1} / ${(row.building.value || 0) + 3}`
+                gridColumn: `${(row.building.value || 0) + 1} / ${(row.building.value || 0) + 4}`
               }"
              @click="moveRequirement(i)" />
         </div>
@@ -62,7 +62,7 @@ const moveRequirement = async (index: number) => {
   
   // Check if boulder is blocking the movement
   const requirementRow = index
-  const blockingBoulder = homeBoardData?.value?.buildingRows[requirementRow]?.boulder1.value === newPos + 1;
+  const blockingBoulder = homeBoardData?.value?.buildingRows[requirementRow]?.boulder1.value === newPos + 2;
   if (blockingBoulder) {
     alert('Boulder is blocking this movement! Move the boulder first.')
     return
@@ -100,7 +100,7 @@ const moveBoulder = async (rowIndex: number, boulder : Boulder, boulderKey: stri
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(12, 22px);
+  grid-template-columns: repeat(13, 22px);
   grid-template-rows: repeat(5, 22px);
   gap: 1px;
 }

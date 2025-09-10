@@ -15,8 +15,8 @@ public class HomeBoard  {
         for (int i = 0; i < buildingRows.length; i++) {//row
              buildingRows[i] = new BuildingTracker();
              buildingRows[i].building = new Building(getBuildingRequirement(i));
-             buildingRows[i].boulder1  = new Boulder() {{ value = 3; }};
-             buildingRows[i].boulder2 = new Boulder() {{ value = 5; }};
+             buildingRows[i].boulder1  = new Boulder() {{ value = 4; }};
+             buildingRows[i].boulder2 = new Boulder() {{ value = 6; }};
         }
     }
 

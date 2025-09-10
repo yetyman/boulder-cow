@@ -75,9 +75,9 @@ const moveTile = async (farm: FarmLand, col: number) => {
 
 <style scoped>
 .resource-tracker {
-  border: 1px solid #999;
+  border: 1px solid #666;
   padding: 10px;
-  background: #f9f9f9;
+  background: #f0f0f0;
 }
 
 .tracker-content {
@@ -95,7 +95,7 @@ const moveTile = async (farm: FarmLand, col: number) => {
 
 .counter {
   background: #ddd;
-  border: 1px solid #999;
+  border: 1px solid #666;
   text-align: center;
   line-height: 25px;
   font-size: 12px;
@@ -107,7 +107,7 @@ const moveTile = async (farm: FarmLand, col: number) => {
   font-size: 8px;
   text-align: center;
   line-height: 25px;
-  border: 1px solid #8b4513;
+  border: 1px solid #666;
   z-index: 10;
 }
 
@@ -121,7 +121,7 @@ const moveTile = async (farm: FarmLand, col: number) => {
   width: 40px;
   height: 25px;
   background: #ddd;
-  border: 1px solid #999;
+  border: 1px solid #666;
   text-align: center;
   line-height: 23px;
 }
@@ -130,6 +130,6 @@ const moveTile = async (farm: FarmLand, col: number) => {
   flex: 1;
   height: 25px;
   background: #deb887;
-  border: 1px solid #8b4513;
+  border: 1px solid #666;
 }
 </style>
