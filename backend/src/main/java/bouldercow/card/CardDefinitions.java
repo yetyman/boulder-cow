@@ -9,7 +9,9 @@ import java.util.Map;
 
 import static bouldercow.flow.effects.ResourceUnits.*;
 import static bouldercow.flow.effects.ResourceSet.*;
-import static bouldercow.flow.effects.ReqAndEffect.*;
+import static bouldercow.flow.effects.ReqAndEffectBuilder.*;
+import bouldercow.flow.effects.ReqAndEffectBuilder;
+import bouldercow.flow.effects.Effect;
 
 public class CardDefinitions {
     public Map<ResourceUnits, List<Card>> cardsByType;
@@ -28,14 +30,14 @@ public class CardDefinitions {
         List<Card> pointDeck = new ArrayList<>();//point cards 901-925
 
         //the rules show 30 of each card type
-        addCard(beginnerDeck, 1, have(stagedC(of(sheep,2), of(sheep, 3), of(sheep, 4)), and(stagedE(of(sheepMovement,1), of(sheepMovement, 2), of(sheepMovement, 3)), of(bonusCard, 1))), gatewayCard);
-        addCard(beginnerDeck, 2, have(either(barley, 7, hops, 2), of(sheep, 1)), gatewayCard);
-        addCard(beginnerDeck, 3, have(all(wool, 1, sheep, 3), of(sheep, 1)), gatewayCard);
-        addCard(beginnerDeck, 4, have(moreXThanY(clay, workerSupply)), of(fieldLvl4, 1)), gatewayCard);
-        addCard(beginnerDeck, 5, have(of(sheep, 4), of(wool, 1, fieldLvl2, 1)), gatewayCard);
-        addCard(beginnerDeck, 6, have(all(barley, 4, hops, 4), of(tool, 1, bonusCard, 1)), gatewayCard);
-        addCard(beginnerDeck, 7, have(stagedC(of(meat, 1), of(meat, 2), of(meat, 5)), and(stagedE(of(tool, 0), of(tool, 1), of(tool, 2)), of(bonusCard, 1))), gatewayCard);
-        addCard(beginnerDeck, 8, , gatewayCard);
+        addCard(beginnerDeck, 1, require(stagedReq(sheep, 2, 3, 4)).give(stagedEff(sheepMovement, 1, 2, 3, bonusCard, 1)), gatewayCard);
+        addCard(beginnerDeck, 2, require(either(barley, 7, hops, 2)).give(sheep, 1), gatewayCard);
+        addCard(beginnerDeck, 3, require(wool, 1, sheep, 3).give(sheep, 1), gatewayCard);
+        addCard(beginnerDeck, 4, require(moreXThanY(clay, workerSupply)).give(of(fieldLvl4, 1)), gatewayCard);
+        addCard(beginnerDeck, 5, require(sheep, 4).give(wool, 1, fieldLvl2, 1), gatewayCard);
+        addCard(beginnerDeck, 6, require(barley, 4, hops, 4).give(tool, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 7, require(stagedReq(meat, 1, 2, 5)).give(stagedEff(tool, 0, 1, 2, bonusCard, 1)), gatewayCard);
+        addCard(beginnerDeck, 8, require(flax, 3, wool, 2).give(tool, 1, bonusCard, 1), gatewayCard);
         addCard(beginnerDeck, 9, , gatewayCard);
         addCard(beginnerDeck, 10, , gatewayCard);
         addCard(beginnerDeck, 11, , gatewayCard);
@@ -379,10 +381,13 @@ public class CardDefinitions {
 
     }
 
+    private static Card addCard(List<Card> deck, int appendixIndex, ReqAndEffectBuilder builder, ResourceUnits cardType) {
+        return addCard(deck, appendixIndex, builder.build(), cardType);
+    }
+    
     private static Card addCard(List<Card> deck, int appendixIndex, ReqAndEffect causeEffect, ResourceUnits cardType) {
         Card card = addCard(appendixIndex, causeEffect, cardType);
         deck.add(card);
-
         return card;
     }
     private static Card addCard(int appendixIndex, ReqAndEffect causeEffect, ResourceUnits cardType) {
