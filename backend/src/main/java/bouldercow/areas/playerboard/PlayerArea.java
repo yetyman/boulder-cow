@@ -18,9 +18,9 @@ public class PlayerArea {
     public PlayerArea() {}
     public PlayerArea(String name){
         this.player.name = name;
-        hand.addAll(List.of(new Card("A"), new Card("B"), new Card("C"), new Card("D"), new Card("E"), new Card("F"), new Card("G")));
-        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
-        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
-        activeCards.addAll(List.of(new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A"), new Card("A")));
+        hand.addAll(List.of(new Card(1, "A"), new Card(2, "B"), new Card(3, "C"), new Card(4, "D"), new Card(1, "E"), new Card(1, "F"), new Card(1, "G")));
+        activeCards.addAll(List.of(new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A")));
+        activeCards.addAll(List.of(new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A")));
+        activeCards.addAll(List.of(new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A"), new Card(1, "A")));
     }
 }

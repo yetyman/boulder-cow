@@ -2,23 +2,23 @@ package bouldercow.flow.effects;
 
 import java.util.Map;
 
-public record ResourceSet(Map<ResourceUnits, Integer> resourceMap, boolean or) {
+public record ResourceSet(Map<ResourceUnits, Integer> resourceMap, boolean or, boolean total) {
     public static ResourceSet of(ResourceUnits resourceUnits, int num) {
-        return new ResourceSet(Map.of(resourceUnits, num), false);
+        return new ResourceSet(Map.of(resourceUnits, num), false, false);
     }
     public static ResourceSet of(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), false);
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), false, false);
     }
     public static ResourceSet of(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), false);
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), false, false);
     }
     public static ResourceSet any(ResourceUnits resourceUnits, int num) {
-        return new ResourceSet(Map.of(resourceUnits, num), true);
+        return new ResourceSet(Map.of(resourceUnits, num), true, false);
     }
     public static ResourceSet any(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), true);
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2), true, false);
     }
     public static ResourceSet any(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), true);
+        return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), true, false);
     }
 }

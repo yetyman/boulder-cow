@@ -20,4 +20,8 @@ public class CauseAndEffect {
 
         return new CauseAndEffect(Cause.of(required, consumes), effect);
     }
+
+    public static CauseAndEffect of(ResourceSet required, ResourceSet gives) {
+        return of(required, gives, true, false);
+    }
 }

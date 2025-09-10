@@ -8,6 +8,8 @@ import java.util.function.Predicate;
 public class Cause {
     public boolean consumesRequired = false;
     public Phase requiredPhase = null;
+    //flips required phase to excluded phase.
+    public boolean invertPhaseRequirement = false;
     public ResourceSet requiredResources = null;
     public List<ResourceSet> stagedResources = null;//laying it out so that symbolic displays can be made
     private String description;
