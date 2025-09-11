@@ -1,0 +1,339 @@
+001	You have at least 2, 3, or 4 Sheep. You can move 1 Sheep to the next Farmyard card a total of one, two, or three times, respectively. (You may not move different Sheep with this.) If the Sheep is on the Farmyard card of Round 6, move it into the Stables. Additionally, you get 1 Bonus card.
+002	You have at least 7 Barley or at least 2 Hops in your supply, You get 1 Sheep.
+003	You have at least 1 Wool in your supply’and at least 3 Sheep. You get 1 Sheep.
+004	You have a number of Clay in your supply equal to or greater than the number shown in the window of your Community Center. You get 1 Field into row 4.
+005	You have at least 4 Sheep. You get 1 Wool and 1 Field into row 2.
+006	You have at least 4 Barley and at least 4 Hops in your supply. You get 1 Tool and 1 Bonus card.
+007	You have at least 1, 2, or 5 Meat in your supply. You get 0, 1, or 2 Tools, respectively, plus 1 Bonus card. 
+008	You have at least 3 Flax and at least 2 Wool in your supply. You get 1 Tool and 1 Bonus card. 
+009	An action space is fully occupied by Workers. (It does not matter whether or not you used this action space.) You get 1 Jewelry and 1 Bonus card.
+010	You have at least 2 Hides or at least 2 Meat in your supply. You get 2 Clay and 1 Bonus card.
+011	You have at least 1 Milk and at least 1 Wool in your supply. You get 1 Clay and 1 Bonus card. 
+012 You have at least 4 Tools. You get 1 Clay, 1 Milk, and 1 Wool.
+013 You have at least 3 Sheep. You get 1 Clay. Additionally, you can sow in one Field.
+014 You have at least 1, 2, 4, or 6 Fields in row 5. You can sow in no, one, up to two, or up to three Fields, respective- ly. Additionally, you get 1 Bonus card.
+015 You have at least 4, 5, 6, or 7 Fields. You get 1, 2, 3, or 4 Crops of different types. (You can freely choose which types but each type only once.)
+016 You have at least 3 Tools and at least 3 Hops in your supply. You get 1 Bonus card and your choice of 2 Barley or 2 Rye.
+017 You have at least 2 Fields containing Hops. You get 2 Barley, 1 Rye, and 1 Bonus card.
+018 You have a number of Barley in your supply equal to or greater than the number shown in the window of your Community Center, You get 2 Flax and 1 Bonus card.
+019 You have at least 6 Fields. You get 1 Rye, 1 Hide, and 1 Bonus card.
+020 You have just spent your last Jewelry. (In other words, a moment ago, you had at least 1 Jewelry, but now you have O Jewelry. You may not simply discard Jewelry.) You get 1 Hop and 1 Milk.
+021 You have at least 1, 2, 4, or 7 Sheep. You get 1, 2, 3, or 4 Goods of the same type, respectively. You can choose only between Hops and Meat. (You must choose a single type.)
+022 You have exactly 1 or 2 planted Fields. You can immediately harvest 1 Field feven outside of Phase 7). Move the harvested Field 1 row down, as usual (unless it is in the bottom row already). Additionally, you get 1 Bonus card.
+023 You have no empty Fields. (So you have either no Fields at all or all of your Fields contain Goods.) You can move each of your Fields 1 row up. (Consequently, these Fields will yield more Goods. You cannot move Fields that are in the top row already.)
+024 You have at least 6, 9, or 12 Rye in your supply. You get 1, 2, or 3 Milk, respectively, plus 1 Bonus card.
+025 You have at least 4, 5, or 7 Clay in your supply. You get 1, 2, or 3 Milk, respectively.
+026 You have at least 3 Tools and at least 2 Sheep. You get 1 Milk, 1 Wool, and 1 Bonus card.
+027 You have exactly 1 empty Field. You can immediately sow 1 Wool from your supply in this Field, as though Wool were a Crop. Harvest the Field in Phase 7, as usual. Additionally, you get 1 Bonus card.
+028 You have at least 2, 3, or 4 Jewelry, You get 1, 2, or 3 Hides, respectively, plus 1 Bonus card.
+029 You have at least 2, 4, or 6 cards in your hand that are not Gateway cards (i.e., Farmyard, Bonus, and/or Point cards). You get 1, 2, or 3 Meat, respectively.
+030 You have at least 1 Jewelry and at least 2,\4, or 6 Fields. You get 0, 1, or 2 Farmyard cards (!), respectively, plus 1 Clay and 1 Bonus card.
+
+101 You have at least 4, 6, or 8 Flax in your supply. You can move 1, 2, or 3 different Sheep, respectively, to the next Farmyard card. (You may not move the same Sheep more than once with this.) Sheep that are on the Farmyard card of Round 6 move into the Stables. Additionally, you get 1 Bonus card.
+102 You have at least 8 Crops of the same type in your supply. You get 1 Sheep.
+103 You have at least 3 Hides, at least 3 Meat, and at least 3 Wool in your supply. You get 1 Sheep and 1 Bonus card.
+104 You have at least 2, 3, 4, or S Hops in your supply. You get 1 Field into row 2, 3, 4, or 5, respectively.
+105 You have a number of Sheep equal to or greater than the number of Fields you have. You get 1 Field into row 3.
+106 An action space is fully occupied by Workers. (It does not matter whether or nat you used this action space.) You get 2 Tools, 1 Hop, and 1 Bonus card.
+107 You have at least 1, 2, or 4 Hides in your supply. You get 1, 2, or 3 Tools, respectively.
+108 You have at least 6, 11, or 16 Barley in your supply. You get 1, 2, or 3 Tools, respectively, plus 1 Bonus card.
+109 So far, you have played a total of at least 3, 7, or 11 cards from the same deck. You get 1, 2, or 3 Jewelry, respectively.
+110 You have at least 2, 5, or 7 Flax, and at least-as much Barley and Rye. (Consider of which you have the least.) You get 0, 1, or 2 Bonus cards, respectively, plus 1 Hop and 1 Clay. Example: You have 6 Flax, 3 Barley, and 7 Rye in your supply. The smallest of these values is 3. Consequently, you get 1 Hop and 1 Clay, but no Bonus card.
+111 You have at least 3, 4, or 6 Tools. You get 0, 1, or 2 Bonus cards, respectively, plus 1 Rye and 1 Clay.
+112 You have exactly 1 empty Field. You can immediately sow 1 Clay from your supply in this Field, as though Clay were a Crop. Harvest the Field in Phase 7, as usual. Additionally, you get 1 Bonus card.
+113 You have exactly 1 empty Field. You get 1 Hop. Afterward, you can sow in one Field. (You can sow the Hop you just got or a different Crop.)
+114 You have at least 5, 6, or 7 Fields. You get your choice of 1 Barley, 1 Flax, 1 Hop, or 1 Rye. Afterward, you can sow in no, one, or up to two Fields, respectively. (You can sow the Crop you just got ar a different one.) Additionally, you get 1 Bonus card.
+115 You have at least 4 Fields and at least 3 Tools. You get your choice of 3 Barley, 3 Flax, 3 Hops, or 3 Rye.
+116 You have a number of Flax in your supply equal to or greater than the number shown in the window of your Community Center. You get 3 Rye and 1 Bonus card.
+117 You have at least 2, 4, or 6 Hops in your supply. You get 1, 2, or 3 Barley, respectively, plus 1 Bonus card.
+118 An action space is fully occupied by Workers. (It does not matter whether or not you used this action space.) You get 2 Barley, 1 Hop, and 1 Bonus card.
+119 You have at least 6 Barley and at least 6 Rye in your supply. You get 1 Flax, 1 Hop, and 1 Bonus card.
+120 You have at least 3 planted Fields in row 5. You get 1 Hop, 1 Wool, and 1 Bonus card.
+121 You can only play this card in Phase 4! There are only 1-3 Workers left on the Farmyard card containing your supply of Workers. You can move each of your empty Fields 1 row up. (Consequently, these Fields will yield more Goods. You cannot move Fields that are in the top row already.) Additionally, you get 1 Bonus card.
+122 You have exactly 2 planted Fields. You can move each of these two Fields 1 row up. (Consequently, these Fields will yield mare Goods. You cannot move Fields that are in the top row already.) Additionally, you get 1 Bonus card.
+123 You have at least 1, 3, 4, or 6 Tools. You get 0, 1, 2, or 3 Milk, respectively, plus 1 Bonus card.
+124 You have at least 1, 2, or 3 Meat in your supply. You get 1, 2, or 3 Milk, respectively.
+125 You have at least 2 Woal in your supply. You get 1 Milk and 1 Bonus card.
+126 So far, you have played a total of at least 1, 3, or 4 Farmyard cards. You get 0, 2, or 3 Meat, respectively, plus 2 Milk.
+127	You have at least 3, 4, 5, 6, or 7 planted Fields. You get 0, 1, 2, 3, or 4 Wool, respectively, plus 1 Bonus card.
+128	You have at least 4 Tools. You get 1 Flax and 2 Hides.
+129 The combined total of Hides and Wool in your supply is equal to or greater than the number shown in the window of your Community Center. You get 3 Meat.
+130 You have at least 1 Hide and at least 1 Meat in your supply. You get 1 Farmyard card (!) and your choice of 1 Hop or 1 Clay.
+
+201	You have a number of Sheep equal to or greater than the number of Fields you have, You can move up to 2 different Sheep to the next Farmyard card. (You may not move the same Sheep more than once with this.) Sheep that are on the Farmyard card of Round 6 move into the Stables. Additionally, you get 1 Milk and 1 Bonus card.
+202 An action space is fully occupied by Workers. (/t does not matter whether or not you used this action space.) You get 1 Milk, 1 Sheep, and 1 Bonus card.
+203	You have no Fields in rows 2 and 3. (So you have either no Fields at ail or all of your Fields are in rows 4-5.) You get 1 Sheep.
+204	You have at least 2, 3, 4, or 5 Sheep. You get 1 Field into row 2, 3, 4, or 5, respectively.
+205	You have 6 or 7 Fields. (You can play this card even if you have 8 Fields, in which case it will not have any immediate effect.) You get 1 Field into row 2 or 5, respectively.
+206	You have at least 2, 3, or 5 Jewelry. You get 1 Meat. If you have at least 3 Jewelry, you can instead take 1 Tool. If you have at least 5 Jewelry, you can instead take 1 Sheep.
+207	You have at least 5 Fields and at least 0, 2, or 4 Hops in your supply. You get 0, 1, or 2 Tools, respectively, plus 1 Bonus card.
+208	You can only play this card in Phase 7! The total of Goods that you got from your Fields this Phase is equal to or greater than 16. You get 1 Tool and 1 Bonus card.
+209	You have at least 3, 5, or 6 Sheep on the same Farmyard card. (The Stables are not considered a Farmyard card.) You get 1, 2, or 3 Jewelry, respectively.
+210	You have at least 2 Hops in your supply. You can remove all Workers from an action space of your choice, returning the Workers to the general supply. Additionally, you get 1 Bonus card.
+211	You have at least 3 Clay or at least 3 Hops in your supply. If you have at least 3 Clay, you get 2 Hops. If you have at least 3 Hops, you get 2 Clay. If you meet both conditions, you must choose between Clay and Hops. Regardless, you also get 1 Bonus card.
+212	You have at least 5, 6, or 7 Tools. You get a number of Clay equal to the difference of 12, 13, or 14, respectively, and the number shown in the window of your Com- munity Center. Example: You have 7 Tools and the number shown in the window of your Community Center is 11. You get 14-11=3 Clay.
+213	You have at least 1 Field containing Hops. You get your choice of 1 Milk or 1 Clay. Additionally, you can sow in one Field.
+214	You have exactly 1 empty Field. You get your choice of 2 Barley, 2 Flax, 2 Hops, or 2 Rye. Afterward, you can sow the chosen Crop in one Field. Additionally, you get 1 Bonus card.
+215	You have at least 3, 4, 5, or 6 cards in your hand that are not Gate-way cards (i.e., Farmyard, Bonus, and/or Point cards). You get 1, 2, 3, or 4 Crops of different types, respectively. (You can freely choose which types but each type only once.) Additionally, you get 1 Bonus card.
+216 The combined total of Tools and Jewelry you have is equal to or greater than 7. You get a number of Rye equal to the number of planted Fields you have.
+217 You have at least 3 Jewelry. You get a number of Barley equal to the number of Sheep you have on a single Farmyard card. (if you have multiple Farmyard cards containing Sheep, you must choose one of these cards.) Additional- ly, you get 1 Bonus card.
+218 You have a number of Rye in your supply equal to or greater than the number shown in the window of your Community Center. You get 2 Barley, 1 Hop, and 1 Bonus card.
+219 You have at least 5 Milk in your supply. You get a number of Flax equal to the difference of 13 and the num- ber shown in the window of your Community Center. Example: You have 6 Milk in your supply and the number shown in the window of your Community Center is 9. You get 13-9=4 Flax.
+220 You have at least 3, 4, or 6 planted Fields. You get 0, 1, or 2 Bonus cards, respectively, plus 1 Hop and 1 Meat.
+221 You have at least 2 planted Fields and at least 3 Tools. You can immediately harvest up to 2 Fields (even outside of Phase 7). Move each harvested Field 1 row down, as usual (unless it is in the bottom row already). Additionally, you get 1 Bonus card.
+222 You can only play this card in Phase 4! You have no planted Fields immediately before your last action in this Phase. (So you have either no Fields at all or all of your Fields are empty. Your last action is when you spend your last Worker.) You can move each of up to 3 Fields 1 row up. (Consequently, these Fields will yield more Goods. You cannot move Fields that are in the top row already.) Additionally, you get 1 Bonus card.
+223 You have at least 1, 2, or 3 Sheep, and at least as much Jewelry. (Of these two, consider of which you have less.) You get 1, 2, or 3 Milk, respectively. Example: If you have 4 Sheep and 2 Jewelry, you get 2 Milk.
+224 You have at least 1, 2, or 3 Animal Products of each type. (Consider the Animal Product of which you have the Jeast.) You get 0, 1, or 2 Bonus cards, respectively, plus 3 Milk. Example: You have 2 Hides, 3 Meat, 6 Milk, and 2 Wool in your sup- ply. The smallest of these values is 2. Consequently, you get 1 Bonus card and 3 Milk.
+225 On each of at least 2 Farmyard cards and in the Stables, there is at least 1 Sheep. You get 1 Meat, 1 Milk, 1 Wool, and 1 Bonus card.
+226 You have at least 3 Sheep and at least 3 Jewelry. You get 1 Flax, 1 Hide, 1 Milk, and 1 Wool.
+227 You have at least 3, 5, or 6 cards in your hand that are not Gateway cards (i.e., Farmyard, Bonus, and/or Point cards). You get 0, 1, or 2 Wool, respectively, plus 1 Bonus card.
+228 The combined total of your Fields containing Barley and your Fields containing Rye is equal to or greater than 4. You get 2 Hides and 1 Bonus card.
+229 You have exactly 1 empty Field. You can immediately sow 1 Meat from your supply in this Field, as though Meat were a Crop. Harvest the Field in Phase 7, as usual. 
+230 You have at least 1, 2, 3, or 4 Sheep. You get 0, 1, 2, or 3 Hops, respectively, plus 1 Farmyard card (!). 
+
+301 There is at least 1 Sheep on the Farmyard card that is next to be removed from your Stable board. (In other words, in the upcoming Phase 2, one of your Sheep will die af natural causes. You may play this card even in Phase 2, immediately before removing a Farmyard card from your Stable board.) You can move up to 3 different Sheep to the next Farmyard card. (This way you can save Sheep that are about to die of natural causes. You may not move the same Sheep more than once with this.) Sheep that are on the Farmyard card of Round 6 move into the Stables. Additionally, you get 1 Bonus card.
+302 You can only play this card in Phase 4! There are only 1-2 Workers left on the Farmyard card containing your supply of Workers. You can remove the top row of Workers from each of the “Sheep Market”, “Sheep Breeding”, and “Weekly Market” action spaces, returning the Workers to the general supply. If you do, you must remove Workers from all three action spaces. (You may not pick and choose.)
+303 You can only play this card in Phase 1! At least 6, 7, 8, 9, or 10 Workers have just been removed from a single Quadrant. (If this applies to multiple Quadrants, consider the Quadrant with the most removed Workers.) You get 0, 1, 2, 3, or S Rye, respectively, plus 1 Sheep.
+304 You have at least 3, 7, or 10 Tools. You get 0, 1, or 2 Sheep, respectively, plus 1 Field into row 2.
+305 You can only play this card in Phase 9! In this Phase, you have advanced a single Craft Building a total of at least 3, 4, or 5 spaces to the right. (if this applies to multiple Craft Buildings, consider the Craft Building you advanced the farthest to the right this Phase. It dees not matter whether or not the Community Center tile has moved in the process.) You get 0, 1, or 2 Bonus cards, respectively, plus 1 Field into row 5.
+306 You have more Jewelry than Fields or more Sheep than Fields. (Con- sider Jewelry and Sheep separately.) You get 1 Field into row 2. Afterward, you can sow in one Field. (You can sow in the new Field or a different one.)
+307 You have at least 1, 3, or 6 Jewelry. You get 0, 1, or 2 Bonus cards, respectively, plus 2 Clay and 1 Tool.
+308 So far, you have played a total of at least 1, 3, 7, or 12 cards. You get 1, 2, 3, or 4 Tools, respectively.
+309 You have just used an action space so that, now, there are at least 9, 11, or 13 Workers in its Quadrant. You get 1, 2, or 3 Barley, respectively, plus 1 Tool.
+310 You have just obtained at least 2, 3, or 4 Tools at the same time (e.g., by exchanging Workers for Tools in Phase 4). You get 1, 2, or 3 Hops, respectively, plus 1 Tool.
+311 You have at least 7, 14, or 21 Crops of the same type in your supply. You get 0, 1, or 2 Bonus cards, respectively, plus 1 Jewelry.
+312 You can only play this card in Phase 4! You have 6, 7, or & Fields. You get 0, 1, or 2 Bonus cards, respectively. Additionally, you can advance a Craft Building 1 space to the right (even outside of Phase 9), without paying the usual cost. (This can cause the Com- munity Center tile to move, but you do not get any additional Work- er retroactively.)
+313 You can only play this card in Phase 4! There is only 1 Worker left on the Farmyard card containing your supply of Workers. You can place this Worker in the second row of an action space of your choice, if the second row is empty, and use the action space immediately. It does not matter whether or not the first row of this action space contains a Worker. The second row is considered oc- cupied, even if it contains only one Worker, (Do not add a Worker from the general supply. The Worker in the second row is consid- ered ane Worker, not two. The second row will contain only one Worker until it is cleared. If the first row is still empty, any player can use it even if the second row contains a Worker.) Additionally, you get 1 Bonus card.
+314 There are at least 2 action spaces containing exactly 3 Workers each (i.e., the two bottom rows are completely filled). You can remove all Workers from one of these action spaces (thus, clearing it) and place them in the third row of another action space with exactly 3 Workers (thus, completely filling it), without using any of these action spaces. If you do remove Workers, you must move the Workers as described. Additionally, you get 1 Bonus card.
+315 You can only play this card in Phase 4! You have at least 4 Jewelry. You can remove all Workers from the topmost row containing Workers of an action space of your choice. If you do, add these Workers to your supply of Workers for this Round. (Consequently, you will have more Workers available to you this Round. You can play this card even after you placed your last Worker, thus, rejoining this Phase 4, even if all other players are aut of Warkers already.)
+316 Play this card in Round 1, Round 2, or ina later Round. You get O, 1, or 2 Bonus cards, respectively. Additionally, you can move each of up to 3 different Boulders 1 space to the right (even outside of Phase 9), without using Tools. (You may not move the same Boulder more than once with this.)
+317 You have at least 1 planted Field. You get a number of Clay equal to the number of empty Fields you have.
+318 One of your Craft Buildings is at least 3,4, or 5 spaces ahead of another of your Craft Buildings. (If this applies to multiple Craft Buildings, consider the Craft Buildings with the largest gap between them.) You get 3, 4, or 5 Clay, respectively, plus 1 Bonus card.
+319 You have at least 1, 3, or 6 Hops in your supply. You get 1, 2, or 3 Clay, respectively, plus 1 Rye and 1 Bonus card.
+320 You have at least 2, 4, 6, or 7 Tools. You get 0, 1, 2, or 3 Barley, respectively, plus 2 Flax and 1 Bonus card.
+321 You have a number of Barley in your supply equal to the difference of 10 and the number of Jewelry you have. (If you have 10 Jewelry, you can play this card even if you have no Barley in your supply.) You get 2 Flax, 1 Hop, and 1 Bonus card.
+322 You have just used the “Farming”, “Fertilizing”, “Cultivation”, or “Busy Weekend” action space. You get your choice of 1 Barley, 1 Flax, 1 Hop, or 1 Rye. Afterward, you can sow the chosen Crop in one Field (on top of the sow actions from the action space). You get the Crop even if you cannot or do not want to sow it.
+323 You have exactly 1 empty Field. You can move this Field to row 4 (regardless of the row it originates from). Afterward, you can sow in this Field. (You can sow even if you do not move the Field, or you can move the Field without sowing.) Additionally, you get 1 Bonus card.
+324 The number shown in the window of your Community Center is greater than the sum of the current Round and 5, 6, or 7. You get 1, 2, or 3 Milk, respectively.
+325 You have at least 0, 10, 16, or 23 Crops in your supply. (The types do not matter. All of these Crops may even be of the same type.) You get 0, 1, 2, or 3 Milk, respectively, plus 1 Bonus card.
+326 You have at least 1 Sheep on the Farmyard card of Round 4, on a later Farmyard card, or in the Stables, You get 1, 2, or 3 Wool, respectively, plus 1 Bonus card,
+327 You have at least 2, 3, or 7 Sheep. You get 0, 1, or 2 Bonus cards, respectively, plus a number of Hides equal to the number of Farmyard cards on your Stable board con- taining no Sheep (including the Farmyard cards of Rounds 2 and 3, which usually never contain Sheep anyway).
+328 You can only play this card when you use the “Butchery” action space. You can pay 1 Jewelry in place of the Sheep required by the “Butch- ery” action space (even if you do not have any Sheep to take the action in the first place), Additionally, you get 2 additional Hides and 1 Bonus card. 
+329 There are (at least) 1, 3, or 6 Workers on the “Nursery” action space. (None of these Workers need to be Workers you placed there.) You get 0, 2, or 7 Meat, respectively, plus 1 Bonus card. Example: The two bottom rows contain 1 Worker each (because somebody played card # before). Consequently, you get no Meat, but you get 1 Bonus card.
+330 You can only play this card in Phase 4! You have obtained a total of at least 1, 3, or 5 Tools this Phase (e.g., by exchanging Workers for Tools). You get 0, 1, or 2 Gateway cards (!), respectively, plus 1 Bonus card.
+
+401 Pay your choice of 1 Barley or 1 Rye. You can move up to 2 different Sheep to the next Farmyard card. (You may not move the same Sheep more than once with this.) Sheep that are on the Farmyard card of Round 6 move into the Stables. Additionally, you get 1 Bonus card.
+402 You have no Fields in rows 2, 3, and 4, (So you have either no Fields at all or all of your Fields are in row 5.) You get 1 Milk and 1 Sheep.
+403 So far, you have played a total of at least 5 Gateway cards. You get 1 Sheep.
+404 Pay a number of Rye equal to the difference of 8 and the number of Fields you have. {if you have & Fields, you can play this card at no cost.) You get 1 Sheep and 1 Bonus card.
+405 Pay 1 Barley, 1 Flax, 1 Hop, and 1 Rye. You get 1 Milk, 2 Wool, 1 Sheep, and 1 Bonus card. 
+406 Pay 4 Hops. You get 2 Hops (back), 1 Sheep, and 1 Bonus card. 
+407 You have at least 7 Fields. You get 1 Field into row 3 and 1 Bonus card.
+408 Pay l Sheep. You get 1 Field into row 5 and 1 Bonus card.
+409 Pay 2 Clay and remove 1 Field from row 5. You get up to 3 Fields into row 2.
+410 Pay 1 Jewelry. You get up to 2 Fields into row 2.
+411 Pay 4 Hops. You get up to 2 Fields into row 3.
+412 Pay your choice of 3, 5, or 7 Hops. You get 0, 3, or 6 Hops (back), respectively, plus 1 Field into row 4 and 1 Bonus card.
+413 Pay your choice of 1, 2, or 3 Sheep. You get 1, 2 or 3 Tools, respectively. Additionally, you get 1, 2, or 3 Bonus cards, respectively.
+414 Discard any 2 cards from your hand and remove them from play. You get 1 Tool and 1 Bonus card.
+415 Pay 7 Tools. You get 3 Tools (back) and 2 Jewelry.
+416 You have at least 11 Sheep or 8 Fields. You get 1 Jewelry.
+417 You have a number of Wool in your supply equal to or greater than the number shown in the window of your Community Center. You get 1 Jewelry.
+418 Pay your choice of 5, 6, or 8 Hops. You get 0, 1, or 2 Bonus cards, respectively, plus 2 Jewelry.
+419 You may not play this card in Phase 4! Pay 1 Jewelry. You can immediately use an action space containing at most 1 Worker, placing 1 or 2 Workers from the general supply on the action space (depending on whether the first row is empty or con- taining 1 Worker, respectively).
+420 Pay 2 Tools. You get 2 Clay and 2 Bonus cards.
+421 Remove 1 Field. You get 5 Clay.
+422 You have at least 1, 2, or 3 Fields containing Hops. You get 0, 2, or 4 Barley, respectively, plus 1 Bonus card.
+423 You have at least 5 Meat and at least 3 Wool in your supply. You get 3 Flax and 1 Bonus card.
+424 Pay 3 Hops. You get 5 Rye and 1 Bonus card.
+425 Pay 8 Hops. You get 3 Hops (back), 3 Barley, and 2 Bonus cards.
+426 You can only play this card in Phase 7! You have at least 6 Tools. You can double the yield of a Field that you are about to harvest. {in other words, take an identical Goods indicator from the gener- al supply and place it on the same supply space as the harvested Good.)
+427 You may not play this card in Phase 7! Pay your choice of 0, 1, or 3 Milk. You can sow in one, up to two, or up to three Fields, respectively. 
+428 The combined total of Fields and Jewelry you have is equal to or greater than the number shown in the window of your Community Center. You get 1 Hide, 1 Milk, 1 Wool, and 1 Bonus card.
+429 You have a number of Sheep equal to or greater than the number of Fields you have. You get 2 Hides and 1 Wool.
+430 Pay 1 Tool. You get 2 Milk and 1 Bonus card.
+431 Pay your choice of 1, 3, or 5 Milk. You get 1, 3, or 5 Hides, respectively, plus 1 Bonus card.
+432 Pay your choice of 1, 2, 3, or 4 Hops. You get 0, 1, 2, or 3 Goods of the same type, respectively. You can choose only between Hides and Wool. (You must choose a single type.) Additionally, you get 1 Bonus card.
+433 Pay 1 Jewelry. You get 2 Meat, 2 Milk, and 1 Bonus card.
+434 Remove 2 Fields, You get 6 Meat.
+435 Pay your choice of 1, 3, or 6 Barley. You get 1, 2, or 3 Gateway cards (!), respectively. 
+
+501 You have at least 5, 7, or 10 Wool in your supply. You get 0, 1, or 2 Hides, respectively, plus 1 Sheep.
+502 You have at least 4, 5, 6, or 8 Jewelry. You get 0, 1, 2, or 3 Rye, respectively, plus 1 Sheep.
+503 You have at least 3, 5, or 7 Fields, and at least as much Jewelry. (Consider of which you have less.) You get 0, 1, or 2 Sheep, respectively, plus 2 Meat. Example: You have 6 Fields and 4 Jewelry. Consequently, you get 2 Meat, but no Sheep.
+504 Remove 1 Field. You get 1 Hide and 1 Sheep.
+505 Pay 1 Jewelry. You get 1 Sheep and 1 Bonus card.
+506 Pay a number of Clay equal to the difference of 8 and the number of Fields you have. (if you have 8 Fields, you can play this card at no cost.) You get 1 Milk, 1 Sheep, and 1 Bonus card.
+507 Pay a number of Rye equal to the difference of 10 and the number of Jewelry you have. (If you have 10 Jewelry, you can play this card at no cost.) You get 2 Sheep and 1 Bonus card.
+508 Pay a number of Flax equal to the total number of Sheep on all Farmyard cards of your Stable board. (Sheep in the Stables do not count. If you have no Sheep on Farmyard cards, you can play this card at no cost.) You get 1 Sheep. 
+509 You have at most 4 Fields, 2 Fields, 1 Field, or no Fields at all. You get 1 Field into row 2, 3, 4, or 5, respectively. Additionally, you get 0, 1, 2, or 2 Bonus cards, respectively.
+510 Pay 2 Hops. You get 1 Field into row 4 and 1 Bonus card.
+511 Pay your choice of 4 Barley, 4 Flax, 4 Hops, or 4 Rye. You get 1 Field into row 2 and 2 Bonus cards.
+512 Remove 1 Field from row 5. You get up to 2 Fields into row 3.
+513 Pay 1 Jewelry. You get 1 Field into row 5 and 1 Bonus card.
+514 Pay 2 Goods of the same type of your choice. You get 1 Tool and 1 Field into row 2.
+515 Pay a number of Barley equal to the difference of 8 and the number of Fields you have. (If you have 8 Fields, you can play this card at no cost.) You get 2 Tools and 1 Bonus card.
+516 Remove a planted Good from a Field and return it to the general supply. (Keep the Field.) You get 2 Tools and 1 Bonus card.
+517 Pay 3 Sheep. You get 2 Tools, 2 Jewelry, and 2 Bonus cards.
+518 Remove your choice of 1, 2, or 4 Fields. You get 1, 2, or 3 Jewelry, respectively.
+519 Pay a number of Clay equal to the number of Fields you have. (If you have no Fields, you can play this card at no cost.) You get 2 Jewelry.
+520 Pay 3 Hops. You get 1 Jewelry and 1 Bonus card.
+521 Pay your choice of 1, 2, or 3 Hops. You get 1, 3, or 5 Clay, respectively.
+522 Pay 1 Tool. You can immediately sow 1 Clay from your supply into a Field, as though Clay were a Crop. Harvest the Field in Phase 7, as usual.
+523 You have at least 4 Tools and at least 5 Fields. You get your choice of 4 Barley, 4 Flax, 4 Hops, or 4 Rye.
+524 You have at least 1, 2, or 3 Fields containing Hops. You get 2, 3, or 4 Barley, respectively. Additionally, you get 0, 1, or 2 Bonus cards, respectively.
+525 The combined total of Fields and Tools you have is equal to or greater than 9, 10, 11, or 12. You get 2, 3, 4, or 5 Flax, respectively.
+526 You may not play this card in Phase 7! Pay 2 Milk. You can sow in up to three Fields.
+527 You have a number of Milk in your supply equal to or greater than the number shown in the window of your Community Center. You get 1 Rye, 1 Hide, 1 Meat, and 1 Bonus card.
+528 You have at least 4, 5, or 7 planted Fields. You get 1, 2, or 3 Bonus cards, respectively, plus 1 Wool.
+529 You have at least 10 Craps of the same type in your supply. You get 2 Meat and 1 Bonus card.
+530 Pay 1 Hop. You get 3 Milk. 
+531 Move 2 different Sheep to the previous Farmyard card. (This way, Sheep can end up on the Farmyard card: of Round 3.) If a Sheep is on the Farmyard card of the current Round, return it to the general supply. If a Sheep is in the Stables, move it to the Farmyard card of Round 6. (If you play this card in Round 6, simply return 2 Sheep to the general supply. You may not play this card if you have less than 2 Sheep.) You get 1 Bonus card and your choice of 4 Wool or 1 Jewelry.
+532 Pay 2 Sheep. You get 3 Hides, 6 Meat, and 1 Bonus card.
+533 Pay 1 Sheep. You get 4 Hides and 1 Bonus card.
+534 Pay 1 Jewelry. You get your choice of 5 Hides, 5 Meat, 5 Milk, or 5 Wool.
+535 Pay your choice of 1, 2, or 4 Clay. You get 1, 2, or 3 Point cards (!), respectively, plus 1 Bonus card.
+
+601 You have at least 6 Fields. You get 1 Sheep.
+602 You have at least 2 Wool in your supply and at least 4 Tools. You get 1 Sheep.
+603 Remove 1 Field from row 5. You get 2 Sheep. 
+604 Pay a number of Flax equal to the difference of 8 and the number of Fields you have. (if you have 8 Fields, you can.play this card at no cost.) You get 2 Sheep.
+605 You may not play this card in Phase 8! Pay 3 Milk. You get 1 Sheep and 1 Bonus card.
+606 You have at least 3 Fields containing the same type of Crop. You get 1 Field into row 3 and 1 Bonus card.
+607 You have at least 6 Tools and at least 4 Jewelry. You get 2 Fields into rows whose sum is equal to the number of Jewelry you have. If you have 4 or 5 Jewelry, you can choose to take only 1 Field and place it in the corresponding row. (If you have 6 or more Jewelry, you must take exactly 2 Fields or decline the effect.) Example: You have 6 Jewelry. You can place both Fields into row 3, or one Field into row 2 and another into row 4.
+608 You have at least 1, 2, 5, or 7 Meat in your supply. You get 0, 1, 2, or 3 Wool, respectively, plus 1 Field into row 4.
+609 The combined total of Sheep and Jewelry you have is equal to or greater than the number shown in the window of your Community Center. You get 1 Tool and 1 Field into row 5.
+610 Pay 3 Hops. You get 1 Field into row 5 and 1 Bonus card.
+611 Pay your choice of 1, 3, or 5 Hops. You get 0, 1, or 2 Bonus cards, respectively, plus 1 Field into row 4.
+612 Pay 2 Flax. You get 1 Field into row 3 and 1 Bonus card.
+613 Pay 2 Tools. You get 1 Field into row 4 and 1 Bonus card.
+614 Pay 2 Sheep. You get up to 2 Fields into row 4 and 1 Bonus card.
+615 You have at least 5, 6, 7, or 8 Jewelry. You get 2 Tools. If you have at least 6 Jewelry, you can instead place up to 2 Fields into row 2. If you have at least 7 Jewelry, you can in- stead place up to 2 Fields into row 5. If you have at least 8 Jewelry, you can instead take 3 Sheep.
+616 You have at least 1, 2, 5, or 7 Hides in your supply. You get 1, 2, 3, or 4 Meat, respectively, plus 1 Tool.
+617 Pay 1 Jewelry. You get 3 Hides, 1 Tool, and 1 Bonus card.
+618 Pay 1 Sheep. You get 2 Milk, 2 Tools, and 1 Bonus card.
+619 You have at least 4, 9, or 16 Wool in your supply. You get 1, 2, or 3 Jewelry, respectively.
+620 Pay your choice of 3, 8, or 13 Milk. You get 0, 6, or 12 Milk (back), respectively, plus 1 Jewelry and 1 Bonus card.
+621 Pay your choice of 1, 5, or 10 Hops. You get 1, 2, or 3 Jewelry, respectively.
+622 Pay 4 Hops. You get 7 Clay. 
+623 Remove 2 Fields. You get 5 Clay.
+624 The combined total of Sheep and Fields you have is equal to or greater than the number shown in the window of your Community Center. You get 2 Flax and 1 Bonus card.
+625 You have more Jewelry than Fields. You get 1 Barley, 1 Hop, 1 Rye, and 1 Bonus card.
+626 Remove 1 Field. You get 3 Barley, 1 Hop, and 3 Rye.
+627 You have at least 7 Tools. You can sow up to 2 Crops of the same type in a single Field. Conse- quently, in Phase 7, you will harvest 2 Crops from this Field.
+628 Your Fields contain all four types of Crops. You can immediately harvest up to 3 Fields (even outside of Phase 7). Move each harvested Field 1 row down, as usual (unless it is in the bottom row already). Additionally, you get 1 Bonus card.
+629 You have at least 3, 5, 6, or 7 Sheep, and at least as much Jewelry. (Consider of which you have less.) You get 1, 2, 3, or 4 Hides, respectively. Additionally, you get 1, 2, 3, or 4 Meat, respectively. Example: You have 6 Sheep and 4 Jewelry. Consequently, you get 1 Hide and 1 Meat.
+630 You have at least 6 planted Fields. You get 1 Hide, 1 Meat, 1 Wool, and 1 Bonus card.
+631 Pay 2 Tools. If you have fewer Hides in your supply than Tools, you get a number of Hides from the general supply until you have an equal number of Hides and Tools. (if you have the same or a greater number of Hides, you do not get any, but you also do not lose any.) Additional- ly, you get 1 Bonus card.
+632 Remove 2 Fields. You get a number of Meat equal to the difference of 14 and the number shown in the window of your Community Center. Addition- ally, you get 2 Bonus cards. Example: The number shown in the window of your Community Center is 11. You get 14-11=3 Meat and 2 Bonus cards.
+633 Pay 1 Sheep. You get 2 Hides, 2 Meat, and 2 Wool.
+634 Discard any 2 cards from your hand and remove them from play. You get 1 Wool and 2 Bonus cards.
+635 Discard 2 Point cards from your hand and remove them from play. You get 1 Gateway card (!) and 2 Bonus cards.
+
+701 You have at least 11 Barley in your supply. You get 1 Sheep.
+702 You can only play this card in Phase 4! You have just exchanged at least 3 Workers for Tools in a single turn. You get 1 Sheep.
+703 An action space is fully occupied by Workers. (it does not matter whether or not you used this action space.) You get 1 Sheep and 1 Field into row 2.
+704 You have at least 4 Sheep and at most 7, 5, 4, or 3 Fields. You get 1 Field into row 2, 3, 4, or 5, respectively.
+705 You have at least 4 Sheep and at most 7 Tools, 4 Tools, or 1 Tool. You get 1, 2, or 3 Tools, respectively, plus 1 Bonus card.
+706 You can only play this card in Phase 7! You have just got a total of at least 11 Crops of the same type from Fields. (It does not matter whether or not you harvested anything else.) You get 1 Tool and 1 Jewelry.
+707 You have at least 2, 6, or 10 Tools. You get 0, 1, or 2 Jewelry, respectively, plus 1 Hide and 1 Bonus card.
+708 The combined total of Tools and Fields you have is equal to or greater than 12. You get 1 Jewelry.
+709 One of your Craft Buildings is at least 4 spaces ahead of another of your Craft Buildings. (It does not matter if this applies to multiple Craft Buildings.) You get 1 Jewelry. (Even if this applies to multiple Craft Buildings, you get only 1 Jewelry from this.)
+710 The combined total of Tools and Sheep you have is equal to or greater than 8, 11, or 16. You get O, 1, or 2 Bonus cards, respectively, plus 2 Barley, 1 Hop, and 2 Clay.
+711 The combined total of Tools and Jewelry you have is equal to or greater than the number shown in the window of your Community Center. You get 3 Rye and 1 Bonus card,
+712 You have at least 3, 5, or 7 Jewelry or at least 6, 8, or 10 Tools. (if you meet bath conditions, consider which one is more beneficial to you.) You get 2, 3, or 4 Flax, respectively, plus 1 Bonus card.
+713 You have just played another card immediately after you got it into your hand. (Play this card together with that other card, but carry out the effects of the other card before you carry out this.) You get 1 Milk, 1 Bonus card, and your choice of 1 Barley, 1 Flax, 1 Hop, or 1 Rye.
+714 You have at least 1, 2, or 3 Fields containing Flax. You get 1, 3, or 4 Wool, respectively, plus 1 Bonus card. 
+715 You have more Sheep than Fields. You get 2 Meat and 1 Bonus card.
+716 Pay your choice of 1, 2, 4, or 5 Jewelry. You get 1, 2, 3, or 4 Sheep, respectively, plus 1 Bonus card. 
+717 Pay your choice of 2, 3, or 5 Hops. You get 0, 1, or 2 Bonus cards, respectively, plus 1 Sheep.
+718 Pay your choice of 3 Hides or 4 Hops. You get up to 2 Fields into row 3 and 1 Bonus card. 
+719 Pay your choice of 2, 7, or 9 Jewelry. You get 0, 6, or 9 Jewelry (back), respectively, plus up to 2 Fields into row 3 and 1 Bonus card.
+720 Pay 1 Sheep. You get 2 Clay, 2 Tools, and 1 Bonus card.
+721 Pay 1 Jewelry. You get 3 Tools, 1 Bonus card, and your choice of 1 Barley, 1 Flax, 1 Hop, or 1 Rye,
+722 Pay 3 Hops. You get 1 Tool, 1 Jewelry, and 1 Bonus card.
+723 Pay your choice of 7 Flax, or 5 Flax and 1 Hide, or 3 Flax. and 2 Hides, or 1 Flax and 3 Hides, or 4 Hides. You get 2 Jewelry and 1 Bonus card.
+724 You may not play this card in Phase 7! Pay a number of Barley equal to the number of empty Fields you have. (If you have no Fields at all or all of your Fields are planted, you can play this card at no cost.) You get 1 Jewelry.
+725 Pay 1 Tool. You can remove the topmost row containing Workers from each of the “Land Sale” and “Town Hall” action spaces, returning the Work- ers to the general supply. If you do, you must remove Workers from both action spaces. (You may not pick and choose.) Additionally, you get 1 Bonus card.
+726 You may not play this card in Phase 4! Pay 1 Jewelry. You can immediately use an action space containing at most 1 Worker, placing 1 or 2 Workers from the general supply on the action space (depending on whether the first row is empty or con- taining 1 Worker, respectively).
+727 Pay your choice of 1 Jewelry ar 3 Tools. You get 7 Clay.
+728 If you have more than 3 Crops in your supply, you must return all of them but three. (This card only reduces Crops—your other Goods are unaffected by it. If you have 3 or fewer Crops in your supply, you can play this card at no cost.) You can sow in up to three Fields. Additionally, you get 1 Bonus card.
+729 Pay 1 Jewelry. You get 1 Field into row 4. Afterward, you can sow in one Field. (You can saw a Crop in the new Field or a different ane.)
+730 Pay a number of Rye equal to the number of empty Farmyard cards on your Stable board (i.e, containing no Sheep), including the Farmyard cards of Rounds 2 and 3, if available. (In Round 6 or if each Farmyard card on your Stable board contains at least 1 Sheep, you can play this card at no cost.) You get 3 Milk and 1 Bonus card.
+731 Pay 1 Tool. You get a number of Barley and a number of Wool equal to half the number of Hides in your supply, rounded down. (Keep the Hides.) Additionally, you get 1 Bonus card. Example: You have 5 Hides in your supply. You get 2 Barley, 2 Wool, and 1 Bonus card.
+732 Pay 1 Jewelry. You get 1 Bonus card and your choice of 4 Hides or 5 Wool.
+733 Pay a number of Barley equal to the difference of 10 and the num- ber of Jewelry you have. (If you have 10 Jewelry, you can play this card at no cost.) You get 6 Hides, 2 Meat, and 1 Bonus card,
+734 Pay your choice of 2, 6, or 9 Jewelry. You get 0, 5, or 9 Jewelry (back), respectively, plus 5 Meat and 1 Bonus card.
+735 Pay 1 Jewelry. You get 2 Farmyard cards (!) and 2 Bonus cards.
+
+801 Pay 1 Wool. In Phase 3 of each Round, you get 1 Meat. During scoring, you get 1 VP.
+802 Pay 1 Hop. In Phase 3 of each Round, you get 1 Barley, During scoring, you get 2 VP.
+803 Pay 2 Meat. In Phase 3 of each Round, you get 1 Sheep. During scoring, you get 2 VP.
+804 Pay 1 Meat. In Phase 3 of each Round, you get 1 Wool. During scoring, you get 3 VP.
+805 Pay 1 Sheep. In Phase 3 of each Round, you get 2 Hides. During scoring, you get 3 VP.
+806 Pay 1 Sheep. In Phase 3 of each Round, you get 2 Milk. During scoring, you get 3 VP.
+807 Remove 2 Fields. In Phase 3 of each Round, you get 1 Sheep. During scoring, you get 3 VP.
+808 Pay 2 Hides. In Phase 3 of each Round, you get 2 Wool. During scoring, you get 3 VP.
+809 Pay 2 Tools. In Phase 3 of each Round, you get 1 Barley and 1 Hop. During scoring, you get 3 VP.
+810 Pay 2 Hops. In Phase 3 of each Round, you get 1 Rye. During scoring, you get 3 VP.
+811 Pay 3 Flax that you have just harvested (from one or multiple Fields). In Phase 3 of each Round, you can sow 1 Flax from your supply ina Field, Harvest the Field in Phase 7, as usual. During scoring, you get 3 VP.
+812 Pay 3 Barley that you have just harvested (from one or multiple Fields). In Phase 3 of each Round, you can sow 1 Barley from your supply in a Field. Harvest the Field in Phase 7, as usual. During scoring, you get 3 VP.
+813 Pay 3 Hops. In Phase 3 of each Round, you get 1 Tool. During scoring, you get 3 VP.
+814 Pay 3 Clay. In Phase 3 of each Round, you get 1 Rye and 1 Clay. During scoring, you get 3 VP.
+815 Discard any 3 cards from your hand and remove them from play. In Phase 3 of each Round, you get 1 Gateway card (!). During scoring, you get 3 VP.
+816 Pay 3 Rye that you have just harvested (from one or multiple Fields). In Phase 3 of each Round, you can sow 1 Rye from your supply in a Field. Harvest the Field in Phase 7, as usual. During scoring, you get 3 VP.
+817 Pay 1 Jewelry. In Phase 3 of each Round, you get 1 Tool, During scoring, you get 4 VP.
+818 Pay 1 Jewelry and 1 Tool. In Phase 3 of each Round, you get 1 Flax and 1 Wool. During scoring, you get 4 VP.
+819 Remove 2 Fields. In Phase 3 of each Round, you get 1 Field into row 4. During scoring, you get 4 VP.
+820	Pay 2 Tools. In Phase 3 of each Round, you get 1 Meat. During scoring, you get 4 VP, 
+821	Pay 4 Clay. In Phase 3 of each Round, you get 2 Clay. During scoring, you get 4 VP. 
+822	Pay your choice of 3 Barley, 3 Flax, 3 Hops, or 3 Rye. In Phase 3 of each Round, you get 1 Hops. During scoring, you get 5 VP. 
+823	Pay 2 Sheep. In Phase 3 of each Round, you get 1 Sheep. During scoring, you get 5 VP. 
+824	Remove 1 planted Field. (Also return the Good planted in that Field to the general supply.) In Phase 3 of each Round, you get 1 Field into row 3. During scoring, you get 6 VP. 
+825	Remove 3 Fields. In Phase 3 of each Round, you get 1 Field into row 5. During scoring, you get 6 VP. 
+826	Pay 2 Jewelry. In Phase 3 of each Round, you get 2 Barley. During scoring, you get 7 VP. 
+827	Pay 3 Jewelry. In Phase 3 of each Round, you get 1 Jewelry. During scoring, you get 8 VP. 
+828	You have no empty Fields. (So you have either no Fields ot all or all of your Fields contain Goods.) In Phase 3 of each Round, you get 1 Hop. During scoring, you get 2 VP. 
+829	You have at least 5 Sheep. In Phase 3 of each Round, you get 1 Wool. During scoring, you get 2 VP. 
+830	You have at least 7 Clay in your supply. In Phase 3 of each Round, you get 1 Clay. During scoring, you get 2 VP. 
+831	You have no Fields in rows 2, 3, and 4. (So you have either no Fields at all or all of your Fields are in row 5.) In Phase 3 of each Round, you can sow in one Field. During scoring, you get 3 VP. 
+832	You have no Fields in rows 2, 3, and 4. (So you have either no Fields at all or all of your Fields are in row 5.) In Phase 3 of each Round, you get 1 Milk. During scoring, you get 3 VP. 4 Point Cards
+833 You have a number of Milk in your supply equal to or greater than double the current Round number. Example: In Round 3, you have at least 6 Milk in your supply. In Phase 3 of each Round, you get 1 Hide. During scoring, you get 3 VP.
+834 You have at least 3 Hides in your supply. In Phase 3 of each Round, you get 1 Hide. During scoring, you get 3 VP.
+835 You have at least 5 Jewelry. In Phase 3 of each Round, you get 1 Meat. During scoring, you get 3 VP.
+836 You have at least 6 Hops in your supply. In Phase 3 of each Round, you get 1 Rye. During scoring, you get 3 VP.
+837 You have at least 6 Wool in your supply. In Phase 3 of each Round, you get 1 Wool. During scoring, you get 3 VP.
+838 You have at least 7 Flax in your supply, In Phase 3 of each Round, you get 1 Flax. During scoring, you get 3 VP.
+839 You have at least 8 Tools. In Phase 3 of each Round, you can exchange exactly 1 Tool for 1 Jewelry (but you do not have to). During scoring, you get 3 VP.
+840 You have at least 3 Tools, at least 3 Sheep, and at least 3 Jewelry. In Phase 3 of each Round, you get 1 Farmyard card (!). During scoring, you get 3 VP.
+841 You have at least 10 Barley in your supply. In Phase 3 of each Round, you get 1 Barley. During scoring, you get 3 VP.
+842 You have at least 7 Barley and at least 5 Hops in your supply. In Phase 3 of each Round, you get 1 Barley. During scoring, you get 3 VP.
+843 You have at least 7 Milk in your supply and at least 6 Sheep, In Phase 3 of each Round, you get 1 Sheep. During scoring, you get 3 VP.
+844 You have at least 6 Rye and at least 5 Meat in your supply. In Phase 3 of each Round, you get 1 Rye and 1 Meat. During scoring, you get 4 VP.
+845 You have at least 6 Meat in your supply. In Phase 3 of each Round, you get 1 Meat. During scoring, you get 6 VP.
+
+901 So far, you have played at least 1 other Point card or a total of at least 7 Bonus cards. 2 VP
+902 So far, you have played at least 1 other Point card. 3 VP 
+903 Pay 3 Tools. 4VP 
+904 So far, you have played a total of at least 6 Gateway cards. 5 VP
+905 Pay 4 Tools. 6 VP 
+906 So far, you have played a total of at least 6 Farmyard cards. 6 VP
+907 Pay 5 Goods each of two types of your choice (e.g., 5 Barley and 5 Wool). 7VP
+908 Pay 4 Goods each of three types of your choice (e.g., 4 Rye, 4 Milk, and 4 Clay). 8 VP
+909 Pay 2 Hides and 3 Jewelry. 10 VP 
+910 Pay 5 Meat. 10 VP 
+911 Pay 6 Barley and 2 Jewelry. 10 VP
+912 Pay 10 Hops. 10 VP
+913 Pay your choice of 11 Barley, 11 Flax, 11 Hops, or 11 Rye. 10 VP.
+914 Pay 6 Flax and 6 Hops. 10 VP 
+915 Pay 6 Hops and 6 Rye. 10 VP  
+916 Pay 12 Clay. 10 VP 
+917 Pay 12 Wool. 10 VP  
+918 Pay your choice of 13 Wool or 16 Milk. 10 VP 
+919 Pay 14 Goods of the same type of your choice (e.g., 10 VP 14 Clay).
+920 Pay 14 Milk. 10 VP 
+921 Pay 4 Jewelry. 12 VP  
+922 Remove 7 Fields total from any rows but row 2. 12 VP 
+923 Pay 8 Sheep. 12 VP  
+924 Remove 8 Fields. 13 VP 
+925 Pay your choice of 5 Jewelry or 10 Sheep. 14vP
