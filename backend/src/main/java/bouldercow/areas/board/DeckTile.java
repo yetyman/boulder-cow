@@ -14,7 +14,7 @@ public class DeckTile  {
     public TitleText title = new TitleText();
     public WorkerPlacementLocation row2 = new WorkerPlacementLocation(2);
     public WorkerPlacementLocation row1 = new WorkerPlacementLocation(1);
-    public ReqAndEffect reqAndEffect = ReqAndEffect.of(ResourceSet.of(ResourceUnits.worker,1), ResourceSet.of(ResourceUnits.bonusCard, 1, ResourceUnits.cock, 1), true, false);
+    public ReqAndEffect reqAndEffect = ReqAndEffect.of(ResourceSet.all(ResourceUnits.worker,1), ResourceSet.all(ResourceUnits.bonusCard, 1, ResourceUnits.cock, 1), true, false);
 
     public DeckTile() {
     }

@@ -13,7 +13,7 @@ public class TurnTracker  {
 
     public TurnTracker(){
         for (int i = 0; i < rounds; i++) {
-            sheeps[i] = ResourceSet.of(ResourceUnits.sheep, 0);
+            sheeps[i] = ResourceSet.all(ResourceUnits.sheep, 0);
         }
     }
 
