@@ -3,7 +3,6 @@ package bouldercow.flow.effects;
 import bouldercow.flow.Phase;
 
 import java.util.List;
-import java.util.Map;
 
 public class ReqAndEffectBuilder {
     private Requirement requirement;
@@ -45,6 +44,10 @@ public class ReqAndEffectBuilder {
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
         return give(ResourceSet.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
     }
+    public ReqAndEffectBuilder give(ResourceSet resources, ResourceUnits resourceUnits, int num) {
+        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.of(resourceUnits, num) } );
+        return this;
+    }
     public ReqAndEffectBuilder give(ResourceSet resources) {
         this.effect = Effect.of(resources);
         return this;
@@ -76,7 +79,7 @@ public class ReqAndEffectBuilder {
 
     public static Requirement stagedReq(ResourceSet... stages) {
         Requirement req = new Requirement();
-        req.stagedResources = java.util.Arrays.asList(stages);
+        req.multiRequirement = java.util.Arrays.asList(stages);
         return req;
     }
 
@@ -97,6 +100,16 @@ public class ReqAndEffectBuilder {
         return and(stagedEff(sets), unit2, unit2Cnt);
     }
 
+    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, ResourceUnits unit2, int unit2Cnt) {
+        ResourceSet[] sets = new ResourceSet[4];
+        sets[0] = ResourceSet.of(unit, stage1);
+        sets[1] = ResourceSet.of(unit, stage2);
+        sets[2] = ResourceSet.of(unit, stage3);
+        sets[3] = ResourceSet.of(unit, stage4);
+
+        return and(stagedEff(sets), unit2, unit2Cnt);
+    }
+
     public static Effect stagedEff(ResourceSet... stages) {
         Effect effect = Effect.of(stages);
         effect.isStaged = true;
@@ -111,6 +124,11 @@ public class ReqAndEffectBuilder {
     public static Effect and(Effect effect, ResourceUnits unit, int cnt) {
         Effect combined = new Effect();
         combined.multiEffects = List.of(effect, Effect.of(ResourceSet.of(unit, cnt)));
+        return combined;
+    }
+    public static Effect and(Effect effect, ResourceUnits unit, int cnt, ResourceUnits unit2, int cnt2) {
+        Effect combined = new Effect();
+        combined.multiEffects = List.of(effect, Effect.of(ResourceSet.of(unit, cnt, unit2, cnt2)));
         return combined;
     }
 }

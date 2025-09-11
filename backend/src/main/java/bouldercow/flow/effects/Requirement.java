@@ -2,6 +2,7 @@ package bouldercow.flow.effects;
 
 import bouldercow.flow.Phase;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -11,20 +12,52 @@ public class Requirement {
     //flips required phase to excluded phase.
     public boolean invertPhaseRequirement = false;
     public ResourceSet requiredResources = null;
-    public List<ResourceSet> stagedResources = null;//laying it out so that symbolic displays can be made
+    public List<ResourceSet> multiRequirement = null;//laying it out so that symbolic displays can be made
+    boolean isStaged;
+    boolean isXMoreThanY;
+
     private String description;
-    private Predicate<ResourceSet> offering;
+    private Predicate<ResourceSet> specialRequirement;
 
     public static Requirement of(ResourceSet required, boolean consumes) {
-        return null;
+        Requirement requirement = new Requirement();
+        requirement.requiredResources = required;
+        requirement.consumesRequired = consumes;
+
+        return requirement;
     }
 
-    public static Requirement of(ResourceSet[] staggeredSet) {
-        return null;
+    public static Requirement staged(ResourceSet... staggeredSet) {
+        Requirement requirement = new Requirement();
+        requirement.multiRequirement = Arrays.asList(staggeredSet);
+        requirement.isStaged = true;
+        requirement.isXMoreThanY = false;
+        requirement.consumesRequired = false;
+
+        return requirement;
+    }
+
+    public static Requirement and(Requirement requirement, ResourceUnits resourceUnits, int num) {
+        Requirement requirement1 = new Requirement();
+        requirement1.multiRequirement = Arrays.asList(requirement, Requirement.of(ResourceSet.of(resourceUnits, num), false);
+        requirement1.isStaged = false;
+        requirement1.isXMoreThanY = false;
+        requirement1.consumesRequired = false;
+
+        return requirement1;
+    }
+
+    public static Requirement moreXThanY(ResourceUnits resourceUnits, ResourceUnits resourceUnits2) {
+        Requirement requirement = new Requirement();
+        requirement.multiRequirement = Arrays.asList(ResourceSet.of(resourceUnits, 1), ResourceSet.of(resourceUnits2, 1));
+        requirement.isXMoreThanY = true;
+        requirement.consumesRequired = false;
+
+        return requirement;
     }
 
     public void setComplexRequirement(String description, Predicate<ResourceSet> offering) {
         this.description = description;
-        this.offering = offering;
+        this.specialRequirement = offering;
     }
 }

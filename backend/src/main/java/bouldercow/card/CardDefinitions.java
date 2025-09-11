@@ -1,17 +1,16 @@
 package bouldercow.card;
 
-import bouldercow.flow.effects.ReqAndEffect;
-import bouldercow.flow.effects.ResourceUnits;
+import bouldercow.flow.effects.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static bouldercow.flow.effects.Requirement.*;
+import static bouldercow.flow.effects.Effect.*;
 import static bouldercow.flow.effects.ResourceUnits.*;
 import static bouldercow.flow.effects.ResourceSet.*;
 import static bouldercow.flow.effects.ReqAndEffectBuilder.*;
-import bouldercow.flow.effects.ReqAndEffectBuilder;
-import bouldercow.flow.effects.Effect;
 
 public class CardDefinitions {
     public Map<ResourceUnits, List<Card>> cardsByType;
@@ -38,28 +37,28 @@ public class CardDefinitions {
         addCard(beginnerDeck, 6, require(barley, 4, hops, 4).give(tool, 1, bonusCard, 1), gatewayCard);
         addCard(beginnerDeck, 7, require(stagedReq(meat, 1, 2, 5)).give(stagedEff(tool, 0, 1, 2, bonusCard, 1)), gatewayCard);
         addCard(beginnerDeck, 8, require(flax, 3, wool, 2).give(tool, 1, bonusCard, 1), gatewayCard);
-        addCard(beginnerDeck, 9, , gatewayCard);
-        addCard(beginnerDeck, 10, , gatewayCard);
-        addCard(beginnerDeck, 11, , gatewayCard);
-        addCard(beginnerDeck, 12, , gatewayCard);
-        addCard(beginnerDeck, 13, , gatewayCard);
-        addCard(beginnerDeck, 14, , gatewayCard);
-        addCard(beginnerDeck, 15, , gatewayCard);
-        addCard(beginnerDeck, 16, , gatewayCard);
-        addCard(beginnerDeck, 17, , gatewayCard);
-        addCard(beginnerDeck, 18, , gatewayCard);
-        addCard(beginnerDeck, 19, , gatewayCard);
-        addCard(beginnerDeck, 20, , gatewayCard);
-        addCard(beginnerDeck, 21, , gatewayCard);
-        addCard(beginnerDeck, 22, , gatewayCard);
-        addCard(beginnerDeck, 23, , gatewayCard);
-        addCard(beginnerDeck, 24, , gatewayCard);
-        addCard(beginnerDeck, 25, , gatewayCard);
-        addCard(beginnerDeck, 26, , gatewayCard);
-        addCard(beginnerDeck, 27, , gatewayCard);
-        addCard(beginnerDeck, 28, , gatewayCard);
-        addCard(beginnerDeck, 29, , gatewayCard);
-        addCard(beginnerDeck, 30, , gatewayCard);
+        addCard(beginnerDeck, 9, require(actionSpaceFullyOccupied, 1).give(jewelry, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 10, require(either(leather, 2, meat, 2)).give(clay, 2, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 11, require(milk, 1, wool, 1).give(clay, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 12, require(tool, 4).give(clay, 1, milk, 1, wool, 1), gatewayCard);
+        addCard(beginnerDeck, 13, require(sheep, 3).give(clay, 1, sowAnyAction, 1), gatewayCard);
+        addCard(beginnerDeck, 14, require(stagedReq(fieldLvl5, 1, 2, 4, 6)).give(stagedEff(sowAnyAction, 0, 1, 2, 3, bonusCard, 1)), gatewayCard);
+        addCard(beginnerDeck, 15, require(stagedReq(fieldAnyLvl, 4, 5, 6, 7)).give(stagedEff(differentCrops, 1, 2, 3, 4)), gatewayCard);
+        addCard(beginnerDeck, 16, require(tool, 3, hops, 3).give(either(barley, 2, wheat, 2), bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 17, require(ResourceSet.of(fieldWithCrop, 2, hops, 2)).give(barley, 2, wheat, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 18, require(moreXThanY(barley, workerSupply)).give(flax, 2, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 19, require(fieldAnyLvl, 6).give(wheat, 1, leather, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 20, require(and(Requirement.special(jewelrySpent,1), Requirement.of(exactly(jewelry, 0), false))).give(hops, 1, milk, 1), gatewayCard);//this ones tough to define you "just" spent one jewelry down to 0. so spent 1 and have 0, but not consume it for this effect, just "just spent it" so this indicates some kind of history or a triggered response for the user to respond to
+        addCard(beginnerDeck, 21, require(stagedReq(sheep, 1, 2, 4, 7)).give(stagedEff(either(hops,1,meat,1), either(hops,2,meat,2), either(hops,3,meat,3), either(hops,4,meat,4))), gatewayCard);
+        addCard(beginnerDeck, 22, require(stagedReq(exactly(fieldWithCrop, 1), exactly(fieldWithCrop, 2))).give(harvestAction, 1, bonusCard, 1), gatewayCard);//the staging here actually does nothing. but saves us from figuring out either(exactly, exactly) of the same resource. should give the right symbology too
+        addCard(beginnerDeck, 23, require(exactly(fieldWithoutCrop, 0)).give(fieldUpgrade, 1), gatewayCard);
+        addCard(beginnerDeck, 24, require(stagedReq(wheat, 6, 9, 12)).give(stagedEff(milk, 1, 2, 3, bonusCard, 1)), gatewayCard);
+        addCard(beginnerDeck, 25, require(stagedReq(clay, 4, 5, 7)).give(stagedEff(milk, 1, 2, 3)), gatewayCard);
+        addCard(beginnerDeck, 26, require(tool, 3, sheep, 2).give(milk, 1, wool, 1, bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 27, require(exactly(fieldWithoutCrop, 1)).give(ResourceSet.of(sowSpecificAction, 1, wool, 1), bonusCard, 1), gatewayCard);
+        addCard(beginnerDeck, 28, require(stagedReq(jewelry, 2, 3, 4)).give(stagedEff(leather, 1, 2, 3, bonusCard, 1)), gatewayCard);
+        addCard(beginnerDeck, 29, require(stagedReq(total(bonusCard, pointCard, farmyardCard, 2),total(bonusCard, pointCard, farmyardCard, 4),total(bonusCard, pointCard, farmyardCard, 6))).give(stagedEff(meat, 1, 2, 3)), gatewayCard);
+        addCard(beginnerDeck, 30, require(and(stagedReq(fieldAnyLvl, 2, 4, 6), jewelry, 1)).give(and(stagedEff(farmyardCard, 0, 1, 2), clay, 1, bonusCard, 1)), gatewayCard);
 
         addCard(advancedDeck, 101, , gatewayCard);
         addCard(advancedDeck, 101, , gatewayCard);

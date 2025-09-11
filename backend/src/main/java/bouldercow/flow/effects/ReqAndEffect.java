@@ -30,7 +30,7 @@ public class ReqAndEffect {
     }
 
     public static Requirement stagedC(ResourceSet... staggeredSet) {
-        Requirement c = Requirement.of(staggeredSet);
+        Requirement c = Requirement.staged(staggeredSet);
         return c;
     }
     public static Effect stagedE(ResourceSet... staggeredSet) {
