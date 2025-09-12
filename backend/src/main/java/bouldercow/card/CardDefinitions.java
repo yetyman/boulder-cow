@@ -1,5 +1,6 @@
 package bouldercow.card;
 
+import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
 
 import java.util.ArrayList;
@@ -79,12 +80,12 @@ public class CardDefinitions {
         addCard(advancedDeck, 118, require(actionSpaceFullyOccupied, 1).give(barley, 2, hops, 1, bonusCard, 1), gatewayCard);
         addCard(advancedDeck, 119, require(barley, 6, wheat, 6).give(flax, 1, hops, 1, bonusCard, 1), gatewayCard);
         addCard(advancedDeck, 120, require(fieldLvl5WithCrop, 3).give(hops, 1, wool, 1, bonusCard, 1), gatewayCard);
-        addCard(advancedDeck, 121, require(phase4, stagedReq(worker, 1, 2, 3)).give(fieldUpgrade, 1, bonusCard, 1), gatewayCard);
+        addCard(advancedDeck, 121, require(Phase.phase4, stagedReq(worker, 1, 2, 3)).give(fieldUpgrade, 1, bonusCard, 1), gatewayCard);
         addCard(advancedDeck, 122, require(exactly(fieldWithCrop, 2)).give(fieldUpgrade, 1, bonusCard, 1), gatewayCard);
         addCard(advancedDeck, 123, require(stagedReq(tool, 1, 3, 4, 6)).give(stagedEff(milk, 0, 1, 2, 3, bonusCard, 1)), gatewayCard);
         addCard(advancedDeck, 124, require(stagedReq(meat, 1, 2, 3)).give(stagedEff(milk, 1, 2, 3)), gatewayCard);
         addCard(advancedDeck, 125, require(wool, 2).give(milk, 1, bonusCard, 1), gatewayCard);
-        addCard(advancedDeck, 126, require(stagedReq(farmyardCardsPlayed, 1, 3, 4)).give(stagedEff(meat, 0, 2, 3), milk, 2), gatewayCard);
+        addCard(advancedDeck, 126, require(stagedReq(farmyardCardsPlayed, 1, 3, 4)).give(stagedEff(meat, 0, 2, 3, milk, 2)), gatewayCard);
         addCard(advancedDeck, 127, require(stagedReq(fieldWithCrop, 3, 4, 5, 6, 7)).give(stagedEff(wool, 0, 1, 2, 3, 4, bonusCard, 1)), gatewayCard);
         addCard(advancedDeck, 128, require(tool, 4).give(flax, 1, leather, 2), gatewayCard);
         addCard(advancedDeck, 129, require(moreXThanY(total(leather, wool, 1), workerSupply)).give(meat, 3), gatewayCard);

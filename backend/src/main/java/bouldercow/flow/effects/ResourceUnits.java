@@ -23,6 +23,7 @@ public enum ResourceUnits {
     fieldLvl3,
     fieldLvl4,
     fieldLvl5,
+    fieldLvl5WithCrop,
     //other resource in set reps required crop on field since no card requires separate resources and fields
     fieldWithCrop,
     fieldWithoutCrop,
@@ -36,5 +37,5 @@ public enum ResourceUnits {
     //refers to advancing a building.
     building,
     //refers to how many workers are gained each round
-    workerSupply, actionSpaceFullyOccupied, differentCrops, harvestAction, fieldUpgrade;
+    workerSupply, actionSpaceFullyOccupied, differentCrops, harvestAction, fieldUpgrade, sheepMovementDifferent, farmyardCardsPlayed;
 }

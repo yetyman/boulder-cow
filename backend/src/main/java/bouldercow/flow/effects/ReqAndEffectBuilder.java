@@ -31,6 +31,14 @@ public class ReqAndEffectBuilder {
         return builder;
     }
 
+
+    public static ReqAndEffectBuilder require(Phase requiredPhase, Requirement req) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = req;
+        builder.requirement.requiredPhase = requiredPhase;
+        return builder;
+    }
+
     public ReqAndEffectBuilder consuming() {
         this.requirement.consumesRequired = true;
         return this;
