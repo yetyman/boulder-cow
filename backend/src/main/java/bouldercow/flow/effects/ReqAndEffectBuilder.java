@@ -3,7 +3,9 @@ package bouldercow.flow.effects;
 import bouldercow.flow.Phase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class ReqAndEffectBuilder {
     private Requirement requirement;
@@ -38,6 +40,12 @@ public class ReqAndEffectBuilder {
         builder.requirement.requiredPhase = requiredPhase;
         return builder;
     }
+    public static ReqAndEffectBuilder require(Phase requiredPhase, ResourceUnits units, int num) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(ResourceSet.all(units, num), false);
+        builder.requirement.requiredPhase = requiredPhase;
+        return builder;
+    }
 
     public ReqAndEffectBuilder consuming() {
         this.requirement.consumesRequired = true;
@@ -57,6 +65,14 @@ public class ReqAndEffectBuilder {
         this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num) } );
         return this;
     }
+    public ReqAndEffectBuilder give(Effect effect, ResourceUnits resourceUnits, int num) {
+        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num) } );
+        return this;
+    }
+    public ReqAndEffectBuilder give(ResourceSet resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
+        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num, resourceUnits2, num2) } );
+        return this;
+    }
     public ReqAndEffectBuilder give(ResourceSet resources) {
         this.effect = Effect.of(resources);
         return this;
@@ -64,6 +80,11 @@ public class ReqAndEffectBuilder {
 
     public ReqAndEffectBuilder give(Effect effect) {
         this.effect = effect;
+        return this;
+    }
+
+    public ReqAndEffectBuilder give(Function<ResourceSet, ResourceSet> effect) {
+        this.effect = Effect.of(effect);
         return this;
     }
 
@@ -85,6 +106,30 @@ public class ReqAndEffectBuilder {
         }
         return stagedReq(sets);
     }
+    // Static helper methods for complex requirements
+    public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2, int... stages) {
+        ResourceSet[] sets = new ResourceSet[stages.length];
+        for (int i = 0; i < stages.length; i++) {
+            sets[i] = ResourceSet.all(unit, unit2,  stages[i]);
+        }
+        return stagedReq(sets);
+    }
+    // Static helper methods for complex requirements
+    public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2,ResourceUnits unit3, int... stages) {
+        ResourceSet[] sets = new ResourceSet[stages.length];
+        for (int i = 0; i < stages.length; i++) {
+            sets[i] = ResourceSet.all(unit, unit2, unit3, stages[i]);
+        }
+        return stagedReq(sets);
+    }
+    // Static helper methods for complex requirements
+    public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2,ResourceUnits unit3,ResourceUnits unit4, int... stages) {
+        ResourceSet[] sets = new ResourceSet[stages.length];
+        for (int i = 0; i < stages.length; i++) {
+            sets[i] = ResourceSet.all(unit, unit2, unit3, unit4, stages[i]);
+        }
+        return stagedReq(sets);
+    }
 
     public static Requirement stagedReq(ResourceSet... stages) {
         return Requirement.staged(stages);
@@ -96,6 +141,12 @@ public class ReqAndEffectBuilder {
             sets[i] = ResourceSet.all(unit,  stages[i]);
         }
         return stagedEff(sets);
+    }
+    public static Effect stagedEff(Effect... stages) {
+        Effect effect = new Effect();
+        effect.multiEffects = Arrays.asList(stages);
+        effect.isStaged = true;
+        return effect;
     }
 
     public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, ResourceUnits unit2, int unit2Cnt) {

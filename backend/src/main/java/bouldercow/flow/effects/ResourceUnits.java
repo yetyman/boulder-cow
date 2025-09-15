@@ -37,5 +37,5 @@ public enum ResourceUnits {
     //refers to advancing a building.
     building,
     //refers to how many workers are gained each round
-    workerSupply, actionSpaceFullyOccupied, differentCrops, harvestAction, fieldUpgrade, sheepMovementDifferent, farmyardCardsPlayed;
+    workerSupply, actionSpaceFullyOccupied, differentCrops, harvestAction, fieldUpgrade, sheepMovementDifferent, farmyardCardsPlayed, harvestTotal, sheepOnSameFarmyard, removeWorkersAction;
 }

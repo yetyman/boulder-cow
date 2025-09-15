@@ -2,7 +2,10 @@ package bouldercow.flow.effects;
 
 import java.util.Map;
 
-public record ResourceSet(Map<ResourceUnits, Integer> resourceMap, boolean or, boolean total, boolean exactly) {
+public record ResourceSet(Map<ResourceUnits, Integer> map, boolean or, boolean total, boolean exactly) {
+    public int get(ResourceUnits units) {
+        return map.getOrDefault(units, 0);
+    }
     public static ResourceSet all(ResourceUnits resourceUnits, int num) {
         return new ResourceSet(Map.of(resourceUnits, num), false, false, false);
     }
@@ -11,6 +14,15 @@ public record ResourceSet(Map<ResourceUnits, Integer> resourceMap, boolean or, b
     }
     public static ResourceSet all(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
         return new ResourceSet(Map.of(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3), false, false, false);
+    }
+    public static ResourceSet all(ResourceUnits resourceUnits, ResourceUnits resourceUnits2, int num3) {
+        return new ResourceSet(Map.of(resourceUnits, num3, resourceUnits2, num3), false, false, false);
+    }
+    public static ResourceSet all(ResourceUnits resourceUnits, ResourceUnits resourceUnits2, ResourceUnits resourceUnits4, int num3) {
+        return new ResourceSet(Map.of(resourceUnits, num3, resourceUnits2, num3, resourceUnits4, num3), false, false, false);
+    }
+    public static ResourceSet all(ResourceUnits resourceUnits, ResourceUnits resourceUnits2, ResourceUnits resourceUnits3, ResourceUnits resourceUnits4, int num3) {
+        return new ResourceSet(Map.of(resourceUnits, num3, resourceUnits2, num3, resourceUnits3, num3, resourceUnits4, num3), false, false, false);
     }
     public static ResourceSet either(ResourceUnits resourceUnits, int num) {
         return new ResourceSet(Map.of(resourceUnits, num), true, false, false);
