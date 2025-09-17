@@ -53,6 +53,7 @@ public class ResourceEntry {
     public static ResourceEntry template(List<ResourceUnits> units, ResourceEntry entry) {
         return new ResourceEntry(units, entry.values, entry.modifiers);
     }
+
     public static ResourceEntry choose(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry distinct(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.DISTINCT)); }
     public static ResourceEntry subtract(Integer amount1, Integer amount2, Integer amount3, ResourceUnits unit) { return new ResourceEntry(List.of(unit), List.of(amount1, amount2, amount3), List.of(EffectModifier.SUBTRACT)); }
@@ -81,5 +82,6 @@ public class ResourceEntry {
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3,unit4), amounts, List.of(EffectModifier.CHOOSE)); }
+    public static ResourceEntry upTo(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.UP_TO)); }
 
 }
