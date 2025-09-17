@@ -12,15 +12,15 @@ public class Requirement {
     public Phase requiredPhase = null;
     //flips required phase to excluded phase.
     public boolean invertPhaseRequirement = false;
-    public ResourceSet requiredResources = null;
+    public List<ResourceEntry> requiredResources = null;
     public List<Requirement> multiRequirement = null;//laying it out so that symbolic displays can be made
     boolean isStaged;
     boolean isXMoreThanY;
 
     private String description;
-    private Predicate<ResourceSet> specialRequirement;
+    private Predicate<ResourceEntry> specialRequirement;
 
-    public static Requirement of(ResourceSet required, boolean consumes) {
+    public static Requirement of(ResourceEntry required, boolean consumes) {
         Requirement requirement = new Requirement();
         requirement.requiredResources = required;
         requirement.consumesRequired = consumes;
@@ -28,10 +28,10 @@ public class Requirement {
         return requirement;
     }
 
-    public static Requirement staged(ResourceSet... staggeredSet) {
+    public static Requirement staged(ResourceEntry... staggeredSet) {
         Requirement requirement = new Requirement();
         requirement.multiRequirement = new ArrayList<>();
-        for (ResourceSet resourceSet : staggeredSet) {
+        for (ResourceEntry resourceSet : staggeredSet) {
             requirement.multiRequirement.add(Requirement.of(resourceSet, false));
         }
         requirement.isStaged = true;
@@ -43,7 +43,7 @@ public class Requirement {
 
     public static Requirement and(Requirement requirement, ResourceUnits resourceUnits, int num) {
         Requirement requirement1 = new Requirement();
-        requirement1.multiRequirement = Arrays.asList(requirement, Requirement.of(ResourceSet.all(resourceUnits, num), false));
+        requirement1.multiRequirement = Arrays.asList(requirement, Requirement.of(ResourceEntry.each(resourceUnits, num), false));
         requirement1.isStaged = false;
         requirement1.isXMoreThanY = false;
         requirement1.consumesRequired = false;
@@ -55,26 +55,26 @@ public class Requirement {
         Requirement requirement = new Requirement();
 
         requirement.multiRequirement = new ArrayList<>();
-        requirement.multiRequirement.add(Requirement.of(ResourceSet.all(resourceUnits, 1), false));
-        requirement.multiRequirement.add(Requirement.of(ResourceSet.all(resourceUnits2, 1), false));
+        requirement.multiRequirement.add(Requirement.of(ResourceEntry.each(resourceUnits, 1), false));
+        requirement.multiRequirement.add(Requirement.of(ResourceEntry.each(resourceUnits2, 1), false));
         requirement.isXMoreThanY = true;
         requirement.consumesRequired = false;
 
         return requirement;
     }
-    public static Requirement moreXThanY(ResourceSet resources, ResourceUnits resourceUnits2) {
+    public static Requirement moreXThanY(ResourceEntry resources, ResourceUnits resourceUnits2) {
         Requirement requirement = new Requirement();
 
         requirement.multiRequirement = new ArrayList<>();
         requirement.multiRequirement.add(Requirement.of(resources, false));
-        requirement.multiRequirement.add(Requirement.of(ResourceSet.all(resourceUnits2, 1), false));
+        requirement.multiRequirement.add(Requirement.of(ResourceEntry.each(resourceUnits2, 1), false));
         requirement.isXMoreThanY = true;
         requirement.consumesRequired = false;
 
         return requirement;
     }
 
-    public void setComplexRequirement(String description, Predicate<ResourceSet> offering) {
+    public void setComplexRequirement(String description, Predicate<ResourceEntry> offering) {
         this.description = description;
         this.specialRequirement = offering;
     }

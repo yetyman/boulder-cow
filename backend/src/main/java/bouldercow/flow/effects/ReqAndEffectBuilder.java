@@ -7,23 +7,43 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import static bouldercow.flow.effects.ResourceEntry.each;
+import static bouldercow.flow.effects.ResourceEntry.template;
+
 public class ReqAndEffectBuilder {
     private Requirement requirement;
     private Effect effect;
 
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, ResourceEntry entry) {
+        return require(template(unit1, entry));
+    }
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, ResourceEntry entry2) {
+        return require(template(unit1, entry), template(unit2, entry2));
+    }
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry) {
+        return require(template(unit1, unit2, entry));
+    }
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry) {
+        return require(template(unit1, unit2, unit3, entry));
+    }
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry) {
+        return require(template(unit1, unit2, unit3, unit4, entry));
+    }
+
+
     public static ReqAndEffectBuilder require(ResourceUnits resourceUnits, int num) {
-        return require(ResourceSet.all(resourceUnits, num));
+        return require(each(resourceUnits, num));
     }
     public static ReqAndEffectBuilder require(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return require(ResourceSet.all(resourceUnits, num, resourceUnits2, num2));
+        return require(each(resourceUnits, num, resourceUnits2, num2));
     }
     public static ReqAndEffectBuilder require(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return require(ResourceSet.all(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
+        return require(each(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
     }
-    public static ReqAndEffectBuilder require(ResourceSet resources) {
+    public static ReqAndEffectBuilder require(ResourceEntry... resources) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = new Requirement();
-        builder.requirement.requiredResources = resources;
+        builder.requirement.requiredResources = new ArrayList<>(Arrays.asList(resources));
         return builder;
     }
 
@@ -42,7 +62,7 @@ public class ReqAndEffectBuilder {
     }
     public static ReqAndEffectBuilder require(Phase requiredPhase, ResourceUnits units, int num) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
-        builder.requirement = Requirement.of(ResourceSet.all(units, num), false);
+        builder.requirement = Requirement.of(each(units, num), false);
         builder.requirement.requiredPhase = requiredPhase;
         return builder;
     }
@@ -53,27 +73,63 @@ public class ReqAndEffectBuilder {
     }
 
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num) {
-        return give(ResourceSet.all(resourceUnits, num));
+        return give(each(resourceUnits, num));
     }
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return give(ResourceSet.all(resourceUnits, num, resourceUnits2, num2));
+        return give(each(resourceUnits, num, resourceUnits2, num2));
     }
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return give(ResourceSet.all(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
+        return give(each(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
     }
-    public ReqAndEffectBuilder give(ResourceSet resources, ResourceUnits resourceUnits, int num) {
-        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num) } );
+    public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num) {
+        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num) } );
         return this;
     }
     public ReqAndEffectBuilder give(Effect effect, ResourceUnits resourceUnits, int num) {
-        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num) } );
+        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num) } );
         return this;
     }
-    public ReqAndEffectBuilder give(ResourceSet resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        this.effect = Effect.of( new ResourceSet[] { resources, ResourceSet.all(resourceUnits, num, resourceUnits2, num2) } );
+    public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
+        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num, resourceUnits2, num2) } );
         return this;
     }
-    public ReqAndEffectBuilder give(ResourceSet resources) {
+
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits cardUnit, int amount) {
+        return give(template(unit1, entry), cardUnit, amount);
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry, ResourceUnits cardUnit, int amount) {
+        return give(template(unit1, unit2, entry), cardUnit, amount);
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry, ResourceUnits cardUnit, int amount) {
+        return give(template(unit1, unit2, unit3, entry), cardUnit, amount);
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry, ResourceUnits cardUnit, int amount) {
+        return give(template(unit1, unit2, unit3, unit4, entry), cardUnit, amount);
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry) {
+        return give(template(unit1, entry));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, ResourceEntry entry2) {
+        return give(template(unit1, entry), template(unit2, entry2));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry) {
+        return give(template(unit1, unit2, entry));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry) {
+        return give(template(unit1, unit2, unit3, entry));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry) {
+        return give(template(unit1, unit2, unit3, unit4, entry));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, int amount) {
+        return give(template(unit1, unit2, unit3, unit4, each(amount)));
+    }
+    public ReqAndEffectBuilder give(ResourceEntry... resources) {
+        this.effect = Effect.of(resources);
+        return this;
+    }
+
+    public ReqAndEffectBuilder give(ResourceEntry resources, ResourceEntry resources2) {
         this.effect = Effect.of(resources);
         return this;
     }
@@ -83,7 +139,7 @@ public class ReqAndEffectBuilder {
         return this;
     }
 
-    public ReqAndEffectBuilder give(Function<ResourceSet, ResourceSet> effect) {
+    public ReqAndEffectBuilder give(Function<ResourceEntry, ResourceEntry> effect) {
         this.effect = Effect.of(effect);
         return this;
     }
@@ -100,45 +156,45 @@ public class ReqAndEffectBuilder {
 
     // Static helper methods for complex requirements
     public static Requirement stagedReq(ResourceUnits unit, int... stages) {
-        ResourceSet[] sets = new ResourceSet[stages.length];
+        ResourceEntry[] sets = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
-            sets[i] = ResourceSet.all(unit,  stages[i]);
+            sets[i] = each(unit,  stages[i]);
         }
         return stagedReq(sets);
     }
     // Static helper methods for complex requirements
     public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2, int... stages) {
-        ResourceSet[] sets = new ResourceSet[stages.length];
+        ResourceEntry[] sets = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
-            sets[i] = ResourceSet.all(unit, unit2,  stages[i]);
+            sets[i] = each(unit, unit2,  stages[i]);
         }
         return stagedReq(sets);
     }
     // Static helper methods for complex requirements
     public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2,ResourceUnits unit3, int... stages) {
-        ResourceSet[] sets = new ResourceSet[stages.length];
+        ResourceEntry[] sets = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
-            sets[i] = ResourceSet.all(unit, unit2, unit3, stages[i]);
+            sets[i] = each(unit, unit2, unit3, stages[i]);
         }
         return stagedReq(sets);
     }
     // Static helper methods for complex requirements
     public static Requirement stagedReq(ResourceUnits unit,ResourceUnits unit2,ResourceUnits unit3,ResourceUnits unit4, int... stages) {
-        ResourceSet[] sets = new ResourceSet[stages.length];
+        ResourceEntry[] sets = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
-            sets[i] = ResourceSet.all(unit, unit2, unit3, unit4, stages[i]);
+            sets[i] = each(unit, unit2, unit3, unit4, stages[i]);
         }
         return stagedReq(sets);
     }
 
-    public static Requirement stagedReq(ResourceSet... stages) {
+    public static Requirement stagedReq(ResourceEntry... stages) {
         return Requirement.staged(stages);
     }
 
     public static Effect stagedEff(ResourceUnits unit, int... stages) {
-        ResourceSet[] sets = new ResourceSet[stages.length];
+        ResourceEntry[] sets = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
-            sets[i] = ResourceSet.all(unit,  stages[i]);
+            sets[i] = each(unit,  stages[i]);
         }
         return stagedEff(sets);
     }
@@ -150,35 +206,35 @@ public class ReqAndEffectBuilder {
     }
 
     public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, ResourceUnits unit2, int unit2Cnt) {
-        ResourceSet[] sets = new ResourceSet[3];
-        sets[0] = ResourceSet.all(unit, stage1);
-        sets[1] = ResourceSet.all(unit, stage2);
-        sets[2] = ResourceSet.all(unit, stage3);
+        ResourceEntry[] sets = new ResourceEntry[3];
+        sets[0] = each(unit, stage1);
+        sets[1] = each(unit, stage2);
+        sets[2] = each(unit, stage3);
 
         return and(stagedEff(sets), unit2, unit2Cnt);
     }
 
     public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, ResourceUnits unit2, int unit2Cnt) {
-        ResourceSet[] sets = new ResourceSet[4];
-        sets[0] = ResourceSet.all(unit, stage1);
-        sets[1] = ResourceSet.all(unit, stage2);
-        sets[2] = ResourceSet.all(unit, stage3);
-        sets[3] = ResourceSet.all(unit, stage4);
+        ResourceEntry[] sets = new ResourceEntry[4];
+        sets[0] = each(unit, stage1);
+        sets[1] = each(unit, stage2);
+        sets[2] = each(unit, stage3);
+        sets[3] = each(unit, stage4);
 
         return and(stagedEff(sets), unit2, unit2Cnt);
     }
     public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, int stage5, ResourceUnits unit2, int unit2Cnt) {
-        ResourceSet[] sets = new ResourceSet[4];
-        sets[0] = ResourceSet.all(unit, stage1);
-        sets[1] = ResourceSet.all(unit, stage2);
-        sets[2] = ResourceSet.all(unit, stage3);
-        sets[3] = ResourceSet.all(unit, stage4);
-        sets[4] = ResourceSet.all(unit, stage5);
+        ResourceEntry[] sets = new ResourceEntry[4];
+        sets[0] = each(unit, stage1);
+        sets[1] = each(unit, stage2);
+        sets[2] = each(unit, stage3);
+        sets[3] = each(unit, stage4);
+        sets[4] = each(unit, stage5);
 
         return and(stagedEff(sets), unit2, unit2Cnt);
     }
 
-    public static Effect stagedEff(ResourceSet... stages) {
+    public static Effect stagedEff(ResourceEntry... stages) {
         Effect effect = Effect.of(stages);
         effect.isStaged = true;
         return effect;
@@ -190,21 +246,21 @@ public class ReqAndEffectBuilder {
         return combined;
     }
     public static Effect and(Effect effect, ResourceUnits unit, int cnt) {
-        return and(effect, ResourceSet.all(unit, cnt));
+        return and(effect, each(unit, cnt));
     }
-    public static Effect and(Effect effect, ResourceSet resources) {
+    public static Effect and(Effect effect, ResourceEntry resources) {
         Effect combined = new Effect();
         combined.multiEffects = List.of(effect, Effect.of(resources));
         return combined;
     }
-    public static Effect and(ResourceSet resources, Effect effect) {
+    public static Effect and(ResourceEntry resources, Effect effect) {
         Effect combined = new Effect();
         combined.multiEffects = List.of(Effect.of(resources), effect);
         return combined;
     }
     public static Effect and(Effect effect, ResourceUnits unit, int cnt, ResourceUnits unit2, int cnt2) {
         Effect combined = new Effect();
-        combined.multiEffects = List.of(effect, Effect.of(ResourceSet.all(unit, cnt, unit2, cnt2)));
+        combined.multiEffects = List.of(effect, Effect.of(each(unit, cnt, unit2, cnt2)));
         return combined;
     }
 }
