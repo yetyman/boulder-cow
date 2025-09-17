@@ -164,6 +164,10 @@ public class ReqAndEffectBuilder {
         this.effect = Effect.of( effect, new ResourceEntry[] { each(resourceUnits, num) } );
         return this;
     }
+    public ReqAndEffectBuilder give(Effect effect, ResourceEntry entry) {
+        this.effect = Effect.of( effect, new ResourceEntry[] { entry } );
+        return this;
+    }
     public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
         this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num), each(resourceUnits2, num2) } );
         return this;
