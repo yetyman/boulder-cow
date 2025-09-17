@@ -53,7 +53,6 @@ public class ReqAndEffectBuilder {
         return builder;
     }
 
-
     public static ReqAndEffectBuilder require(TimingRequirement timingRequirement, Requirement req) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = req;
@@ -66,10 +65,60 @@ public class ReqAndEffectBuilder {
         builder.requirement.timing = timingRequirement;
         return builder;
     }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry entry) {
+        return consume(template(unit1, entry));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, ResourceEntry entry2) {
+        return consume(template(unit1, entry), template(unit2, entry2));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry) {
+        return consume(template(unit1, unit2, entry));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry) {
+        return consume(template(unit1, unit2, unit3, entry));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry) {
+        return consume(template(unit1, unit2, unit3, unit4, entry));
+    }
 
-    public ReqAndEffectBuilder consuming() {
-        this.requirement.consumesRequired = true;
-        return this;
+
+    public static ReqAndEffectBuilder consume(ResourceUnits resourceUnits, int num) {
+        return consume(each(resourceUnits, num));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
+        return consume(each(resourceUnits, num), each(resourceUnits2, num2));
+    }
+    public static ReqAndEffectBuilder consume(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
+        return consume(each(resourceUnits, num), each(resourceUnits2, num2), each(resourceUnits3, num3));
+    }
+    public static ReqAndEffectBuilder consume(ResourceEntry... resources) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = new Requirement();
+        builder.requirement.requiredResources = new ArrayList<>(Arrays.asList(resources));
+        builder.requirement.consumesRequired = true;
+        return builder;
+    }
+
+    public static ReqAndEffectBuilder consume(Requirement req) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = req;
+        builder.requirement.consumesRequired = true;
+        return builder;
+    }
+
+    public static ReqAndEffectBuilder consume(TimingRequirement timingRequirement, Requirement req) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = req;
+        builder.requirement.timing = timingRequirement;
+        builder.requirement.consumesRequired = true;
+        return builder;
+    }
+    public static ReqAndEffectBuilder consume(TimingRequirement timingRequirement, ResourceUnits units, int num) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(each(units, num), false);
+        builder.requirement.timing = timingRequirement;
+        builder.requirement.consumesRequired = true;
+        return builder;
     }
 
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num) {
