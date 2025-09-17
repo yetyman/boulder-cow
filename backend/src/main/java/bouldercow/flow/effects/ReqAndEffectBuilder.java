@@ -53,6 +53,12 @@ public class ReqAndEffectBuilder {
         return builder;
     }
 
+    public static ReqAndEffectBuilder require(TimingRequirement timingRequirement) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = new Requirement();
+        builder.requirement.timing = timingRequirement;
+        return builder;
+    }
     public static ReqAndEffectBuilder require(TimingRequirement timingRequirement, Requirement req) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = req;
@@ -65,6 +71,19 @@ public class ReqAndEffectBuilder {
         builder.requirement.timing = timingRequirement;
         return builder;
     }
+    public static ReqAndEffectBuilder require(TimingRequirement timing, ResourceUnits units, ResourceEntry entries) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(template(units, entries), false);
+        builder.requirement.timing = timing;
+        return builder;
+    }
+    public static ReqAndEffectBuilder require(TimingRequirement timing, ResourceEntry entries) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(entries, false);
+        builder.requirement.timing = timing;
+        return builder;
+    }
+
     public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry entry) {
         return consume(template(unit1, entry));
     }
@@ -117,6 +136,13 @@ public class ReqAndEffectBuilder {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = Requirement.of(each(units, num), false);
         builder.requirement.timing = timingRequirement;
+        builder.requirement.consumesRequired = true;
+        return builder;
+    }
+    public static ReqAndEffectBuilder consume(TimingRequirement timing, ResourceUnits units, ResourceEntry entries) {
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(template(units, entries), false);
+        builder.requirement.timing = timing;
         builder.requirement.consumesRequired = true;
         return builder;
     }

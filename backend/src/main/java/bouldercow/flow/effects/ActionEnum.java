@@ -2,5 +2,5 @@ package bouldercow.flow.effects;
 
 public enum ActionEnum {
     justBeforeLastAction,
-    jewelrySpent
+    sheepRemoval, workersRemoved, craftBuildingAdvanced, butcheryActionUsed, toolsObtained, farmingActionUsed, jewelrySpent
 }

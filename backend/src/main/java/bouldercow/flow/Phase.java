@@ -1,5 +1,5 @@
 package bouldercow.flow;
 
 public enum Phase {
-    turnStart, refresh, draw, jelk, selfTurn, opponentTurn, feed, build, phase4, phase7;
+    phase1, phase2, phase3, phase4, phase5, phase6, phase7, phase8, phase9, phase10;
 }

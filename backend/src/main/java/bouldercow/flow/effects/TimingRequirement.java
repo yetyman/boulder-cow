@@ -25,10 +25,10 @@ public class TimingRequirement {
         return timingRequirement;
     }
 
-    public static TimingRequirement timing(Phase requiredPhase, boolean invertPhaseRequirement) {
-        TimingRequirement timingRequirement = new TimingRequirement();
-        timingRequirement.requiredPhase = requiredPhase;
-        timingRequirement.invertPhaseRequirement = invertPhaseRequirement;
-        return timingRequirement;
-    }
+//    public static TimingRequirement timing(Phase requiredPhase, boolean invertPhaseRequirement) {
+//        TimingRequirement timingRequirement = new TimingRequirement();
+//        timingRequirement.requiredPhase = requiredPhase;
+//        timingRequirement.invertPhaseRequirement = invertPhaseRequirement;
+//        return timingRequirement;
+//    }
 }

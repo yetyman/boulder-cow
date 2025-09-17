@@ -68,6 +68,7 @@ public class ResourceEntry {
 
     public static ResourceEntry reaction(ResourceUnits to) { return new ResourceEntry(null, (Integer[]) null, List.of(EffectModifier.REACTION)); }
     public static ResourceEntry moreThan(ResourceUnits reference) { return new ResourceEntry(null, null, List.of(EffectModifier.MORE_THAN), List.of(reference)); }
+    public static ResourceEntry moreThan(ResourceUnits reference, Integer... amounts) { return new ResourceEntry(null, List.of(amounts), List.of(EffectModifier.MORE_THAN), List.of(reference)); }
     public static ResourceEntry per(ResourceUnits reference) { return new ResourceEntry(null, null, List.of(EffectModifier.PER), List.of(reference)); }
 
     public static ResourceEntry exactly(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.EXACTLY)); }
