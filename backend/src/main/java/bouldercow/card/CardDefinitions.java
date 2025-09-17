@@ -1,5 +1,6 @@
 package bouldercow.card;
 
+import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
 import bouldercow.model.GameState;
 import bouldercow.player.Player;
@@ -284,7 +285,7 @@ public class CardDefinitions {
         addCard(jewelryDeck, 720, consume(sheep, 1).give(clay, 2, tool, 2, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 721, consume(jewelry, 1).give(choose(barley, flax, hops, wheat, 1), tool, 3, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 722, consume(hops, 3).give(tool, 1, jewelry, 1, bonusCard, 1), farmyardCard);
-        addCard(jewelryDeck, 723, consume(choose(total(flax, 7, leather, 0), total(flax, 5, leather, 1), total(flax, 3, leather, 2), total(flax, 1, leather, 3), each(leather, 4)).give(jewelry, 2, bonusCard, 1), farmyardCard);
+        addCard(jewelryDeck, 723, consume(choose(each(flax, 7, leather, 0), each(flax, 5, leather, 1), each(flax, 3, leather, 2), each(flax, 1, leather, 3), each(leather, 4)).give(jewelry, 2, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 724, consume(timing(phase7, true), barley, per(fieldWithoutCrop)).give(jewelry, 1), farmyardCard);
         addCard(jewelryDeck, 725, consume(tool, 1).give(clearActionSpaces, 2, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 726, consume(timing(phase4, true), jewelry, 1).give(useActionSpace, 1), farmyardCard);
@@ -298,51 +299,51 @@ public class CardDefinitions {
         addCard(jewelryDeck, 734, consume(jewelry, choose(2, 6, 9)).give(jewelry, staged(0, 5, 9), meat, 5, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 735, consume(jewelry, 1).give(farmyardCard, 2, bonusCard, 2), farmyardCard);
 
-        addCard(bonusDeck, 801, consume(wool, 1).give(recurring(phase3, meat, 1), scoring(vp, 1)), bonusCard);
-        addCard(bonusDeck, 802, consume(hops, 1).give(recurring(phase3, barley, 1), scoring(vp, 2)), bonusCard);
-        addCard(bonusDeck, 803, consume(meat, 2).give(recurring(phase3, sheep, 1), scoring(vp, 2)), bonusCard);
-        addCard(bonusDeck, 804, consume(meat, 1).give(recurring(phase3, wool, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 805, consume(sheep, 1).give(recurring(phase3, leather, 2), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 806, consume(sheep, 1).give(recurring(phase3, milk, 2), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 807, consume(fieldAnyLvl, 2).give(recurring(phase3, sheep, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 808, consume(leather, 2).give(recurring(phase3, wool, 2), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 809, consume(tool, 2).give(recurring(phase3, barley, 1, hops, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 810, consume(hops, 2).give(recurring(phase3, wheat, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 811, consume(timing(justHarvested), flax, 3).give(recurring(phase3, sowSpecificAction, flax, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 812, consume(timing(justHarvested), barley, 3).give(recurring(phase3, sowSpecificAction, barley, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 813, consume(hops, 3).give(recurring(phase3, tool, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 814, consume(clay, 3).give(recurring(phase3, wheat, 1, clay, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 815, consume(cardsFromHand, 3).give(recurring(phase3, gatewayCard, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 816, consume(timing(justHarvested), wheat, 3).give(recurring(phase3, sowSpecificAction, wheat, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 817, consume(jewelry, 1).give(recurring(phase3, tool, 1), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 818, consume(jewelry, 1, tool, 1).give(recurring(phase3, flax, 1, wool, 1), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 819, consume(fieldAnyLvl, 2).give(recurring(phase3, fieldLvl4, 1), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 820, consume(tool, 2).give(recurring(phase3, meat, 1), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 821, consume(clay, 4).give(recurring(phase3, clay, 2), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 822, consume(barley, flax, hops, wheat, choose(3)).give(recurring(phase3, hops, 1), scoring(vp, 5)), bonusCard);
-        addCard(bonusDeck, 823, consume(sheep, 2).give(recurring(phase3, sheep, 1), scoring(vp, 5)), bonusCard);
-        addCard(bonusDeck, 824, consume(fieldWithCrop, 1).give(recurring(phase3, fieldLvl3, 1), scoring(vp, 6)), bonusCard);
-        addCard(bonusDeck, 825, consume(fieldAnyLvl, 3).give(recurring(phase3, fieldLvl5, 1), scoring(vp, 6)), bonusCard);
-        addCard(bonusDeck, 826, consume(jewelry, 2).give(recurring(phase3, barley, 2), scoring(vp, 7)), bonusCard);
-        addCard(bonusDeck, 827, consume(jewelry, 3).give(recurring(phase3, jewelry, 1), scoring(vp, 8)), bonusCard);
-        addCard(bonusDeck, 828, require(fieldWithoutCrop, exactly(0)).give(recurring(phase3, hops, 1), scoring(vp, 2)), bonusCard);
-        addCard(bonusDeck, 829, require(sheep, each(5)).give(recurring(phase3, wool, 1), scoring(vp, 2)), bonusCard);
-        addCard(bonusDeck, 830, require(clay, each(7)).give(recurring(phase3, clay, 1), scoring(vp, 2)), bonusCard);
-        addCard(bonusDeck, 831, require(fieldLvl2, exactly(0), fieldLvl3, exactly(0), fieldLvl4, exactly(0)).give(recurring(phase3, sowAnyAction, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 832, require(fieldLvl2, exactly(0), fieldLvl3, exactly(0), fieldLvl4, exactly(0)).give(recurring(phase3, milk, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 833, require(milk, moreXThanY(doubleRoundNumber)).give(recurring(phase3, leather, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 834, require(leather, each(3)).give(recurring(phase3, leather, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 835, require(jewelry, each(5)).give(recurring(phase3, meat, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 836, require(hops, each(6)).give(recurring(phase3, wheat, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 837, require(wool, each(6)).give(recurring(phase3, wool, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 838, require(flax, each(7)).give(recurring(phase3, flax, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 839, require(tool, each(8)).give(recurring(phase3, toolToJewelryExchange, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 840, require(tool, each(3), sheep, each(3), jewelry, each(3)).give(recurring(phase3, farmyardCard, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 841, require(barley, each(10)).give(recurring(phase3, barley, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 842, require(barley, each(7), hops, each(5)).give(recurring(phase3, barley, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 843, require(milk, each(7), sheep, each(6)).give(recurring(phase3, sheep, 1), scoring(vp, 3)), bonusCard);
-        addCard(bonusDeck, 844, require(wheat, each(6), meat, each(5)).give(recurring(phase3, wheat, 1, meat, 1), scoring(vp, 4)), bonusCard);
-        addCard(bonusDeck, 845, require(meat, each(6)).give(recurring(phase3, meat, 1), scoring(vp, 6)), bonusCard);
+        addCard(bonusDeck, 801, consume(wool, 1).give(recurring(phase3, meat, 1), vp, 1), bonusCard);
+        addCard(bonusDeck, 802, consume(hops, 1).give(recurring(phase3, barley, 1), vp, 2), bonusCard);
+        addCard(bonusDeck, 803, consume(meat, 2).give(recurring(phase3, sheep, 1), vp, 2), bonusCard);
+        addCard(bonusDeck, 804, consume(meat, 1).give(recurring(phase3, wool, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 805, consume(sheep, 1).give(recurring(phase3, leather, 2), vp, 3), bonusCard);
+        addCard(bonusDeck, 806, consume(sheep, 1).give(recurring(phase3, milk, 2), vp, 3), bonusCard);
+        addCard(bonusDeck, 807, consume(fieldAnyLvl, 2).give(recurring(phase3, sheep, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 808, consume(leather, 2).give(recurring(phase3, wool, 2), vp, 3), bonusCard);
+        addCard(bonusDeck, 809, consume(tool, 2).give(recurring(phase3, each(barley, hops, 1)), vp, 3), bonusCard);
+        addCard(bonusDeck, 810, consume(hops, 2).give(recurring(phase3, wheat, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 811, consume(timing(justHarvested), flax, 3).give(recurring(phase3, each(sowSpecificAction, flax, 1)), vp, 3), bonusCard);
+        addCard(bonusDeck, 812, consume(timing(justHarvested), barley, 3).give(recurring(phase3, each(sowSpecificAction, barley, 1)), vp, 3), bonusCard);
+        addCard(bonusDeck, 813, consume(hops, 3).give(recurring(phase3, tool, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 814, consume(clay, 3).give(recurring(phase3, each(wheat, clay, 1)), vp, 3), bonusCard);
+        addCard(bonusDeck, 815, consume(cardsFromHand, 3).give(recurring(phase3, gatewayCard, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 816, consume(timing(justHarvested), wheat, 3).give(recurring(phase3, each(sowSpecificAction, wheat, 1)), vp, 3), bonusCard);
+        addCard(bonusDeck, 817, consume(jewelry, 1).give(recurring(phase3, tool, 1), vp, 4), bonusCard);
+        addCard(bonusDeck, 818, consume(jewelry, 1, tool, 1).give(recurring(phase3, each(flax, wool, 1)), vp, 4), bonusCard);
+        addCard(bonusDeck, 819, consume(fieldAnyLvl, 2).give(recurring(phase3, fieldLvl4, 1), vp, 4), bonusCard);
+        addCard(bonusDeck, 820, consume(tool, 2).give(recurring(phase3, meat, 1), vp, 4), bonusCard);
+        addCard(bonusDeck, 821, consume(clay, 4).give(recurring(phase3, clay, 2), vp, 4), bonusCard);
+        addCard(bonusDeck, 822, consume(barley, flax, hops, wheat, choose(3)).give(recurring(phase3, hops, 1), vp, 5), bonusCard);
+        addCard(bonusDeck, 823, consume(sheep, 2).give(recurring(phase3, sheep, 1), vp, 5), bonusCard);
+        addCard(bonusDeck, 824, consume(fieldWithCrop, 1).give(recurring(phase3, fieldLvl3, 1), vp, 6), bonusCard);
+        addCard(bonusDeck, 825, consume(fieldAnyLvl, 3).give(recurring(phase3, fieldLvl5, 1), vp, 6), bonusCard);
+        addCard(bonusDeck, 826, consume(jewelry, 2).give(recurring(phase3, barley, 2), vp, 7), bonusCard);
+        addCard(bonusDeck, 827, consume(jewelry, 3).give(recurring(phase3, jewelry, 1), vp, 8), bonusCard);
+        addCard(bonusDeck, 828, require(fieldWithoutCrop, exactly(0)).give(recurring(phase3, hops, 1), vp, 2), bonusCard);
+        addCard(bonusDeck, 829, require(sheep, each(5)).give(recurring(phase3, wool, 1), vp, 2), bonusCard);
+        addCard(bonusDeck, 830, require(clay, each(7)).give(recurring(phase3, clay, 1), vp, 2), bonusCard);
+        addCard(bonusDeck, 831, require(fieldLvl2, exactly(0), fieldLvl3, exactly(0), fieldLvl4, exactly(0)).give(recurring(phase3, sowAnyAction, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 832, require(fieldLvl2, exactly(0), fieldLvl3, exactly(0), fieldLvl4, exactly(0)).give(recurring(phase3, milk, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 833, require(milk, moreXThanY(doubleRoundNumber)).give(recurring(phase3, leather, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 834, require(leather, each(3)).give(recurring(phase3, leather, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 835, require(jewelry, each(5)).give(recurring(phase3, meat, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 836, require(hops, each(6)).give(recurring(phase3, wheat, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 837, require(wool, each(6)).give(recurring(phase3, wool, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 838, require(flax, each(7)).give(recurring(phase3, flax, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 839, require(tool, each(8)).give(recurring(phase3, toolToJewelryExchange, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 840, require(tool, each(3), sheep, each(3), jewelry, each(3)).give(recurring(phase3, farmyardCard, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 841, require(barley, each(10)).give(recurring(phase3, barley, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 842, require(barley, each(7), hops, each(5)).give(recurring(phase3, barley, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 843, require(milk, each(7), sheep, each(6)).give(recurring(phase3, sheep, 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 844, require(wheat, each(6), meat, each(5)).give(recurring(phase3, each(wheat, meat, 1)), vp, 4), bonusCard);
+        addCard(bonusDeck, 845, require(meat, each(6)).give(recurring(phase3, meat, 1), vp, 6), bonusCard);
 
         addCard(pointDeck, 901, require(pointCard, 1, bonusCard, 7).give(vp, 2), pointCard);
         addCard(pointDeck, 902, require(pointCard, 1).give(vp, 3), pointCard);
@@ -368,7 +369,19 @@ public class CardDefinitions {
         addCard(pointDeck, 922, consume(removeFieldsNotRow2, 7).give(vp, 12), pointCard);
         addCard(pointDeck, 923, consume(sheep, 8).give(vp, 12), pointCard);
         addCard(pointDeck, 924, consume(removeFields, 8).give(vp, 13), pointCard);
-        addCard(pointDeck, 925, consume(choose(jewelry, 5, sheep, 10)).give(vp, 14), pointCard);
+        addCard(pointDeck, 925, consume(choose(each(jewelry, 5), each(sheep, 10))).give(vp, 14), pointCard);
+    }
+
+
+    private static Effect recurring(Phase phase, ResourceUnits unit, int amount) {
+        Effect e = Effect.of(each(unit, amount), true, phase);
+        
+        return e;
+    }
+    private static Effect recurring(Phase phase, ResourceEntry entry){
+        Effect e = Effect.of(entry, true, phase);
+
+        return e;
     }
 
     private static int maxSheepOnSingleFarmyard(GameState state, Player player) {

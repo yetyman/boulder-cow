@@ -84,4 +84,9 @@ public class ResourceEntry {
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3,unit4), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry upTo(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.UP_TO)); }
 
+
+    private static ResourceEntry each(ResourceUnits resourceUnits, int amount1, ResourceUnits resourceUnits1, int amount2) {
+        ResourceEntry re = new ResourceEntry(List.of(resourceUnits, resourceUnits1), List.of(amount1, amount2), List.of(EffectModifier.EACH));
+        return re;
+    }
 }
