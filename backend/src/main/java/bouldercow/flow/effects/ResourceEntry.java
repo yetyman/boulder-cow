@@ -73,6 +73,8 @@ public class ResourceEntry {
     public static ResourceEntry exactly(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.EXACTLY)); }
     public static ResourceEntry each(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.EACH)); }
     public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, Integer... amounts) { return new ResourceEntry(List.of(unit1, unit2), amounts, List.of(EffectModifier.EACH)); }
+    public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return new ResourceEntry(List.of(unit1, unit2, unit3), amounts, List.of(EffectModifier.EACH)); }
+    public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, Integer... amounts) { return new ResourceEntry(List.of(unit1, unit2, unit3, unit4), amounts, List.of(EffectModifier.EACH)); }
     public static ResourceEntry choose(ResourceUnits unit1, Integer... amounts) { return new ResourceEntry(List.of(unit1), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3), amounts, List.of(EffectModifier.CHOOSE)); }

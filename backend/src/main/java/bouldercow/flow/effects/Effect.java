@@ -43,6 +43,15 @@ public class Effect {
         return effect;
     }
 
+    public static Effect of(Effect eff, ResourceEntry[] staggeredSet) {
+        Effect effect = new Effect();
+        effect.multiEffects = new ArrayList<>();
+        effect.multiEffects.add(eff);
+        for (ResourceEntry resourceEntry : staggeredSet) {
+            effect.multiEffects.add(Effect.of(resourceEntry));
+        }
+        return effect;
+    }
     public static Effect of(ResourceEntry[] staggeredSet) {
         Effect effect = new Effect();
         effect.multiEffects = new ArrayList<>();

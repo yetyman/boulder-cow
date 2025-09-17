@@ -1,7 +1,5 @@
 package bouldercow.flow.effects;
 
-import bouldercow.flow.Phase;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +7,9 @@ import java.util.function.Predicate;
 
 public class Requirement {
     public boolean consumesRequired = false;
-    public Phase requiredPhase = null;
-    //flips required phase to excluded phase.
-    public boolean invertPhaseRequirement = false;
+
+    public TimingRequirement timing = null;
+
     public List<ResourceEntry> requiredResources = null;
     public List<Requirement> multiRequirement = null;//laying it out so that symbolic displays can be made
     boolean isStaged;
@@ -22,7 +20,7 @@ public class Requirement {
 
     public static Requirement of(ResourceEntry required, boolean consumes) {
         Requirement requirement = new Requirement();
-        requirement.requiredResources = required;
+        requirement.requiredResources = List.of(required);
         requirement.consumesRequired = consumes;
 
         return requirement;

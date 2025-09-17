@@ -35,10 +35,10 @@ public class ReqAndEffectBuilder {
         return require(each(resourceUnits, num));
     }
     public static ReqAndEffectBuilder require(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return require(each(resourceUnits, num, resourceUnits2, num2));
+        return require(each(resourceUnits, num), each(resourceUnits2, num2));
     }
     public static ReqAndEffectBuilder require(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return require(each(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
+        return require(each(resourceUnits, num), each(resourceUnits2, num2), each(resourceUnits3, num3));
     }
     public static ReqAndEffectBuilder require(ResourceEntry... resources) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
@@ -54,16 +54,16 @@ public class ReqAndEffectBuilder {
     }
 
 
-    public static ReqAndEffectBuilder require(Phase requiredPhase, Requirement req) {
+    public static ReqAndEffectBuilder require(TimingRequirement timingRequirement, Requirement req) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = req;
-        builder.requirement.requiredPhase = requiredPhase;
+        builder.requirement.timing = timingRequirement;
         return builder;
     }
-    public static ReqAndEffectBuilder require(Phase requiredPhase, ResourceUnits units, int num) {
+    public static ReqAndEffectBuilder require(TimingRequirement timingRequirement, ResourceUnits units, int num) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = Requirement.of(each(units, num), false);
-        builder.requirement.requiredPhase = requiredPhase;
+        builder.requirement.timing = timingRequirement;
         return builder;
     }
 
@@ -76,21 +76,21 @@ public class ReqAndEffectBuilder {
         return give(each(resourceUnits, num));
     }
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        return give(each(resourceUnits, num, resourceUnits2, num2));
+        return give(each(resourceUnits, num), each(resourceUnits2, num2));
     }
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2, ResourceUnits resourceUnits3, int num3) {
-        return give(each(resourceUnits, num, resourceUnits2, num2, resourceUnits3, num3));
+        return give(each(resourceUnits, num), each(resourceUnits2, num2), each(resourceUnits3, num3));
     }
     public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num) {
         this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num) } );
         return this;
     }
     public ReqAndEffectBuilder give(Effect effect, ResourceUnits resourceUnits, int num) {
-        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num) } );
+        this.effect = Effect.of( effect, new ResourceEntry[] { each(resourceUnits, num) } );
         return this;
     }
     public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
-        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num, resourceUnits2, num2) } );
+        this.effect = Effect.of( new ResourceEntry[] { resources, each(resourceUnits, num), each(resourceUnits2, num2) } );
         return this;
     }
 
@@ -260,7 +260,7 @@ public class ReqAndEffectBuilder {
     }
     public static Effect and(Effect effect, ResourceUnits unit, int cnt, ResourceUnits unit2, int cnt2) {
         Effect combined = new Effect();
-        combined.multiEffects = List.of(effect, Effect.of(each(unit, cnt, unit2, cnt2)));
+        combined.multiEffects = List.of(effect, Effect.of(each(unit, cnt)), Effect.of(each(unit2, cnt2)));
         return combined;
     }
 }
