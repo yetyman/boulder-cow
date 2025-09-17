@@ -65,6 +65,7 @@ public class ResourceEntry {
     public static ResourceEntry different(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.DIFFERENT)); }
     public static ResourceEntry each(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.EACH)); }
     public static ResourceEntry minOf(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.MIN_OF)); }
+    public static ResourceEntry upTo(Integer... amounts) { return new ResourceEntry(null, amounts, List.of(EffectModifier.UP_TO)); }
 
     public static ResourceEntry reaction(ResourceUnits to) { return new ResourceEntry(null, (Integer[]) null, List.of(EffectModifier.REACTION)); }
     public static ResourceEntry moreThan(ResourceUnits reference) { return new ResourceEntry(null, null, List.of(EffectModifier.MORE_THAN), List.of(reference)); }

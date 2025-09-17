@@ -13,5 +13,6 @@ public enum EffectModifier {
     DIFFERENT,   // different(4) - 4 different types
     EACH,        // each(1) - 1 per item
     MIN_OF,      // minOf(sheep, jewelry) - minimum of two resources
-    REACTION     // reaction(jewelrySpent) - triggered by event
+    REACTION,     // reaction(jewelrySpent) - triggered by event
+    UP_TO        // upTo(2) - triggered by event
 }

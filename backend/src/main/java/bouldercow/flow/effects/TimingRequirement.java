@@ -19,6 +19,12 @@ public class TimingRequirement {
         timingRequirement.reactionTo = reactionTo;
         return timingRequirement;
     }
+    public static TimingRequirement timing(Phase requiredPhase, Boolean  invertPhaseRequirement) {
+        TimingRequirement timingRequirement = new TimingRequirement();
+        timingRequirement.requiredPhase = requiredPhase;
+        timingRequirement.invertPhaseRequirement = invertPhaseRequirement;
+        return timingRequirement;
+    }
     public static TimingRequirement timing(ActionEnum reactionTo) {
         TimingRequirement timingRequirement = new TimingRequirement();
         timingRequirement.reactionTo = reactionTo;
