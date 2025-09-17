@@ -12,7 +12,7 @@ public enum ResourceUnits {
     hops,
     sheep,
     sheepMovement,
-    victoryPoints,
+    vp,
     jewelry,
     boulder,
     worker,
