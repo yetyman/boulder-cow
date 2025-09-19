@@ -109,4 +109,10 @@ public class ResourceEntry {
         ResourceEntry re = new ResourceEntry(List.of(resourceUnits, resourceUnits1), List.of(amount1, amount2), List.of(EffectModifier.EACH));
         return re;
     }
+
+    public static ResourceEntry on(ResourceUnits reference, ResourceEntry resources) {
+        resources.referenceUnits.add(reference);
+        resources.modifiers.add(ON);
+        return resources;
+    }
 }

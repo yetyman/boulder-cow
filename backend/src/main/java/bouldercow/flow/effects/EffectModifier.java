@@ -3,6 +3,7 @@ package bouldercow.flow.effects;
 public enum EffectModifier {
     CHOOSE,      // choose(1) - player picks 1 from options
     DISTINCT,    // distinct(3) - up to 3 different types
+    SAME,
     SUBTRACT,    // subtract(13, flax) - 13 minus flax count
     REV_SUBTRACT,// revSubtract(13, flax) - flax minus 13 count
     PER,         // per(farmyard) - amount per farmyard/field/etc
@@ -17,5 +18,6 @@ public enum EffectModifier {
     UP_TO,        // upTo(2) - triggered by event
     MAX_OF,
     CONSUME,
+    ON,         // on(farmyard, exactly(anyCrop, 1))
     EITHER
 }

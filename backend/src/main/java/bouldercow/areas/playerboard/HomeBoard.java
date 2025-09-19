@@ -26,7 +26,7 @@ public class HomeBoard  {
         Requirement cost = new Requirement();
         //just for symbolic displays, include a resource set.
         // the 1max flax spot makes an object definition more complex than i want to encode in structure until i have a clearer picture
-        cost.requiredResources = ResourceSet.all(ResourceUnits.wheat, 1, ResourceUnits.barley, 1);
+        cost.requiredResources = ResourceSet.all(ResourceUnits.rye, 1, ResourceUnits.barley, 1);
 
         //complex requirements being functional isn't ideal, we can't generate symbolic displays off of that,
         // but we'll break it down once we see how complicated it is, or just create symbolic displays manually for it.
