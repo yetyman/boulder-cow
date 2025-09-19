@@ -47,6 +47,11 @@ public class ReqAndEffectBuilder {
         return builder;
     }
 
+    public static ReqAndEffectBuilder require(EffectModifier mod, ResourceEntry... resources) {
+        ReqAndEffectBuilder builder = require(resources);
+        builder.requirement.modifiers.add(mod);
+        return builder;
+    }
     public static ReqAndEffectBuilder require(Requirement req) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
         builder.requirement = req;
@@ -115,6 +120,12 @@ public class ReqAndEffectBuilder {
         builder.requirement = new Requirement();
         builder.requirement.requiredResources = new ArrayList<>(Arrays.asList(resources));
         builder.requirement.consumesRequired = true;
+        return builder;
+    }
+
+    public static ReqAndEffectBuilder consume(EffectModifier mod, ResourceEntry... resources) {
+        ReqAndEffectBuilder builder = consume(resources);
+        builder.requirement.modifiers.add(mod);
         return builder;
     }
 

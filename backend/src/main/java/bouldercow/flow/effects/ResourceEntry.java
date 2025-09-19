@@ -59,6 +59,12 @@ public class ResourceEntry {
         e.addAll(entry.modifiers);
         return new ResourceEntry(List.of(unit1, unit2), entry.values, e, entry.referenceUnits);
     }
+    public static ResourceEntry template(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, EffectModifier effect, ResourceEntry entry) {
+        List<EffectModifier> e = new ArrayList<>();
+        e.add(effect);
+        e.addAll(entry.modifiers);
+        return new ResourceEntry(List.of(unit1, unit2, unit3), entry.values, e, entry.referenceUnits);
+    }
     public static ResourceEntry template(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry) {
         return new ResourceEntry(List.of(unit1, unit2, unit3), entry.values, entry.modifiers, entry.referenceUnits);
     }
@@ -90,6 +96,7 @@ public class ResourceEntry {
     public static ResourceEntry per(ResourceUnits reference) { return new ResourceEntry(null, null, List.of(EffectModifier.PER), List.of(reference)); }
 
     public static ResourceEntry exactly(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.EXACTLY)); }
+    public static ResourceEntry different(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(DIFFERENT)); }
     public static ResourceEntry each(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.EACH)); }
     public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, Integer... amounts) { return new ResourceEntry(List.of(unit1, unit2), amounts, List.of(EffectModifier.EACH)); }
     public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return new ResourceEntry(List.of(unit1, unit2, unit3), amounts, List.of(EffectModifier.EACH)); }
@@ -99,10 +106,12 @@ public class ResourceEntry {
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, Integer... amounts) { return new ResourceEntry(List.of(unit1,unit2,unit3,unit4), amounts, List.of(EffectModifier.CHOOSE)); }
     public static ResourceEntry upTo(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.UP_TO)); }
+    public static ResourceEntry same(ResourceUnits unit, Integer... amounts) { return new ResourceEntry(List.of(unit), amounts, List.of(EffectModifier.SAME)); }
 
     public static ResourceEntry maxOf(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry reference) { return template(unit1,unit2, MAX_OF, reference); }
     public static ResourceEntry minOf(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry reference) { return template(unit1,unit2, MIN_OF, reference); }
     public static ResourceEntry total(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry reference) { return template(unit1,unit2, TOTAL, reference); }
+    public static ResourceEntry total(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry reference) { return template(unit1,unit2, unit3, TOTAL, reference); }
 
 
     private static ResourceEntry each(ResourceUnits resourceUnits, int amount1, ResourceUnits resourceUnits1, int amount2) {
@@ -114,5 +123,19 @@ public class ResourceEntry {
         resources.referenceUnits.add(reference);
         resources.modifiers.add(ON);
         return resources;
+    }
+    public static ResourceEntry on(ResourceUnits reference, ResourceUnits resources, Integer... amounts) {
+        ResourceEntry r = template(resources, on(reference));
+        r.values = Arrays.asList(amounts);
+        return r;
+    }
+    public static ResourceEntry on(ResourceUnits reference, ResourceEntry resources, Integer... amounts) {
+        resources.referenceUnits.add(reference);
+        resources.modifiers.add(ON);
+        resources.values = Arrays.asList(amounts);
+        return resources;
+    }
+    public static ResourceEntry on(ResourceUnits reference) {
+        return new ResourceEntry(null, null, List.of(ON), List.of(reference));
     }
 }
