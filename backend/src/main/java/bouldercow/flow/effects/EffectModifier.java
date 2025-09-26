@@ -19,5 +19,9 @@ public enum EffectModifier {
     MAX_OF,
     CONSUME,
     ON,         // on(farmyard, exactly(anyCrop, 1))
-    EITHER
+    EITHER,
+    UPGRADE, //indicates that level will change, such as a sheep's position on farmyard cards, a field's level, a boulder or craft building's location
+    TO,  //indicates a final number instead of an increment. ex. fieldAnyLvl, UPGRADE, TO, 5
+    REMOVED, //action specific modifier, indicating that something was just removed in the action
+    LEVEL //-indicates that level is the number to be queried instead of count
 }
