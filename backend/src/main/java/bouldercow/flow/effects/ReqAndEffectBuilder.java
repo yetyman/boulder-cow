@@ -92,6 +92,10 @@ public class ReqAndEffectBuilder {
     public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry entry) {
         return consume(template(unit1, entry));
     }
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry template, int amt) {
+        template.values = List.of(amt);
+        return consume(template(unit1, template));
+    }
     public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, ResourceEntry entry2) {
         return consume(template(unit1, entry), template(unit2, entry2));
     }
@@ -158,6 +162,17 @@ public class ReqAndEffectBuilder {
         return builder;
     }
 
+    public static Effect recurring(Phase phase, ResourceUnits unit, int amount) {
+        Effect e = Effect.of(each(unit, amount), true, phase);
+
+        return e;
+    }
+    public static Effect recurring(Phase phase, ResourceEntry entry){
+        Effect e = Effect.of(entry, true, phase);
+
+        return e;
+    }
+
     public ReqAndEffectBuilder give(ResourceUnits resourceUnits, int num) {
         return give(each(resourceUnits, num));
     }
@@ -196,6 +211,12 @@ public class ReqAndEffectBuilder {
     public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry, ResourceUnits cardUnit, int amount) {
         return give(template(unit1, unit2, unit3, unit4, entry), cardUnit, amount);
     }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, int amount, ResourceUnits unit3, int amount2) {
+        return give(template(unit1, entry), each(unit2, amount), each(unit3, amount2));
+    }
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceUnits unit5, ResourceEntry entry) {
+        return give(template(unit1, unit2, unit3, unit4, unit5, entry));
+    }
     public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry) {
         return give(template(unit1, entry));
     }
@@ -208,6 +229,7 @@ public class ReqAndEffectBuilder {
     public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceEntry entry) {
         return give(template(unit1, unit2, unit3, entry));
     }
+
     public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry) {
         return give(template(unit1, unit2, unit3, unit4, entry));
     }
@@ -219,6 +241,10 @@ public class ReqAndEffectBuilder {
         return this;
     }
 
+    public ReqAndEffectBuilder give(ResourceUnits units1, ResourceEntry staged, ResourceUnits units2, int amt2, ResourceUnits units3, int amt3, ResourceUnits units4, int amt4) {
+        return give(template(units1, staged), each(units2, amt2), each(units3, amt3), each(units4, amt4));
+    }
+
     public ReqAndEffectBuilder give(ResourceEntry resources, ResourceEntry resources2) {
         this.effect = Effect.of(resources);
         return this;
@@ -226,11 +252,6 @@ public class ReqAndEffectBuilder {
 
     public ReqAndEffectBuilder give(Effect effect) {
         this.effect = effect;
-        return this;
-    }
-
-    public ReqAndEffectBuilder give(Function<ResourceEntry, ResourceEntry> effect) {
-        this.effect = Effect.of(effect);
         return this;
     }
 
@@ -353,4 +374,14 @@ public class ReqAndEffectBuilder {
         combined.multiEffects = List.of(effect, Effect.of(each(unit, cnt)), Effect.of(each(unit2, cnt2)));
         return combined;
     }
+    public static Requirement and(Requirement req, ResourceUnits unit, int amount) {
+        Requirement combined = new Requirement();
+        combined.requiredResources = new ArrayList<>(req.requiredResources);
+        combined.requiredResources.add(each(unit, amount));
+        combined.modifiers = new ArrayList<>(req.modifiers);
+        combined.timing = req.timing;
+        combined.consumesRequired = req.consumesRequired;
+        return combined;
+    }
+
 }

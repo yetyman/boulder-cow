@@ -1,18 +1,13 @@
 package bouldercow.card;
 
-import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
-import bouldercow.model.GameState;
-import bouldercow.player.Player;
 
 import java.util.*;
 
 import static bouldercow.flow.Phase.*;
-import static bouldercow.flow.effects.ActionEnum.*;
-import static bouldercow.flow.effects.EffectModifier.*;
-import static bouldercow.flow.effects.Requirement.*;
-import static bouldercow.flow.effects.ResourceEntry.of;
+import static bouldercow.flow.effects.Effect.chooseReward;
 import static bouldercow.flow.effects.ResourceUnits.*;
+import static bouldercow.flow.effects.EffectModifier.*;
 import static bouldercow.flow.effects.ResourceEntry.*;
 import static bouldercow.flow.effects.ReqAndEffectBuilder.*;
 import static bouldercow.flow.effects.TimingRequirement.*;
@@ -112,7 +107,7 @@ public class CardDefinitions {
         addCard(expertDeck, 214, require(exactly(fieldWithoutCrop, 1)).give(choose(barley, flax, hops, rye, 2), sowSpecificAction, 1, bonusCard, 1), gatewayCard);
         addCard(expertDeck, 215, require(bonusCard, pointCard, farmyardCard, total(3, 4, 5, 6)).give(stagedEff(differentCrops, 1, 2, 3, 4, bonusCard, 1)), gatewayCard);
         addCard(expertDeck, 216, require(tool, jewelry, total(7)).give(rye, per(fieldWithCrop)), gatewayCard);
-        addCard(expertDeck, 217, require(jewelry, 3).give(and(Effect.of((rs, state, player)->each(barley, maxSheepOnSingleFarmyard(state, player))), bonusCard, 1)), gatewayCard);
+        addCard(expertDeck, 217, require(jewelry, 3).give(template(barley, per(maxOf(on(farmyardCard, sheep)))), bonusCard, 1), gatewayCard);
         addCard(expertDeck, 218, require(rye, moreThan(workerSupply)).give(barley, 2, hops, 1, bonusCard, 1), gatewayCard);
         addCard(expertDeck, 219, require(milk, 5).give(flax, subtract(13, workerSupply)), gatewayCard);
         addCard(expertDeck, 220, require(stagedReq(fieldWithCrop, 3, 4, 6)).give(and(stagedEff(bonusCard, 0, 1, 2), hops, 1, meat, 1)), gatewayCard);
@@ -128,33 +123,33 @@ public class CardDefinitions {
         addCard(expertDeck, 230, require(stagedReq(sheep, 1, 2, 3, 4)).give(stagedEff(hops, 0, 1, 2, 3, farmyardCard, 1)), gatewayCard);
 
         addCard(masterDeck, 301, require(on(nextTurnSheepCard, exactly(sheep, 1))).give(sheepMovementDifferent, 3, bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 303, require(timing(phase1, workersRemoved), on(quadrant, worker, REMOVED, staged(6, 7, 8, 9, 10))).give(rye, staged(0, 1, 2, 3, 5), sheep, 1), gatewayCard);
+        addCard(masterDeck, 303, require(timing(phase1, workersRemoved), on(quadrant, of(worker, REMOVED), 6, 7, 8, 9, 10)).give(rye, staged(0, 1, 2, 3, 5), sheep, 1), gatewayCard);
         addCard(masterDeck, 304, require(tool, staged(3, 7, 10)).give(sheep, staged(0, 1, 2), fieldLvl2, 1), gatewayCard);
         addCard(masterDeck, 305, require(timing(phase9, craftBuildingAdvanced), staged(3, 4, 5)).give(bonusCard, staged(0, 1, 2), fieldLvl5, 1), gatewayCard);
         addCard(masterDeck, 306, require(maxOf(jewelry, sheep, moreThan(fieldAnyLvl))).give(fieldLvl2, 1, sowAnyAction, 1), gatewayCard);
         addCard(masterDeck, 307, require(jewelry, staged(1, 3, 6)).give(bonusCard, staged(0, 1, 2), clay, 2, tool, 1), gatewayCard);
         addCard(masterDeck, 308, require(cardsPlayed, staged(1, 3, 7, 12)).give(tool, staged(1, 2, 3, 4)), gatewayCard);
-        addCard(masterDeck, 309, require(timing(useActionSpace), on(quadrant, worker, staged(9, 11, 13))).give(barley, staged(1, 2, 3), tool, 1), gatewayCard);
+        addCard(masterDeck, 309, require(timing(useActionSpace), on(quadrant, of(worker, TOTAL), 9, 11, 13)).give(barley, staged(1, 2, 3), tool, 1), gatewayCard);
         addCard(masterDeck, 310, require(timing(toolsObtained), tool, staged(2, 3, 4)).give(hops, staged(1, 2, 3), tool, 1), gatewayCard);
-        addCard(masterDeck, 311, require(anyCrops, SAME, staged(7, 14, 21)).give(bonusCard, staged(0, 1, 2), jewelry, 1), gatewayCard);
-        addCard(masterDeck, 312, require(timing(phase4), fieldAnyLvl, staged(6, 7, 8)).give(bonusCard, staged(0, 1, 2), of(craftBuilding, UPGRADE, 1)), gatewayCard);
+        addCard(masterDeck, 311, require(same(anyCrops, 7, 14, 21)).give(bonusCard, staged(0, 1, 2), jewelry, 1), gatewayCard);
+        addCard(masterDeck, 312, require(timing(phase4), fieldAnyLvl, staged(6, 7, 8)).give(staged(bonusCard, 0, 1, 2), of(craftBuilding, UPGRADE, 1)), gatewayCard);
         addCard(masterDeck, 313, require(timing(phase4), worker, exactly(1)).give(on(actionSpace, on(row2, worker, 1)), bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 314, require(on(actionSpace, worker, 3), 2).give(of(on(actionSpace, worker, 3), TO, on(actionSpace, on(row3, worker, 0))), bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 315, require(timing(phase4), jewelry, each(4)).give(of(on(actionSpace, on(topFullRow, worker)), TO, workerSupply)), gatewayCard);
-        addCard(masterDeck, 316, require(roundNumber, staged(1, 2, 3)).give(bonusCard, staged(0, 1, 2), of(boulder, UPGRADE, 3)), gatewayCard);
+        addCard(masterDeck, 314, require(total(on(actionSpace, exactly(worker, 3)), 2)).give(of(on(actionSpace, worker, 3), on(actionSpace, on(row3, worker, 0)), TO), bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 315, require(timing(phase4), jewelry, each(4)).give(of(on(actionSpace, on(topFullRow, worker)), each(workersRemaining), TO)), gatewayCard);
+        addCard(masterDeck, 316, require(roundNumber, staged(1, 2, 3)).give(staged(bonusCard, 0, 1, 2), of(boulder, UPGRADE, 3)), gatewayCard);
         addCard(masterDeck, 317, require(fieldWithCrop, each(1)).give(clay, per(fieldWithoutCrop)), gatewayCard);
-        addCard(masterDeck, 318, require(of(maxOf(craftBuilding), SUBTRACT, minOf(craftBuilding)), staged(3, 4, 5)).give(clay, staged(3, 4, 5), bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 318, require(subtract(maxOf(craftBuilding), minOf(craftBuilding), 3, 4, 5)).give(clay, staged(3, 4, 5), bonusCard, 1), gatewayCard);
         addCard(masterDeck, 319, require(hops, staged(1, 3, 6)).give(clay, staged(1, 2, 3), rye, 1, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 320, require(tool, staged(2, 4, 6, 7)).give(barley, staged(0, 1, 2, 3), flax, 2, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 321, require(barley, subtract(10, jewelry)).give(flax, 2, hops, 1, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 322, require(timing(farmingActionUsed)).give(barley, flax, hops, rye, choose(1), sowSpecificAction, 1), gatewayCard);
-        addCard(masterDeck, 323, require(fieldWithoutCrop, exactly(1)).give(of(farmyardCard, UPGRADE, TO, 4), sowAnyAction, 1, bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 323, require(fieldWithoutCrop, exactly(1)).give(new ResourceEntry(List.of(farmyardCard, sowAnyAction), List.of(4), List.of(UPGRADE, TO, SAME)), bonusCard, 1), gatewayCard);
         addCard(masterDeck, 324, require(workerSupply, moreThan(roundNumber, 5, 6, 7)).give(milk, staged(1, 2, 3)), gatewayCard);
         addCard(masterDeck, 325, require(allCrops, staged(0, 10, 16, 23)).give(milk, staged(0, 1, 2, 3), bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 326, require(on(farmyardCard, on(level, MORE_THAN, 3), sheep, staged(1, 2, 3))).give(wool, staged(1, 2, 3), bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 326, require(new ResourceEntry(List.of(sheep),List.of(4, 1,2,3),List.of(ON, LEVEL, MORE_THAN, STAGED),List.of(farmyardCard, level)) ).give(wool, staged(1, 2, 3), bonusCard, 1), gatewayCard);//this one will def have issues
         addCard(masterDeck, 327, require(sheep, staged(2, 3, 7)).give(bonusCard, staged(0, 1, 2), leather, per(emptyFarmyardCards)), gatewayCard);
         addCard(masterDeck, 328, consume(timing(butcheryActionUsed), jewelry, 1).give(leather, 2, bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 329, require(on(nursery, worker, staged(1, 3, 6))).give(meat, staged(0, 2, 7), bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 329, require(on(nursery, worker, 1, 3, 6)).give(meat, staged(0, 2, 7), bonusCard, 1), gatewayCard);
         addCard(masterDeck, 330, require(timing(phase4, toolsObtained), staged(1, 3, 5)).give(gatewayCard, staged(0, 1, 2), bonusCard, 1), gatewayCard);
 
         addCard(hopsDeck, 401, consume(barley, rye, choose(1)).give(sheepMovementDifferent, 2, bonusCard, 1), farmyardCard);
@@ -223,7 +218,7 @@ public class CardDefinitions {
         addCard(sheepDeck, 528, require(on(fieldAnyLvl, anyCrops, 4, 5, 7)).give(bonusCard, staged(1, 2, 3), wool, 1), farmyardCard);
         addCard(sheepDeck, 529, require(same(anyCrops, 10)).give(meat, 2, bonusCard, 1), farmyardCard);
         addCard(sheepDeck, 530, consume(hops, 1).give(milk, 3), farmyardCard);
-        addCard(sheepDeck, 531, consume(on(farmyardCard, of(sheep,2), UPGRADE, -1)).give(and(of(of(wool,4), of(jewelry, 1), CHOOSE), bonusCard, 1)), farmyardCard);
+        addCard(sheepDeck, 531, consume(on(farmyardCard, of(sheep,2), UPGRADE, -1)).give(chooseReward(of(wool,4), of(jewelry, 1)), bonusCard, 1), farmyardCard);
         addCard(sheepDeck, 532, consume(sheep, 2).give(leather, 3, meat, 6, bonusCard, 1), farmyardCard);
         addCard(sheepDeck, 533, consume(sheep, 1).give(leather, 4, bonusCard, 1), farmyardCard);
         addCard(sheepDeck, 534, consume(jewelry, 1).give(leather, meat, milk, wool, choose(5)), farmyardCard);
@@ -235,7 +230,7 @@ public class CardDefinitions {
         addCard(fieldDeck, 604, consume(flax, subtract(8, fieldAnyLvl)).give(sheep, 2), farmyardCard);
         addCard(fieldDeck, 605, consume(timing(phase8, true), milk, 3).give(sheep, 1, bonusCard, 1), farmyardCard);
         addCard(fieldDeck, 606, require(same(fieldWithCrop, 3)).give(fieldLvl3, 1, bonusCard, 1), farmyardCard);
-        addCard(fieldDeck, 607, require(tool, each(6), jewelry, each(4)).give(total(fieldAnyLvl, LEVEL, per(jewelry), max(fieldAnyLvl, 2))), farmyardCard);//Field total level = jewelry, distribute amongst 2 fields max.
+        addCard(fieldDeck, 607, require(tool, each(6), jewelry, each(4)).give(total(fieldAnyLvl, LEVEL, per(jewelry), upTo(fieldAnyLvl, 2))), farmyardCard);//Field total level = jewelry, distribute amongst 2 fields max.
         addCard(fieldDeck, 608, require(meat, staged(1, 2, 5, 7)).give(wool, staged(0, 1, 2, 3), fieldLvl4, 1), farmyardCard);
         addCard(fieldDeck, 609, require(total(sheep, jewelry, moreThan(workerSupply))).give(tool, 1, fieldLvl5, 1), farmyardCard);
         addCard(fieldDeck, 610, consume(hops, 3).give(fieldLvl5, 1, bonusCard, 1), farmyardCard);
@@ -243,7 +238,7 @@ public class CardDefinitions {
         addCard(fieldDeck, 612, consume(flax, 2).give(fieldLvl3, 1, bonusCard, 1), farmyardCard);
         addCard(fieldDeck, 613, consume(tool, 2).give(fieldLvl4, 1, bonusCard, 1), farmyardCard);
         addCard(fieldDeck, 614, consume(sheep, 2).give(fieldLvl4, upTo(2), bonusCard, 1), farmyardCard);
-        addCard(fieldDeck, 615, require(jewelry, staged(5, 6, 7, 8)).give(stagedEff(each(tool, 2), choose(each(tool, 2), upTo(fieldLvl2, 2)), choose(each(tool, 2), upTo(fieldLvl2, 2), upTo(fieldLvl5, 2)), choose(each(tool, 2), upTo(fieldLvl2, 2), upTo(fieldLvl5, 2), each(sheep, 3)))), farmyardCard);
+        addCard(fieldDeck, 615, require(jewelry, staged(5, 6, 7, 8)).give(stagedEff(Effect.of(of(tool, 2)), chooseReward(each(tool, 2), upTo(fieldLvl2, 2)), chooseReward(each(tool, 2), upTo(fieldLvl2, 2), upTo(fieldLvl5, 2)), chooseReward(each(tool, 2), upTo(fieldLvl2, 2), upTo(fieldLvl5, 2), each(sheep, 3)))), farmyardCard);
         addCard(fieldDeck, 616, require(leather, staged(1, 2, 5, 7)).give(meat, staged(1, 2, 3, 4), tool, 1), farmyardCard);
         addCard(fieldDeck, 617, consume(jewelry, 1).give(leather, 3, tool, 1, bonusCard, 1), farmyardCard);
         addCard(fieldDeck, 618, consume(sheep, 1).give(milk, 2, tool, 2, bonusCard, 1), farmyardCard);
@@ -270,14 +265,14 @@ public class CardDefinitions {
         addCard(jewelryDeck, 703, require(actionSpaceFullyOccupied, 1).give(sheep, 1, fieldLvl2, 1), farmyardCard);
         addCard(jewelryDeck, 704, require(sheep, each(4), fieldAnyLvl, atMost(7, 5, 4, 3)).give(fieldLvl2, fieldLvl3, fieldLvl4, fieldLvl5, staged(1, 1, 1, 1)), farmyardCard);
         addCard(jewelryDeck, 705, require(sheep, each(4), tool, atMost(7, 4, 1)).give(tool, staged(1, 2, 3), bonusCard, 1), farmyardCard);
-        addCard(jewelryDeck, 706, require(timing(phase7, harvest), on(harvest, anyCrop, SAME, 11)).give(tool, 1, jewelry, 1), farmyardCard);
+        addCard(jewelryDeck, 706, require(timing(phase7, harvest), on(harvest, of(anyCrops, SAME, 11))).give(tool, 1, jewelry, 1), farmyardCard);
         addCard(jewelryDeck, 707, require(tool, staged(2, 6, 10)).give(jewelry, staged(0, 1, 2), leather, 1, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 708, require(tool, fieldAnyLvl, total(12)).give(jewelry, 1), farmyardCard);
-        addCard(jewelryDeck, 709, require(of(maxOf(craftBuilding), SUBTRACT, minOf(craftBuilding)), 4).give(jewelry, 1), farmyardCard);
+        addCard(jewelryDeck, 709, require(subtract(maxOf(craftBuilding), minOf(craftBuilding), 4)).give(jewelry, 1), farmyardCard);
         addCard(jewelryDeck, 710, require(tool, sheep, total(8, 11, 16)).give(bonusCard, staged(0, 1, 2), barley, 2, hops, 1, clay, 2), farmyardCard);
         addCard(jewelryDeck, 711, require(total(tool, jewelry, moreThan(workerSupply))).give(rye, 3, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 712, require(CHOOSE, template(jewelry, staged(3, 5, 7)), template(tool, staged(6, 8, 10))).give(flax, staged(2, 3, 4), bonusCard, 1), farmyardCard);
-        addCard(jewelryDeck, 713, require(timing(cardPlayedAfterGotten)).give(milk, 1, bonusCard, 1, barley, flax, hops, rye, choose(1)), farmyardCard);
+        addCard(jewelryDeck, 713, require(timing(cardPlayedAfterGotten)).give(of(milk, 1), of(bonusCard, 1), of(barley, flax, hops, rye, choose(1))), farmyardCard);
         addCard(jewelryDeck, 714, require(on(fieldAnyLvl, flax, 1, 2, 3)).give(wool, staged(1, 3, 4), bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 715, require(sheep, moreThan(fieldAnyLvl)).give(meat, 2, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 716, consume(jewelry, choose(1, 2, 4, 5)).give(sheep, staged(1, 2, 3, 4), bonusCard, 1), farmyardCard);
@@ -296,9 +291,9 @@ public class CardDefinitions {
         addCard(jewelryDeck, 729, consume(jewelry, 1).give(fieldLvl4, 1, sowAnyAction, 1), farmyardCard);
         addCard(jewelryDeck, 730, consume(rye, per(emptyFarmyardCards)).give(milk, 3, bonusCard, 1), farmyardCard);
         addCard(jewelryDeck, 731, consume(tool, 1).give(barley, wool, per(leather, .5d), bonusCard, 1), farmyardCard);
-        addCard(jewelryDeck, 732, consume(jewelry, 1).give(choose(of(bonusCard, 1), of(leather, 4), of(wool, 5))), farmyardCard);
+        addCard(jewelryDeck, 732, consume(jewelry, 1).give(chooseReward(of(bonusCard, 1), of(leather, 4), of(wool, 5))), farmyardCard);
         addCard(jewelryDeck, 733, consume(barley, subtract(10, jewelry)).give(leather, 6, meat, 2, bonusCard, 1), farmyardCard);
-        addCard(jewelryDeck, 734, consume(jewelry, choose(2, 6, 9)).give(stagedEff(jewelry, 0, 5, 9), and(of(meat, 5), of(bonusCard, 1))), farmyardCard);
+        addCard(jewelryDeck, 734, consume(jewelry, choose(2, 6, 9)).give(template(jewelry, staged(0,5,9)), of(meat, 5), of(bonusCard, 1)), farmyardCard);
         addCard(jewelryDeck, 735, consume(jewelry, 1).give(farmyardCard, 2, bonusCard, 2), farmyardCard);
 
         addCard(bonusDeck, 801, consume(wool, 1).give(recurring(phase3, meat, 1), vp, 1), bonusCard);
@@ -339,7 +334,7 @@ public class CardDefinitions {
         addCard(bonusDeck, 836, require(hops, 6).give(recurring(phase3, rye, 1), vp, 3), bonusCard);
         addCard(bonusDeck, 837, require(wool, 6).give(recurring(phase3, wool, 1), vp, 3), bonusCard);
         addCard(bonusDeck, 838, require(flax, 7).give(recurring(phase3, flax, 1), vp, 3), bonusCard);
-        addCard(bonusDeck, 839, require(tool, 8).give(recurring(phase3, exchange(tool, jewelry, 1), 1), vp, 3), bonusCard);
+        addCard(bonusDeck, 839, require(tool, 8).give(recurring(phase3, exchange(tool, jewelry, 1)), vp, 3), bonusCard);
         addCard(bonusDeck, 840, require(of(tool, 3), of(sheep, 3), of(jewelry, 3)).give(recurring(phase3, farmyardCard, 1), vp, 3), bonusCard);
         addCard(bonusDeck, 841, require(barley, 10).give(recurring(phase3, barley, 1), vp, 3), bonusCard);
         addCard(bonusDeck, 842, require(barley, 7, hops, 5).give(recurring(phase3, barley, 1), vp, 3), bonusCard);
@@ -368,27 +363,12 @@ public class CardDefinitions {
         addCard(pointDeck, 919, consume(same(anyGoods, 14)).give(vp, 10), pointCard);
         addCard(pointDeck, 920, consume(milk, 14).give(vp, 10), pointCard);
         addCard(pointDeck, 921, consume(jewelry, 4).give(vp, 12), pointCard);
-        addCard(pointDeck, 922, consume(fieldAnyLvl, not(fieldLvl2), 7).give(vp, 12), pointCard);
+        addCard(pointDeck, 922, consume(fieldAnyLvl,not(fieldLvl2), 7).give(vp, 12), pointCard);
         addCard(pointDeck, 923, consume(sheep, 8).give(vp, 12), pointCard);
         addCard(pointDeck, 924, consume(fieldAnyLvl, 8).give(vp, 13), pointCard);
         addCard(pointDeck, 925, consume(CHOOSE, of(jewelry, 5), of(sheep, 10)).give(vp, 14), pointCard);
     }
 
-
-    private static Effect recurring(Phase phase, ResourceUnits unit, int amount) {
-        Effect e = Effect.of(each(unit, amount), true, phase);
-        
-        return e;
-    }
-    private static Effect recurring(Phase phase, ResourceEntry entry){
-        Effect e = Effect.of(entry, true, phase);
-
-        return e;
-    }
-
-    private static int maxSheepOnSingleFarmyard(GameState state, Player player) {
-        return Arrays.stream(state.table.playerAreas.get(player.index).turnTracker.sheeps).mapToDouble(s->s.get(sheep)).max().getAsDouble();
-    }
 
     private static Card addCard(List<Card> deck, int appendixIndex, ReqAndEffectBuilder builder, ResourceUnits cardType) {
         return addCard(deck, appendixIndex, builder.build(), cardType);

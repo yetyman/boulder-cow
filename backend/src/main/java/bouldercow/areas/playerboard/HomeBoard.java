@@ -3,6 +3,7 @@ package bouldercow.areas.playerboard;
 
 import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
+import org.apache.catalina.util.ResourceSet;
 
 public class HomeBoard  {
     public HomeBGImage homeBGImage = new HomeBGImage();
@@ -21,23 +22,17 @@ public class HomeBoard  {
     }
 
     private ReqAndEffect getBuildingRequirement(int i) {
-        Effect moveForward = Effect.of(ResourceSet.all(ResourceUnits.building, 1));
+        Effect moveForward = Effect.of(ResourceSet.all(ResourceUnits.craftBuilding, 1));
 
         Requirement cost = new Requirement();
         //just for symbolic displays, include a resource set.
         // the 1max flax spot makes an object definition more complex than i want to encode in structure until i have a clearer picture
         cost.requiredResources = ResourceSet.all(ResourceUnits.rye, 1, ResourceUnits.barley, 1);
-
+//        choose(of(rye, meat, total(3)), of(choose(rye,meat), 2), 1);
         //complex requirements being functional isn't ideal, we can't generate symbolic displays off of that,
         // but we'll break it down once we see how complicated it is, or just create symbolic displays manually for it.
-        cost.setComplexRequirement("At least x of y with z", (ResourceSet resourcesOffered)->{
-            //TODO: return either success or failure.
-            //TODO: base cost on which round we're in.
-
-            return true;
-        });
         cost.consumesRequired = true;
-        cost.requiredPhase = Phase.build;
+        cost.timing = TimingRequirement.timing(Phase.build);
 
         return new ReqAndEffect(cost, moveForward);
     }

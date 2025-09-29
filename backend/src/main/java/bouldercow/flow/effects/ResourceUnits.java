@@ -11,7 +11,6 @@ public enum ResourceUnits {
     barley,
     hops,
     sheep,
-    sheepMovement,
     vp,
     jewelry,
     boulder,
@@ -24,33 +23,63 @@ public enum ResourceUnits {
     fieldLvl4,
     fieldLvl5,
     fieldLvl5WithCrop,
-    //other resource in set reps required crop on field since no card requires separate resources and fields
-    fieldWithCrop,
+    fieldWithCrop,//other resource in set reps required crop on field since no card requires separate resources and fields
     fieldWithoutCrop,
-    sowAnyAction,
-    //other resource in set reps required crop
-    sowSpecificAction,
     gatewayCard,
     farmyardCard,
     bonusCard,
     pointCard,
-    //refers to advancing a building.
-    building,
-    //refers to how many workers are gained each round
-    workerSupply,
+    workerSupply,//refers to how many workers are gained each round
+    workersRemaining,//refers to how many workers are left this round
     actionSpaceFullyOccupied,
     differentCrops,
-    harvestAction,
-    fieldUpgrade,
-    sheepMovementDifferent,
+    sheepMovementDifferent,//replace with SHEEP UPGRADE DIFFERENT. or CHOOSE SHEEP X UPGRADE
     farmyardCardsPlayed,
-    harvestTotal,
-    sheepOnSameFarmyard,
-    sheepOnFarmyard,
-    removeWorkersAction,
+    sheepOnSameFarmyard,//replace with on(farmyardCard, sheep, maxOf())
+    sheepOnFarmyard,//replace with on(farmyardCard, sheep, total())
     allCrops,
     anyGoods,
     nextTurnSheepCard,
     anyCrops,
-    actionSpace, anyCard, hand, emptyFarmyardCards, cardsPlayed, nursery, roundNumber, quadrant, craftBuilding;
+    actionSpace,
+    anyCard,
+    hand,
+    emptyFarmyardCards,
+    cardsPlayed,
+    nursery,
+    roundNumber,
+    quadrant,
+    craftBuilding,
+    row2,
+    row3,
+    topFullRow,
+    level,
+
+    //ACTION VALUES
+    removeWorkersAction,
+    harvestAction,
+    sheepMovement,//replace with sheep UPGRADE
+    sowAnyAction,
+    sowSpecificAction,//other resource in set reps required crop
+    fieldUpgrade,
+    justBeforeLastAction,
+    sheepRemoval,
+    workersRemoved,
+    craftBuildingAdvanced,
+    butcheryActionUsed,
+    toolsObtained,
+    farmingActionUsed,
+    workersExchangedForTools,
+    harvestedSameTypeCrops,
+    cardPlayedAfterGotten,
+    justHarvested,
+    jewelrySpent,
+    clearActionSpaces,
+    useActionSpace,
+    sowDoubleCrop,
+    moveSheepBackward,
+    doubleHarvest,
+    harvest,
+    harvestTotal,//selects total of harvest. replace with on(harvest, total(anyCrop))
+    exchange;
 }

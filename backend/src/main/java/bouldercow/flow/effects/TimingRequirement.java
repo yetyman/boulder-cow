@@ -6,14 +6,14 @@ public class TimingRequirement {
     public Phase requiredPhase = null;
     //flips required phase to excluded phase.
     public boolean invertPhaseRequirement = false;
-    public ActionEnum reactionTo;
+    public ResourceUnits reactionTo;
 
     public static TimingRequirement timing(Phase requiredPhase) {
         TimingRequirement timingRequirement = new TimingRequirement();
         timingRequirement.requiredPhase = requiredPhase;
         return timingRequirement;
     }
-    public static TimingRequirement timing(Phase requiredPhase, ActionEnum reactionTo) {
+    public static TimingRequirement timing(Phase requiredPhase, ResourceUnits reactionTo) {
         TimingRequirement timingRequirement = new TimingRequirement();
         timingRequirement.requiredPhase = requiredPhase;
         timingRequirement.reactionTo = reactionTo;
@@ -25,7 +25,7 @@ public class TimingRequirement {
         timingRequirement.invertPhaseRequirement = invertPhaseRequirement;
         return timingRequirement;
     }
-    public static TimingRequirement timing(ActionEnum reactionTo) {
+    public static TimingRequirement timing(ResourceUnits reactionTo) {
         TimingRequirement timingRequirement = new TimingRequirement();
         timingRequirement.reactionTo = reactionTo;
         return timingRequirement;

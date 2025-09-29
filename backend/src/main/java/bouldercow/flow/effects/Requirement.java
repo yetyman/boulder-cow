@@ -25,6 +25,7 @@ public class Requirement {
         return requirement;
     }
 
+
     public static Requirement staged(ResourceEntry... staggeredSet) {
         Requirement requirement = new Requirement();
         requirement.multiRequirement = new ArrayList<>();
@@ -35,21 +36,13 @@ public class Requirement {
 
         return requirement;
     }
-    public static Requirement or(ResourceEntry... set) {
+    public static Requirement choose(ResourceEntry... set) {
         Requirement requirement = new Requirement();
         requirement.multiRequirement = new ArrayList<>();
         for (ResourceEntry resourceSet : set) {
             requirement.multiRequirement.add(Requirement.of(resourceSet, false));
         }
-        requirement.modifiers.add(EffectModifier.EITHER);
-
-        return requirement;
-    }
-    public static Requirement of(ResourceEntry... set) {
-        Requirement requirement = new Requirement();
-        requirement.multiRequirement = new ArrayList<>();
-        requirement.multiRequirement.addAll(Arrays.asList(set));
-        requirement.modifiers.add(EffectModifier.EITHER);
+        requirement.modifiers.add(EffectModifier.CHOOSE);
 
         return requirement;
     }
