@@ -12,10 +12,4 @@ public class ReqAndEffect {
         this.req = req;
         this.effect = effect;
     }
-
-    public static ReqAndEffect of(ResourceEntry required, ResourceEntry gives, boolean consumes, boolean repeats) {
-        Effect effect = Effect.of(gives, repeats, repeats? Phase.draw : null);
-
-        return new ReqAndEffect(Requirement.of(required, consumes), effect);
-    }
 }

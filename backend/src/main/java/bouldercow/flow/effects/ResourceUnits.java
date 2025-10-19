@@ -81,5 +81,5 @@ public enum ResourceUnits {
     doubleHarvest,
     harvest,
     harvestTotal,//selects total of harvest. replace with on(harvest, total(anyCrop))
-    exchange;
+    exchange, workerPlacementRequirement;
 }

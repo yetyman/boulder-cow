@@ -23,5 +23,5 @@ public enum EffectModifier {
     TO,  //indicates a final number instead of an increment. ex. fieldAnyLvl, UPGRADE, TO, 5
     REMOVED, //action specific modifier, indicating that something was just removed in the action
     LEVEL, //-indicates that level is the number to be queried instead of count
-    NOT
+    WITH, NOT
 }

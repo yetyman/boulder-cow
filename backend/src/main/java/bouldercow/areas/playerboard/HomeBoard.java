@@ -3,7 +3,10 @@ package bouldercow.areas.playerboard;
 
 import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
-import org.apache.catalina.util.ResourceSet;
+
+import static bouldercow.flow.effects.Requirement.with;
+import static bouldercow.flow.effects.ResourceEntry.*;
+import static bouldercow.flow.effects.ResourceUnits.*;
 
 public class HomeBoard  {
     public HomeBGImage homeBGImage = new HomeBGImage();
@@ -22,17 +25,21 @@ public class HomeBoard  {
     }
 
     private ReqAndEffect getBuildingRequirement(int i) {
-        Effect moveForward = Effect.of(ResourceSet.all(ResourceUnits.craftBuilding, 1));
+        Effect moveForward = Effect.of(ResourceEntry.of(ResourceUnits.craftBuilding, 1));
 
-        Requirement cost = new Requirement();
+        Requirement cost;
         //just for symbolic displays, include a resource set.
         // the 1max flax spot makes an object definition more complex than i want to encode in structure until i have a clearer picture
-        cost.requiredResources = ResourceSet.all(ResourceUnits.rye, 1, ResourceUnits.barley, 1);
+        cost = Requirement.choose(
+            with(template(rye, barley, flax, total(4)), upTo(flax, 1), distinct(3)),//total 4, atleast one of each, max 1 flax
+            with(template(rye, barley, flax, total(5)), upTo(flax, 1), distinct(2)),//total 5, atleast two kinds, max 1 flax
+            with(template(rye, barley, flax, total(6)), upTo(flax, 1))//total 6, max 1 flax
+        );
 //        choose(of(rye, meat, total(3)), of(choose(rye,meat), 2), 1);
         //complex requirements being functional isn't ideal, we can't generate symbolic displays off of that,
         // but we'll break it down once we see how complicated it is, or just create symbolic displays manually for it.
         cost.consumesRequired = true;
-        cost.timing = TimingRequirement.timing(Phase.build);
+        cost.timing = TimingRequirement.timing(Phase.buildings);
 
         return new ReqAndEffect(cost, moveForward);
     }

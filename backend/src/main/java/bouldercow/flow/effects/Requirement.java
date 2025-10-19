@@ -36,13 +36,23 @@ public class Requirement {
 
         return requirement;
     }
-    public static Requirement choose(ResourceEntry... set) {
+    public static Requirement choose(Requirement... set) {
+        Requirement requirement = new Requirement();
+        requirement.multiRequirement = new ArrayList<>();
+        for (Requirement resourceSet : set) {
+            requirement.multiRequirement.add(resourceSet);
+        }
+        requirement.modifiers.add(EffectModifier.CHOOSE);
+
+        return requirement;
+    }
+    public static Requirement with(ResourceEntry... set) {
         Requirement requirement = new Requirement();
         requirement.multiRequirement = new ArrayList<>();
         for (ResourceEntry resourceSet : set) {
-            requirement.multiRequirement.add(Requirement.of(resourceSet, false));
+            requirement.multiRequirement.add(Requirement.of(resourceSet, true));
         }
-        requirement.modifiers.add(EffectModifier.CHOOSE);
+        requirement.modifiers.add(EffectModifier.WITH);
 
         return requirement;
     }

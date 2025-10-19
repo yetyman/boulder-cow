@@ -198,6 +198,12 @@ public class ResourceEntry {
     }
     public static ResourceEntry maxOf(ResourceEntry re) { re.modifiers.add(MAX_OF); return re; }
 
+    public static ResourceEntry minOf(ResourceEntry re, int min) {
+        re.modifiers.add(MIN_OF);
+        re.values.add(min);
+        return re;
+    }
+
     private static ResourceEntry each(ResourceUnits resourceUnits, int amount1, ResourceUnits resourceUnits1, int amount2) {
         ResourceEntry re = new ResourceEntry(List.of(resourceUnits, resourceUnits1), List.of(amount1, amount2), List.of(EffectModifier.EACH));
         return re;

@@ -1,5 +1,14 @@
 package bouldercow.flow;
 
 public enum Phase {
-    phase1, phase2, phase3, phase4, phase5, phase6, phase7, phase8, phase9, phase10;
+    removeWorkers,//remove workers from board
+    newWorkers,//new workers by building number
+    income,//card income
+    actions,//main phase of the game
+    newCard,//card from turn tracker(kills sheep)
+    fallowFields,//move up empty fields
+    harvest,//harvest from planted fields
+    milking,//JELK
+    buildings,//pay to upgrade buildings
+    boulders;//reset boulder positions
 }
