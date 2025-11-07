@@ -1,15 +1,17 @@
 package bouldercow.flow.effects;
 
 public enum ResourceUnits {
-    meat,
-    milk,
-    wool,
+    //Individual resources
     rye,
-    clay,
-    leather,
     flax,
     barley,
     hops,
+    meat,
+    milk,
+    wool,
+    clay,
+    leather,
+
     sheep,
     vp,
     jewelry,
@@ -18,6 +20,8 @@ public enum ResourceUnits {
     cock,
     tool,
     fieldAnyLvl,//for requirements
+
+    //more specific resources, for simplifying effects
     fieldLvl2,
     fieldLvl3,
     fieldLvl4,
@@ -31,17 +35,16 @@ public enum ResourceUnits {
     pointCard,
     workerSupply,//refers to how many workers are gained each round
     workersRemaining,//refers to how many workers are left this round
-    actionSpaceFullyOccupied,
     differentCrops,
+    anyGoods,
+    anyCrops,
+    actionSpace,
+    actionSpaceFullyOccupied,
     sheepMovementDifferent,//replace with SHEEP UPGRADE DIFFERENT. or CHOOSE SHEEP X UPGRADE
     farmyardCardsPlayed,
     sheepOnSameFarmyard,//replace with on(farmyardCard, sheep, maxOf())
     sheepOnFarmyard,//replace with on(farmyardCard, sheep, total())
-    allCrops,
-    anyGoods,
     nextTurnSheepCard,
-    anyCrops,
-    actionSpace,
     anyCard,
     hand,
     emptyFarmyardCards,
@@ -52,7 +55,7 @@ public enum ResourceUnits {
     craftBuilding,
     row2,
     row3,
-    topFullRow,
+    fullTopRow,
     level,
 
     //ACTION VALUES
@@ -70,7 +73,6 @@ public enum ResourceUnits {
     toolsObtained,
     farmingActionUsed,
     workersExchangedForTools,
-    harvestedSameTypeCrops,
     cardPlayedAfterGotten,
     justHarvested,
     jewelrySpent,
@@ -81,5 +83,8 @@ public enum ResourceUnits {
     doubleHarvest,
     harvest,
     harvestTotal,//selects total of harvest. replace with on(harvest, total(anyCrop))
-    exchange, workerPlacementRequirement;
+    harvestedSameTypeCrops,
+    exchange,
+    workerPlacementRequirement;
+
 }
