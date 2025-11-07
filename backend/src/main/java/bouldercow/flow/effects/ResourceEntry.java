@@ -197,6 +197,9 @@ public class ResourceEntry {
     public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return withUnitModifier(List.of(unit1, unit2, unit3), EffectModifier.EACH, amounts); }
     public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, Integer... amounts) { return withUnitModifier(List.of(unit1, unit2, unit3, unit4), EffectModifier.EACH, amounts); }
 
+    public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry) { return template(unit1, unit2, EffectModifier.EACH, entry); }
+    public static ResourceEntry each(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry) { return template(List.of(unit1, unit2, unit3, unit4), List.of(EffectModifier.EACH), entry); }
+
     public static ResourceEntry choose(ResourceUnits unit1, Integer amt) { return withUnitModifier(List.of(unit1), EffectModifier.CHOOSE, amt); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, Integer... amounts) { return withUnitModifier(List.of(unit1,unit2), EffectModifier.CHOOSE, amounts); }
     public static ResourceEntry choose(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, Integer... amounts) { return withUnitModifier(List.of(unit1,unit2,unit3), EffectModifier.CHOOSE, amounts); }
