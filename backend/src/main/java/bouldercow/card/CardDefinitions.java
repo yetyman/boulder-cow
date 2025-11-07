@@ -14,6 +14,7 @@ import static bouldercow.flow.effects.ResourceUnits.*;
 import static bouldercow.flow.effects.EffectModifier.*;
 import static bouldercow.flow.effects.ResourceEntry.*;
 import static bouldercow.flow.effects.ReqAndEffectBuilder.*;
+import static bouldercow.flow.effects.ResourceUnits.harvest;
 import static bouldercow.flow.effects.TimingRequirement.*;
 
 public class CardDefinitions {
@@ -147,10 +148,10 @@ public class CardDefinitions {
         addCard(masterDeck, 320, require(tool, staged(2, 4, 6, 7)).give(barley, staged(0, 1, 2, 3), flax, 2, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 321, require(barley, subtract(10, jewelry)).give(flax, 2, hops, 1, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 322, require(timing(farmingActionUsed)).give(barley, flax, hops, rye, choose(1), sowSpecificAction, 1), gatewayCard);
-        addCard(masterDeck, 323, require(fieldWithoutCrop, exactly(1)).give(new ResourceEntry(List.of(farmyardCard, sowAnyAction), List.of(4), List.of(UPGRADE, TO, SAME)), bonusCard, 1), gatewayCard);
+        addCard(masterDeck, 323, require(fieldWithoutCrop, exactly(1)).give(create(List.of(farmyardCard, sowAnyAction), List.of(4), List.of(UPGRADE, TO, SAME)), bonusCard, 1), gatewayCard);
         addCard(masterDeck, 324, require(workerSupply, moreThan(roundNumber, 5, 6, 7)).give(milk, staged(1, 2, 3)), gatewayCard);
         addCard(masterDeck, 325, require(anyCrops, staged(0, 10, 16, 23)).give(milk, staged(0, 1, 2, 3), bonusCard, 1), gatewayCard);
-        addCard(masterDeck, 326, require(new ResourceEntry(List.of(sheep), List.of(4, 1, 2, 3), List.of(ON, LEVEL, MORE_THAN, STAGED), List.of(farmyardCard, level))).give(wool, staged(1, 2, 3), bonusCard, 1), gatewayCard);//this one will def have issues
+        addCard(masterDeck, 326, require(create(List.of(sheep), List.of(4, 1, 2, 3), List.of(ON, LEVEL, MORE_THAN, STAGED), List.of(farmyardCard, level))).give(wool, staged(1, 2, 3), bonusCard, 1), gatewayCard);//this one will def have issues
         addCard(masterDeck, 327, require(sheep, staged(2, 3, 7)).give(bonusCard, staged(0, 1, 2), leather, per(emptyFarmyardCards)), gatewayCard);
         addCard(masterDeck, 328, consume(timing(butcheryActionUsed), jewelry, 1).give(leather, 2, bonusCard, 1), gatewayCard);
         addCard(masterDeck, 329, require(on(nursery, worker, 1, 3, 6)).give(meat, staged(0, 2, 7), bonusCard, 1), gatewayCard);
@@ -374,6 +375,7 @@ public class CardDefinitions {
     }
 
 
+
     private static Card addCard(List<Card> deck, int appendixIndex, ReqAndEffectBuilder builder, ResourceUnits cardType) {
         return addCard(deck, appendixIndex, builder.build(), cardType);
     }
@@ -402,14 +404,14 @@ public class CardDefinitions {
         int index = gameState.table.playerAreas.indexOf(player);
         ResourceTracker playerResources = gameState.table.playerAreas.get(index).resourceTracker;//plain basic only resource counts
 
-        re = resourceTotals(playerResources.resources);//resources on resource tracker including composite values
+        ResourceEntry re = resourceTotals(playerResources.resources);//resources on resource tracker including composite values
 
         re.referenceUnits.add(null);//adding null bc next we'll add specific location's items
         re.modifiers.add(null);
     }
 
     private static ResourceEntry resourceTotals(ResourceEntry rawResources) {
-        ResourceEntry re = new ResourceEntry(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        ResourceEntry re = create(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), null, null);
         re.resources.addAll(rawResources.resources);
         re.values.addAll(rawResources.values);
 
@@ -546,9 +548,9 @@ public class CardDefinitions {
             default->null;
         };
 
-        if(Objects.equals(Boolean.TRUE))
-            return v;
-        else
+//        if(Objects.equals(Boolean.TRUE))
+//            return v;
+//        else
             return null;
     }
 }

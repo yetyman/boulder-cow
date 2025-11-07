@@ -42,14 +42,17 @@ public class ReqAndEffectBuilder {
     }
     public static ReqAndEffectBuilder require(ResourceEntry... resources) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
-        builder.requirement = new Requirement();
-        builder.requirement.requiredResources = new ArrayList<>(Arrays.asList(resources));
+        if (resources.length == 1) {
+            builder.requirement = Requirement.of(resources[0], false);
+        } else {
+            builder.requirement = Requirement.of(ResourceEntry.withSubEntries(EffectModifier.EACH, resources), false);
+        }
         return builder;
     }
 
     public static ReqAndEffectBuilder require(EffectModifier mod, ResourceEntry... resources) {
-        ReqAndEffectBuilder builder = require(resources);
-        builder.requirement.modifiers.add(mod);
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(ResourceEntry.withSubEntries(mod, resources), false);
         return builder;
     }
     public static ReqAndEffectBuilder require(Requirement req) {
@@ -121,15 +124,17 @@ public class ReqAndEffectBuilder {
     }
     public static ReqAndEffectBuilder consume(ResourceEntry... resources) {
         ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
-        builder.requirement = new Requirement();
-        builder.requirement.requiredResources = new ArrayList<>(Arrays.asList(resources));
-        builder.requirement.consumesRequired = true;
+        if (resources.length == 1) {
+            builder.requirement = Requirement.of(resources[0], true);
+        } else {
+            builder.requirement = Requirement.of(ResourceEntry.withSubEntries(EffectModifier.EACH, resources), true);
+        }
         return builder;
     }
 
     public static ReqAndEffectBuilder consume(EffectModifier mod, ResourceEntry... resources) {
-        ReqAndEffectBuilder builder = consume(resources);
-        builder.requirement.modifiers.add(mod);
+        ReqAndEffectBuilder builder = new ReqAndEffectBuilder();
+        builder.requirement = Requirement.of(ResourceEntry.withSubEntries(mod, resources), true);
         return builder;
     }
 
@@ -187,11 +192,11 @@ public class ReqAndEffectBuilder {
         return this;
     }
     public ReqAndEffectBuilder give(Effect effect, ResourceUnits resourceUnits, int num) {
-        this.effect = Effect.of( effect, new ResourceEntry[] { each(resourceUnits, num) } );
+        this.effect = and(effect, resourceUnits, num);
         return this;
     }
     public ReqAndEffectBuilder give(Effect effect, ResourceEntry entry) {
-        this.effect = Effect.of( effect, new ResourceEntry[] { entry } );
+        this.effect = and(effect, entry);
         return this;
     }
     public ReqAndEffectBuilder give(ResourceEntry resources, ResourceUnits resourceUnits, int num, ResourceUnits resourceUnits2, int num2) {
@@ -310,10 +315,11 @@ public class ReqAndEffectBuilder {
         return stagedEff(sets);
     }
     public static Effect stagedEff(Effect... stages) {
-        Effect effect = new Effect();
-        effect.multiEffects = Arrays.asList(stages);
-        effect.isStaged = true;
-        return effect;
+        ResourceEntry[] entries = new ResourceEntry[stages.length];
+        for (int i = 0; i < stages.length; i++) {
+            entries[i] = stages[i].givesResources;
+        }
+        return Effect.of(entries);
     }
 
     public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, ResourceUnits unit2, int unit2Cnt) {
@@ -346,39 +352,39 @@ public class ReqAndEffectBuilder {
     }
 
     public static Effect stagedEff(ResourceEntry... stages) {
-        Effect effect = Effect.of(stages);
-        effect.isStaged = true;
-        return effect;
+        return Effect.of(stages);
     }
 
     public static Effect and(Effect... effects) {
+        ResourceEntry[] entries = new ResourceEntry[effects.length];
+        for (int i = 0; i < effects.length; i++) {
+            entries[i] = effects[i].givesResources;
+        }
         Effect combined = new Effect();
-        combined.multiEffects = java.util.Arrays.asList(effects);
+        combined.givesResources = ResourceEntry.withSubEntries(EffectModifier.EACH, entries);
         return combined;
     }
     public static Effect and(Effect effect, ResourceUnits unit, int cnt) {
-        return and(effect, each(unit, cnt));
+        return and(effect, Effect.of(each(unit, cnt)));
     }
     public static Effect and(Effect effect, ResourceEntry resources) {
         Effect combined = new Effect();
-        combined.multiEffects = List.of(effect, Effect.of(resources));
+        combined.givesResources = ResourceEntry.withSubEntries(EffectModifier.EACH, effect.givesResources, resources);
         return combined;
     }
     public static Effect and(ResourceEntry resources, Effect effect) {
         Effect combined = new Effect();
-        combined.multiEffects = List.of(Effect.of(resources), effect);
+        combined.givesResources = ResourceEntry.withSubEntries(EffectModifier.EACH, resources, effect.givesResources);
         return combined;
     }
     public static Effect and(Effect effect, ResourceUnits unit, int cnt, ResourceUnits unit2, int cnt2) {
         Effect combined = new Effect();
-        combined.multiEffects = List.of(effect, Effect.of(each(unit, cnt)), Effect.of(each(unit2, cnt2)));
+        combined.givesResources = ResourceEntry.withSubEntries(EffectModifier.EACH, effect.givesResources, each(unit, cnt), each(unit2, cnt2));
         return combined;
     }
     public static Requirement and(Requirement req, ResourceUnits unit, int amount) {
         Requirement combined = new Requirement();
-        combined.requiredResources = new ArrayList<>(req.requiredResources);
-        combined.requiredResources.add(each(unit, amount));
-        combined.modifiers = new ArrayList<>(req.modifiers);
+        combined.requiredResources = ResourceEntry.withSubEntries(EffectModifier.EACH, req.requiredResources, each(unit, amount));
         combined.timing = req.timing;
         combined.consumesRequired = req.consumesRequired;
         return combined;
