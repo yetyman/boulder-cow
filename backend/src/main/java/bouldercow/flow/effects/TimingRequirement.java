@@ -7,6 +7,8 @@ public class TimingRequirement {
     //flips required phase to excluded phase.
     public boolean invertPhaseRequirement = false;
     public ResourceUnits reactionTo;
+    public boolean repeats = false;
+    public boolean nonPassive = false;//indicates whether the user must choose the action
 
     public static TimingRequirement timing(Phase requiredPhase) {
         TimingRequirement timingRequirement = new TimingRequirement();
@@ -30,11 +32,4 @@ public class TimingRequirement {
         timingRequirement.reactionTo = reactionTo;
         return timingRequirement;
     }
-
-//    public static TimingRequirement timing(Phase requiredPhase, boolean invertPhaseRequirement) {
-//        TimingRequirement timingRequirement = new TimingRequirement();
-//        timingRequirement.requiredPhase = requiredPhase;
-//        timingRequirement.invertPhaseRequirement = invertPhaseRequirement;
-//        return timingRequirement;
-//    }
 }

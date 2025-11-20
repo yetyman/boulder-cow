@@ -338,15 +338,6 @@ public class ReqAndEffectBuilder {
         return and(stagedEff(unit, stage1, stage2, stage3, stage4, stage5), unit2, unit2Cnt);
     }
 
-    // Static utility methods
-    public static Effect recurring(Phase phase, ResourceUnits unit, int amount) {
-        return Effect.of(each(unit, amount), true, phase);
-    }
-
-    public static Effect recurring(Phase phase, ResourceEntry entry) {
-        return Effect.of(entry, true, phase);
-    }
-
     public static Effect and(Effect... effects) {
         ResourceEntry[] entries = new ResourceEntry[effects.length];
         for (int i = 0; i < effects.length; i++) {
