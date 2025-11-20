@@ -85,6 +85,6 @@ public enum ResourceUnits {
     harvestTotal,//selects total of harvest. replace with on(harvest, total(anyCrop))
     harvestedSameTypeCrops,
     exchange,
-    workerPlacementRequirement;
+    workerPlacementRequirement, deckTile, resourceTile, activeCards, homeBoard, treasureChest, turnTracker, resourceTracker;
 
 }

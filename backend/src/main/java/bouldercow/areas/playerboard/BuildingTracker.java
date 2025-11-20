@@ -1,6 +1,8 @@
 package bouldercow.areas.playerboard;
 
-public class BuildingTracker {
+import bouldercow.flow.effects.IHoldsResources;
+
+public class BuildingTracker implements IHoldsResources {
     public int maxValue = 13;
     public Building building;
     public Boulder boulder1;

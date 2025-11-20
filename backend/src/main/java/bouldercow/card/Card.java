@@ -1,6 +1,7 @@
 package bouldercow.card;
 
 import bouldercow.flow.effects.ReqAndEffect;
+import bouldercow.flow.effects.ResourceEntry;
 import bouldercow.flow.effects.ResourceUnits;
 import bouldercow.symbols.ImageRef;
 import bouldercow.symbols.SymbolicDisplay;
@@ -13,6 +14,7 @@ public class Card {
     public String description;
     public SymbolicDisplay symbols;
     public ResourceUnits cardType;
+    public ResourceEntry resources = null;
 
     public Card(){
     }

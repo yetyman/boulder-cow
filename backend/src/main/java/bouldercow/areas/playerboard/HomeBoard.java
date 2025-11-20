@@ -8,7 +8,7 @@ import static bouldercow.flow.effects.Requirement.with;
 import static bouldercow.flow.effects.ResourceEntry.*;
 import static bouldercow.flow.effects.ResourceUnits.*;
 
-public class HomeBoard  {
+public class HomeBoard implements IHoldsResources  {
     public HomeBGImage homeBGImage = new HomeBGImage();
     public HomeImage homeImage = new HomeImage();
     public BuildingTracker[] buildingRows = new BuildingTracker[5];
@@ -42,5 +42,23 @@ public class HomeBoard  {
         cost.timing = TimingRequirement.timing(Phase.buildings);
 
         return new ReqAndEffect(cost, moveForward);
+    }
+
+    @Override
+    public ResourceEntry allResources() {
+        //TODO: list each building row. so building value, boulder value, and other boulder value
+        throw new RuntimeException("Not implemented yet");
+    }
+
+    @Override
+    public String canAddResource(ResourceEntry resource) {
+        //TODO: check moving buildings and boulders. return false if the change would make it negative
+        throw new RuntimeException("Not implemented yet");
+    }
+
+    @Override
+    public boolean addResource(ResourceEntry resource) {
+        //TODO: handle moving buildings and boulders. return false if the change would make it negative
+        throw new RuntimeException("Not implemented yet");
     }
 }

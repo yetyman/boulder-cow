@@ -21,6 +21,9 @@ public class ResourceEntry {
         if(referenceUnits != null) this.referenceUnits.addAll(referenceUnits);
         if(subEntries != null) this.subEntries.addAll(subEntries);
     }
+    public ResourceEntry(){
+        this(null,null,null,null,null);
+    }
 
     // Base factory method - all others delegate to this
     public static ResourceEntry create(List<ResourceUnits> units, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits, List<ResourceEntry> subEntries) {
