@@ -87,37 +87,37 @@ public class PlayerArea implements IHoldsResources {
     }
 
     @Override
-    public boolean modifyResource(ResourceEntry resource) {
+    public String canModifyResource(ResourceEntry resource) {
+        int onIndex = resource.modifiers.indexOf(EffectModifier.ON);
+        if (onIndex == -1) return "No location specified";
+        
+        ResourceUnits location = resource.referenceUnits.get(onIndex);
+        
+        return switch (location) {
+            case homeBoard -> homeBoard.canModifyResource(resource);
+            case treasureChest -> treasureChest.canModifyResource(resource);
+            case turnTracker -> turnTracker.canModifyResource(resource);
+            case resourceTracker -> resourceTracker.canModifyResource(resource);
+            case activeCards, hand -> null; // Cards can always be modified
+            default -> "Invalid location";
+        };
+    }
+
+    @Override
+    public ResourceEntry modifyResource(ResourceEntry resource) {
+        String canModify = canModifyResource(resource);
+        if (canModify != null) return ResourceEntry.empty();
+        
         int onIndex = resource.modifiers.indexOf(EffectModifier.ON);
         ResourceUnits location = resource.referenceUnits.get(onIndex);
 
-        switch (location) {
-            case homeBoard ->  {
-                //TODO: modified with building advancement, boulder pushes, turn reset, and sacrificing building levels
-                throw new RuntimeException();
-            }
-            case treasureChest ->  {
-                //TODO: added with jewels, removed by spending jewels
-                throw new RuntimeException();
-            }
-            case turnTracker ->  {
-                //TODO: added with sheep, removed by turn advancement, modified by sheep upgrades
-                throw new RuntimeException();
-            }
-            case resourceTracker ->  {
-                //TODO: added by many things, removed by spending
-                throw new RuntimeException();
-            }
-            case activeCards ->  {
-                //TODO: added from repeats modifier
-                throw new RuntimeException();
-            }
-            case hand ->  {
-                //TODO: added from card effect gives(), deckTiles usage, and turn tracker turn advancement
-                //removed by playing a card or discarding
-                throw new RuntimeException();
-            }
-        }
-        return false;
+        return switch (location) {
+            case homeBoard -> homeBoard.modifyResource(resource);
+            case treasureChest -> treasureChest.modifyResource(resource);
+            case turnTracker -> turnTracker.modifyResource(resource);
+            case resourceTracker -> resourceTracker.modifyResource(resource);
+            case activeCards, hand -> ResourceEntry.empty(); // TODO: implement card modifications
+            default -> ResourceEntry.empty();
+        };
     }
 }

@@ -14,24 +14,40 @@ public class TreasureChest implements IHoldsResources {
 
     @Override
     public ResourceEntry allResources() {
-        //TODO: list rings
-        throw new RuntimeException("Not implemented yet");
+        return rings;
     }
 
     @Override
     public String canModifyResource(ResourceEntry resource) {
-        //TODO: check adding and removing rings. max 10. return false if the change would make it negative
-        throw new RuntimeException("Not implemented yet");
+        if (resource.resources.contains(ResourceUnits.jewelry)) {
+            int jewelryIndex = resource.resources.indexOf(ResourceUnits.jewelry);
+            double change = resource.values.get(jewelryIndex);
+            double currentAmount = rings.values.get(0);
+            double newAmount = currentAmount + change;
+            
+            if (newAmount < 0) return "Cannot have negative jewelry";
+            if (newAmount > 10) return "Cannot exceed 10 jewelry";
+        }
+        return null;
     }
 
     @Override
-    public boolean modifyResource(ResourceEntry resource) {
-        String canAdd = canModifyResource(resource);
-        if(canAdd != null) {
-            throw new RuntimeException(canAdd);
+    public ResourceEntry modifyResource(ResourceEntry resource) {
+        String canModify = canModifyResource(resource);
+        if (canModify != null) return ResourceEntry.empty();
+        
+        ResourceEntry removed = new ResourceEntry();
+        if (resource.resources.contains(ResourceUnits.jewelry)) {
+            int jewelryIndex = resource.resources.indexOf(ResourceUnits.jewelry);
+            double change = resource.values.get(jewelryIndex);
+            double currentAmount = rings.values.get(0);
+            
+            if (change < 0) {
+                removed.resources.add(ResourceUnits.jewelry);
+                removed.values.add(-change);
+            }
+            rings.values.set(0, currentAmount + change);
         }
-
-        //TODO: handle adding and removing rings. max 10. return false if the change would make it negative
-        throw new RuntimeException("Not implemented yet");
+        return removed;
     }
 }

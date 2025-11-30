@@ -11,30 +11,42 @@ public class ResourceEntry {
     public List<EffectModifier> modifiers = new ArrayList<>();
     public List<Double> values = new ArrayList<>();
     public List<ResourceUnits> referenceUnits = new ArrayList<>();
+    public List<Double> referenceValues = new ArrayList<>();
     public List<ResourceEntry> subEntries = new ArrayList<>();
 
+    private static final ResourceEntry emptyResourceEntry = new ResourceEntry();
+
     // Base constructor - all others delegate to this
-    private ResourceEntry(List<ResourceUnits> resources, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits, List<ResourceEntry> subEntries) {
+    private ResourceEntry(List<ResourceUnits> resources, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits, List<Double> referenceValues, List<ResourceEntry> subEntries) {
         if(resources != null) this.resources.addAll(resources);
         if(values != null) this.values.addAll(values);
         if(modifiers != null) this.modifiers.addAll(modifiers);
         if(referenceUnits != null) this.referenceUnits.addAll(referenceUnits);
+        if(referenceValues != null) this.referenceValues.addAll(referenceValues);
         if(subEntries != null) this.subEntries.addAll(subEntries);
     }
     public ResourceEntry(){
-        this(null,null,null,null,null);
+        this(null,null,null,null,null,null);
+    }
+
+    public static ResourceEntry empty() {
+        return emptyResourceEntry;
     }
 
     // Base factory method - all others delegate to this
+    public static ResourceEntry create(List<ResourceUnits> units, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits, List<Double> referenceValues, List<ResourceEntry> subEntries) {
+        return new ResourceEntry(units, values, modifiers, referenceUnits, referenceValues, subEntries);
+    }
+
     public static ResourceEntry create(List<ResourceUnits> units, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits, List<ResourceEntry> subEntries) {
-        return new ResourceEntry(units, values, modifiers, referenceUnits, subEntries);
+        return new ResourceEntry(units, values, modifiers, referenceUnits, null, subEntries);
     }
 
     public static ResourceEntry create(List<ResourceUnits> units, List<Double> values, List<EffectModifier> modifiers) {
-        return new ResourceEntry(units, values, modifiers, null, null);
+        return new ResourceEntry(units, values, modifiers, null, null, null);
     }
     public static ResourceEntry create(List<ResourceUnits> units, List<Double> values, List<EffectModifier> modifiers, List<ResourceUnits> referenceUnits) {
-        return create(units, values, modifiers, referenceUnits, null);
+        return create(units, values, modifiers, referenceUnits, null, null);
     }
 
     public static ResourceEntry of(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2) {
@@ -66,6 +78,7 @@ public class ResourceEntry {
         target.modifiers.addAll(source.modifiers);
         target.values.addAll(source.values);
         target.referenceUnits.addAll(source.referenceUnits);
+        target.referenceValues.addAll(source.referenceValues);
         target.subEntries.addAll(source.subEntries);
     }
 
@@ -319,4 +332,5 @@ public class ResourceEntry {
     public static ResourceEntry of(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry amt) {
         return template(unit1, unit2, unit3, unit4, amt);
     }
+
 }

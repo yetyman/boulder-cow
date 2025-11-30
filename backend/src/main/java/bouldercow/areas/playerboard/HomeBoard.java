@@ -46,19 +46,34 @@ public class HomeBoard implements IHoldsResources  {
 
     @Override
     public ResourceEntry allResources() {
-        //TODO: list each building row. so building value, boulder value, and other boulder value
-        throw new RuntimeException("Not implemented yet");
+        ResourceEntry re = new ResourceEntry();
+        for (int i = 0; i < buildingRows.length; i++) {
+            re.subEntries.add(buildingRows[i].allResources());
+        }
+        return re;
     }
 
     @Override
     public String canModifyResource(ResourceEntry resource) {
-        //TODO: check moving buildings and boulders. return false if the change would make it negative
-        throw new RuntimeException("Not implemented yet");
+        // Check if any building row can handle the modification
+        for (BuildingTracker row : buildingRows) {
+            String result = row.canModifyResource(resource);
+            if (result == null) return null;
+        }
+        return "No valid building row for modification";
     }
 
     @Override
-    public boolean modifyResource(ResourceEntry resource) {
-        //TODO: handle moving buildings and boulders. return false if the change would make it negative
-        throw new RuntimeException("Not implemented yet");
+    public ResourceEntry modifyResource(ResourceEntry resource) {
+        String canModify = canModifyResource(resource);
+        if (canModify != null) return ResourceEntry.empty();
+        
+        // Apply to first valid building row
+        for (BuildingTracker row : buildingRows) {
+            if (row.canModifyResource(resource) == null) {
+                return row.modifyResource(resource);
+            }
+        }
+        return ResourceEntry.empty();
     }
 }

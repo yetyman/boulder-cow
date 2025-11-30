@@ -50,13 +50,44 @@ public class SharedBoard implements IHoldsResources {
 
     @Override
     public String canModifyResource(ResourceEntry resource) {
-        //TODO:check if tile is empty and the number of resources available could fill the earliest open row.
-        throw new NotImplementedException();
+        int onIndex = resource.modifiers.indexOf(EffectModifier.ON);
+        if (onIndex == -1) return "No location specified";
+        
+        ResourceUnits location = resource.referenceUnits.get(onIndex);
+        double tileIndex = resource.values.get(onIndex);
+        
+        if (location == ResourceUnits.deckTile) {
+            int row = (int)(tileIndex / deckTiles[0].length);
+            int col = (int)(tileIndex % deckTiles[0].length);
+            if (row >= deckTiles.length || col >= deckTiles[0].length) return "Invalid deck tile index";
+            return deckTiles[row][col].canModifyResource(resource);
+        } else if (location == ResourceUnits.resourceTile) {
+            int row = (int)(tileIndex / resourceTiles[0].length);
+            int col = (int)(tileIndex % resourceTiles[0].length);
+            if (row >= resourceTiles.length || col >= resourceTiles[0].length) return "Invalid resource tile index";
+            return resourceTiles[row][col].canModifyResource(resource);
+        }
+        return "Invalid location";
     }
 
     @Override
-    public boolean modifyResource(ResourceEntry resource) {
-        //TODO: fill the row. returning the reward for this tile will be handled elsewhere
-        return false;
+    public ResourceEntry modifyResource(ResourceEntry resource) {
+        String canModify = canModifyResource(resource);
+        if (canModify != null) return ResourceEntry.empty();
+        
+        int onIndex = resource.modifiers.indexOf(EffectModifier.ON);
+        ResourceUnits location = resource.referenceUnits.get(onIndex);
+        double tileIndex = resource.values.get(onIndex);
+        
+        if (location == ResourceUnits.deckTile) {
+            int row = (int)(tileIndex / deckTiles[0].length);
+            int col = (int)(tileIndex % deckTiles[0].length);
+            return deckTiles[row][col].modifyResource(resource);
+        } else if (location == ResourceUnits.resourceTile) {
+            int row = (int)(tileIndex / resourceTiles[0].length);
+            int col = (int)(tileIndex % resourceTiles[0].length);
+            return resourceTiles[row][col].modifyResource(resource);
+        }
+        return ResourceEntry.empty();
     }
 }
