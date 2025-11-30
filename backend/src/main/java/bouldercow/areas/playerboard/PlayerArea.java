@@ -87,7 +87,7 @@ public class PlayerArea implements IHoldsResources {
     }
 
     @Override
-    public boolean addResource(ResourceEntry resource) {
+    public boolean modifyResource(ResourceEntry resource) {
         int onIndex = resource.modifiers.indexOf(EffectModifier.ON);
         ResourceUnits location = resource.referenceUnits.get(onIndex);
 

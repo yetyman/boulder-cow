@@ -1,8 +1,6 @@
 package bouldercow.areas.playerboard;
 
 import bouldercow.flow.effects.IHoldsResources;
-import bouldercow.flow.effects.ReqAndEffect;
-import bouldercow.flow.effects.ReqAndEffectBuilder;
 import bouldercow.flow.effects.ResourceEntry;
 
 import static bouldercow.flow.effects.ReqAndEffectBuilder.require;
@@ -26,14 +24,14 @@ public class ResourceTracker implements IHoldsResources {
     }
 
     @Override
-    public String canAddResource(ResourceEntry resource) {
+    public String canModifyResource(ResourceEntry resource) {
         //TODO: check removing resources,farmlands, and resources on farmlands. also sowing crops can only be added to a farmland if an empty farmland exists
         throw new RuntimeException("Not implemented yet");
     }
 
     @Override
-    public boolean addResource(ResourceEntry resource) {
-        String canAdd = canAddResource(resource);
+    public boolean modifyResource(ResourceEntry resource) {
+        String canAdd = canModifyResource(resource);
         if(canAdd != null) {
             throw new RuntimeException(canAdd);
         }

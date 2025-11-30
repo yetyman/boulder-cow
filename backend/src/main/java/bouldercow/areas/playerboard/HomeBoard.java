@@ -51,13 +51,13 @@ public class HomeBoard implements IHoldsResources  {
     }
 
     @Override
-    public String canAddResource(ResourceEntry resource) {
+    public String canModifyResource(ResourceEntry resource) {
         //TODO: check moving buildings and boulders. return false if the change would make it negative
         throw new RuntimeException("Not implemented yet");
     }
 
     @Override
-    public boolean addResource(ResourceEntry resource) {
+    public boolean modifyResource(ResourceEntry resource) {
         //TODO: handle moving buildings and boulders. return false if the change would make it negative
         throw new RuntimeException("Not implemented yet");
     }

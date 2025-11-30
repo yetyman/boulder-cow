@@ -19,14 +19,14 @@ public class TreasureChest implements IHoldsResources {
     }
 
     @Override
-    public String canAddResource(ResourceEntry resource) {
+    public String canModifyResource(ResourceEntry resource) {
         //TODO: check adding and removing rings. max 10. return false if the change would make it negative
         throw new RuntimeException("Not implemented yet");
     }
 
     @Override
-    public boolean addResource(ResourceEntry resource) {
-        String canAdd = canAddResource(resource);
+    public boolean modifyResource(ResourceEntry resource) {
+        String canAdd = canModifyResource(resource);
         if(canAdd != null) {
             throw new RuntimeException(canAdd);
         }

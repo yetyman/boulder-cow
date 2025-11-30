@@ -4,8 +4,9 @@ import bouldercow.flow.effects.EffectModifier;
 import bouldercow.flow.effects.IHoldsResources;
 import bouldercow.flow.effects.ResourceEntry;
 import bouldercow.flow.effects.ResourceUnits;
+import org.apache.commons.lang3.NotImplementedException;
 
-public class SharedBoard extends IHoldsResources {
+public class SharedBoard implements IHoldsResources {
     public ResourceTile[][] resourceTiles = new ResourceTile[4][4];
     public DeckTile[][] deckTiles = new DeckTile[2][2];
     
@@ -45,5 +46,17 @@ public class SharedBoard extends IHoldsResources {
             }
         }
         return re;
+    }
+
+    @Override
+    public String canModifyResource(ResourceEntry resource) {
+        //TODO:check if tile is empty and the number of resources available could fill the earliest open row.
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean modifyResource(ResourceEntry resource) {
+        //TODO: fill the row. returning the reward for this tile will be handled elsewhere
+        return false;
     }
 }
