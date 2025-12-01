@@ -1,9 +1,8 @@
 package bouldercow.controller;
 
 import bouldercow.areas.board.SharedBoard;
-import bouldercow.flow.UserAction;
+import bouldercow.flow.*;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import bouldercow.flow.Table;
 import bouldercow.areas.playerboard.PlayerArea;
 import org.springframework.web.bind.annotation.*;
 import bouldercow.model.GameState;
@@ -33,6 +32,7 @@ public class GameController {
     private static final Map<String, Long> clientVersions = new HashMap<>();
     private static final Map<String, JsonNode> clientStates = new HashMap<>();
     private static final List<JsonNode> patchHistory = new ArrayList<>();
+    private final ActionManager actionManager = new ActionManager();
     {
         Table table = new Table();
         currentGame.table = table;
@@ -46,6 +46,9 @@ public class GameController {
         table.playerAreas.add(new PlayerArea("Neil"));
 
         table.sharedBoard = new SharedBoard();
+        
+        // Register sample processors
+        actionManager.registerProcessor("sampleSpace", new SampleSpaceProcessor());
     }
 
     @GetMapping("/state")
@@ -68,9 +71,12 @@ public class GameController {
     }
     
     @PostMapping("/action")
-    public GameState performAction(@RequestBody UserAction action) {
-        currentGame.incrementVersion();
-        return currentGame;
+    public ActionResponse performAction(@RequestBody ActionRequest request) {
+        ActionResponse response = actionManager.handleAction(request, currentGame);
+        if (response.valid && response.completed) {
+            currentGame.incrementVersion();
+        }
+        return response;
     }
     
     @PostMapping("/patch")
