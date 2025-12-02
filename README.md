@@ -1,7 +1,16 @@
 # Boulder Cow
-A fun web-based board game inspired by but wholly unaffiliated with Hallertau
+A web-based board game inspired by but wholly unaffiliated with Hallertau
 
 ## Architecture Overview
+- Clients are automatically synced through the backend's update broadcasts
+  - with version checking and conflict resolution by requesting the server's newest state
+- The entire set of model changes that can occur are applied via json patch in the backend
+  - making an undo-redo stack trivial
+- Type definitions in the front end are generated from types in the backend 
+  - this prevents any need for a translation layer and centralizes definitions
+- Through websocket broadcasts, every client is made aware of every model change immediately
+- Actions exist as a pipeline for user flows to take place
+  -eventually creating diff broadcasts just like any other change.
 
 ### Frontend-Backend Communication
 - **Frontend**: Vue 3 + TypeScript SPA running on port 5173
