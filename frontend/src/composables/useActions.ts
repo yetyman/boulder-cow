@@ -49,12 +49,24 @@ export function useActions() {
     pendingChoices.value = null
   }
 
+  const undo = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/game/undo', {
+        method: 'POST'
+      })
+      return await response.json()
+    } catch (err: any) {
+      return { success: false, error: err.message }
+    }
+  }
+
   return {
     pendingChoices,
     loading,
     sendAction,
     selectSpace,
     makeChoice,
-    clearChoices
+    clearChoices,
+    undo
   }
 }

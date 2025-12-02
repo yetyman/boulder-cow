@@ -79,6 +79,44 @@ public class GameController {
         return response;
     }
     
+    @PostMapping("/undo")
+    public Object undo(HttpSession session) {
+        if (patchHistory.isEmpty()) {
+            return Map.of("success", false, "message", "No actions to undo");
+        }
+        
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+            
+            JsonNode lastPatch = patchHistory.remove(patchHistory.size() - 1);
+            JsonNode inversePatch = JsonDiff.asJson(
+                JsonPatch.apply(lastPatch, mapper.valueToTree(currentGame)),
+                mapper.valueToTree(currentGame)
+            );
+            
+            PatchRequest undoRequest = new PatchRequest();
+            undoRequest.setPatches(inversePatch);
+            
+            Object result = applyPatch(undoRequest, session);
+            
+            // Remove the undo patch from history and set version from result
+            if (!patchHistory.isEmpty()) {
+                patchHistory.remove(patchHistory.size() - 1);
+                if (result instanceof Map) {
+                    Object serverVersion = ((Map<?, ?>) result).get("serverVersion");
+                    if (serverVersion instanceof Long) {
+                        currentGame.version = (Long) serverVersion;
+                    }
+                }
+            }
+            
+            return result;
+        } catch (Exception e) {
+            return Map.of("success", false, "error", e.getMessage());
+        }
+    }
+    
     @PostMapping("/patch")
     public Object applyPatch(@RequestBody PatchRequest request, HttpSession session) {
         try {

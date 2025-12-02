@@ -38,14 +38,14 @@ public class MultiStepProcessor implements ActionProcessor {
     private List<ActionChoice> getStep1Choices() {
         return Arrays.asList(
             new ActionChoice("step1_choice1", "Choose resources to trade", 
-                Requirement.of(ResourceEntry.exactly(ResourceUnits.sheep, 1), true))
+                Requirement.of(ResourceEntry.exactly(ResourceUnits.sheep, 1d), true))
         );
     }
     
     private List<ActionChoice> getStep2Choices() {
         return Arrays.asList(
             new ActionChoice("step2_choice1", "Select what to receive", 
-                Requirement.of(ResourceEntry.exactly(ResourceUnits.rye, 0), false))
+                Requirement.of(ResourceEntry.exactly(ResourceUnits.rye, 0d), false))
         );
     }
     

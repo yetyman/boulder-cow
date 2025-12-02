@@ -1,10 +1,7 @@
 package bouldercow.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import bouldercow.flow.Table;
 
-import java.util.List;
-import java.util.ArrayList;
+import bouldercow.flow.Table;
 
 public class GameState {
     public Table table = new Table();

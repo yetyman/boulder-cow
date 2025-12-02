@@ -20,6 +20,345 @@ export interface PatchRequest {
   lastServerVersion?: number;
 }
 
+export interface ActionRequest {
+  actionType?: string;
+  locationId?: string;
+  actionData?: any;
+  playerId?: string;
+}
+
+export interface ActionChoice {
+  choiceId?: string;
+  description?: string;
+  requirement?: Requirement;
+  choiceData?: any;
+}
+
+export interface ActionResponse {
+  valid?: boolean;
+  message?: string;
+  choices?: ActionChoice[];
+  completed?: boolean;
+}
+
+export interface Requirement {
+  consumesRequired?: boolean;
+  timing?: TimingRequirement;
+  requiredResources?: ResourceEntry;
+}
+
+export interface ResourceEntry {
+  resources?: (
+    | "rye"
+    | "flax"
+    | "barley"
+    | "hops"
+    | "meat"
+    | "milk"
+    | "wool"
+    | "clay"
+    | "leather"
+    | "sheep"
+    | "vp"
+    | "jewelry"
+    | "boulder"
+    | "worker"
+    | "cock"
+    | "tool"
+    | "fieldAnyLvl"
+    | "fieldLvl2"
+    | "fieldLvl3"
+    | "fieldLvl4"
+    | "fieldLvl5"
+    | "fieldLvl5WithCrop"
+    | "fieldWithCrop"
+    | "fieldWithoutCrop"
+    | "gatewayCard"
+    | "farmyardCard"
+    | "bonusCard"
+    | "pointCard"
+    | "workerSupply"
+    | "workersRemaining"
+    | "differentCrops"
+    | "anyGoods"
+    | "anyCrops"
+    | "actionSpace"
+    | "actionSpaceFullyOccupied"
+    | "sheepMovementDifferent"
+    | "farmyardCardsPlayed"
+    | "sheepOnSameFarmyard"
+    | "sheepOnFarmyard"
+    | "nextTurnSheepCard"
+    | "anyCard"
+    | "hand"
+    | "emptyFarmyardCards"
+    | "cardsPlayed"
+    | "nursery"
+    | "roundNumber"
+    | "quadrant"
+    | "craftBuilding"
+    | "row2"
+    | "row3"
+    | "fullTopRow"
+    | "level"
+    | "removeWorkersAction"
+    | "harvestAction"
+    | "sheepMovement"
+    | "sowAnyAction"
+    | "sowSpecificAction"
+    | "fieldUpgrade"
+    | "justBeforeLastAction"
+    | "sheepRemoval"
+    | "workersRemoved"
+    | "craftBuildingAdvanced"
+    | "butcheryActionUsed"
+    | "toolsObtained"
+    | "farmingActionUsed"
+    | "workersExchangedForTools"
+    | "cardPlayedAfterGotten"
+    | "justHarvested"
+    | "jewelrySpent"
+    | "clearActionSpaces"
+    | "useActionSpace"
+    | "sowDoubleCrop"
+    | "moveSheepBackward"
+    | "doubleHarvest"
+    | "harvest"
+    | "harvestTotal"
+    | "harvestedSameTypeCrops"
+    | "exchange"
+    | "workerPlacementRequirement"
+    | "deckTile"
+    | "resourceTile"
+    | "activeCards"
+    | "homeBoard"
+    | "treasureChest"
+    | "turnTracker"
+    | "resourceTracker"
+  )[];
+  modifiers?: (
+    | "CHOOSE"
+    | "DISTINCT"
+    | "SAME"
+    | "SUBTRACT"
+    | "REV_SUBTRACT"
+    | "PER"
+    | "STAGED"
+    | "EXACTLY"
+    | "MORE_THAN"
+    | "TOTAL"
+    | "DIFFERENT"
+    | "EACH"
+    | "MIN_OF"
+    | "REACTION"
+    | "UP_TO"
+    | "MAX_OF"
+    | "CONSUME"
+    | "ON"
+    | "UPGRADE"
+    | "TO"
+    | "REMOVED"
+    | "LEVEL"
+    | "WITH"
+    | "NOT"
+  )[];
+  values?: number[];
+  referenceUnits?: (
+    | "rye"
+    | "flax"
+    | "barley"
+    | "hops"
+    | "meat"
+    | "milk"
+    | "wool"
+    | "clay"
+    | "leather"
+    | "sheep"
+    | "vp"
+    | "jewelry"
+    | "boulder"
+    | "worker"
+    | "cock"
+    | "tool"
+    | "fieldAnyLvl"
+    | "fieldLvl2"
+    | "fieldLvl3"
+    | "fieldLvl4"
+    | "fieldLvl5"
+    | "fieldLvl5WithCrop"
+    | "fieldWithCrop"
+    | "fieldWithoutCrop"
+    | "gatewayCard"
+    | "farmyardCard"
+    | "bonusCard"
+    | "pointCard"
+    | "workerSupply"
+    | "workersRemaining"
+    | "differentCrops"
+    | "anyGoods"
+    | "anyCrops"
+    | "actionSpace"
+    | "actionSpaceFullyOccupied"
+    | "sheepMovementDifferent"
+    | "farmyardCardsPlayed"
+    | "sheepOnSameFarmyard"
+    | "sheepOnFarmyard"
+    | "nextTurnSheepCard"
+    | "anyCard"
+    | "hand"
+    | "emptyFarmyardCards"
+    | "cardsPlayed"
+    | "nursery"
+    | "roundNumber"
+    | "quadrant"
+    | "craftBuilding"
+    | "row2"
+    | "row3"
+    | "fullTopRow"
+    | "level"
+    | "removeWorkersAction"
+    | "harvestAction"
+    | "sheepMovement"
+    | "sowAnyAction"
+    | "sowSpecificAction"
+    | "fieldUpgrade"
+    | "justBeforeLastAction"
+    | "sheepRemoval"
+    | "workersRemoved"
+    | "craftBuildingAdvanced"
+    | "butcheryActionUsed"
+    | "toolsObtained"
+    | "farmingActionUsed"
+    | "workersExchangedForTools"
+    | "cardPlayedAfterGotten"
+    | "justHarvested"
+    | "jewelrySpent"
+    | "clearActionSpaces"
+    | "useActionSpace"
+    | "sowDoubleCrop"
+    | "moveSheepBackward"
+    | "doubleHarvest"
+    | "harvest"
+    | "harvestTotal"
+    | "harvestedSameTypeCrops"
+    | "exchange"
+    | "workerPlacementRequirement"
+    | "deckTile"
+    | "resourceTile"
+    | "activeCards"
+    | "homeBoard"
+    | "treasureChest"
+    | "turnTracker"
+    | "resourceTracker"
+  )[];
+  referenceValues?: number[];
+  subEntries?: any[];
+}
+
+export interface TimingRequirement {
+  requiredPhase?:
+    | "removeWorkers"
+    | "newWorkers"
+    | "income"
+    | "actions"
+    | "newCard"
+    | "fallowFields"
+    | "harvest"
+    | "milking"
+    | "buildings"
+    | "boulders";
+  invertPhaseRequirement?: boolean;
+  reactionTo?:
+    | "rye"
+    | "flax"
+    | "barley"
+    | "hops"
+    | "meat"
+    | "milk"
+    | "wool"
+    | "clay"
+    | "leather"
+    | "sheep"
+    | "vp"
+    | "jewelry"
+    | "boulder"
+    | "worker"
+    | "cock"
+    | "tool"
+    | "fieldAnyLvl"
+    | "fieldLvl2"
+    | "fieldLvl3"
+    | "fieldLvl4"
+    | "fieldLvl5"
+    | "fieldLvl5WithCrop"
+    | "fieldWithCrop"
+    | "fieldWithoutCrop"
+    | "gatewayCard"
+    | "farmyardCard"
+    | "bonusCard"
+    | "pointCard"
+    | "workerSupply"
+    | "workersRemaining"
+    | "differentCrops"
+    | "anyGoods"
+    | "anyCrops"
+    | "actionSpace"
+    | "actionSpaceFullyOccupied"
+    | "sheepMovementDifferent"
+    | "farmyardCardsPlayed"
+    | "sheepOnSameFarmyard"
+    | "sheepOnFarmyard"
+    | "nextTurnSheepCard"
+    | "anyCard"
+    | "hand"
+    | "emptyFarmyardCards"
+    | "cardsPlayed"
+    | "nursery"
+    | "roundNumber"
+    | "quadrant"
+    | "craftBuilding"
+    | "row2"
+    | "row3"
+    | "fullTopRow"
+    | "level"
+    | "removeWorkersAction"
+    | "harvestAction"
+    | "sheepMovement"
+    | "sowAnyAction"
+    | "sowSpecificAction"
+    | "fieldUpgrade"
+    | "justBeforeLastAction"
+    | "sheepRemoval"
+    | "workersRemoved"
+    | "craftBuildingAdvanced"
+    | "butcheryActionUsed"
+    | "toolsObtained"
+    | "farmingActionUsed"
+    | "workersExchangedForTools"
+    | "cardPlayedAfterGotten"
+    | "justHarvested"
+    | "jewelrySpent"
+    | "clearActionSpaces"
+    | "useActionSpace"
+    | "sowDoubleCrop"
+    | "moveSheepBackward"
+    | "doubleHarvest"
+    | "harvest"
+    | "harvestTotal"
+    | "harvestedSameTypeCrops"
+    | "exchange"
+    | "workerPlacementRequirement"
+    | "deckTile"
+    | "resourceTile"
+    | "activeCards"
+    | "homeBoard"
+    | "treasureChest"
+    | "turnTracker"
+    | "resourceTracker";
+  repeats?: boolean;
+  nonPassive?: boolean;
+}
+
 export interface Boulder {
   /** @format int32 */
   value?: number;
@@ -28,7 +367,7 @@ export interface Boulder {
 export interface Building {
   /** @format int32 */
   value?: number;
-  movement?: CauseAndEffect;
+  movement?: ReqAndEffect;
 }
 
 export interface BuildingTracker {
@@ -40,31 +379,101 @@ export interface BuildingTracker {
 }
 
 export interface Card {
+  /** @format int32 */
+  appendixIndex?: number;
   title?: string;
-  causeAndEffect?: CauseAndEffect;
+  reqAndEffect?: ReqAndEffect;
   cardImage?: ImageRef;
   description?: string;
   symbols?: SymbolicDisplay;
-}
-
-export interface Cause {
-  consumesRequired?: boolean;
-  requiredPhase?:
-    | "turnStart"
-    | "refresh"
-    | "draw"
-    | "jelk"
-    | "selfTurn"
-    | "opponentTurn"
-    | "feed"
-    | "build";
-  requiredResources?: ResourceSet;
-  stagedResources?: ResourceSet[];
-}
-
-export interface CauseAndEffect {
-  req?: Cause;
-  effect?: Effect;
+  cardType?:
+    | "rye"
+    | "flax"
+    | "barley"
+    | "hops"
+    | "meat"
+    | "milk"
+    | "wool"
+    | "clay"
+    | "leather"
+    | "sheep"
+    | "vp"
+    | "jewelry"
+    | "boulder"
+    | "worker"
+    | "cock"
+    | "tool"
+    | "fieldAnyLvl"
+    | "fieldLvl2"
+    | "fieldLvl3"
+    | "fieldLvl4"
+    | "fieldLvl5"
+    | "fieldLvl5WithCrop"
+    | "fieldWithCrop"
+    | "fieldWithoutCrop"
+    | "gatewayCard"
+    | "farmyardCard"
+    | "bonusCard"
+    | "pointCard"
+    | "workerSupply"
+    | "workersRemaining"
+    | "differentCrops"
+    | "anyGoods"
+    | "anyCrops"
+    | "actionSpace"
+    | "actionSpaceFullyOccupied"
+    | "sheepMovementDifferent"
+    | "farmyardCardsPlayed"
+    | "sheepOnSameFarmyard"
+    | "sheepOnFarmyard"
+    | "nextTurnSheepCard"
+    | "anyCard"
+    | "hand"
+    | "emptyFarmyardCards"
+    | "cardsPlayed"
+    | "nursery"
+    | "roundNumber"
+    | "quadrant"
+    | "craftBuilding"
+    | "row2"
+    | "row3"
+    | "fullTopRow"
+    | "level"
+    | "removeWorkersAction"
+    | "harvestAction"
+    | "sheepMovement"
+    | "sowAnyAction"
+    | "sowSpecificAction"
+    | "fieldUpgrade"
+    | "justBeforeLastAction"
+    | "sheepRemoval"
+    | "workersRemoved"
+    | "craftBuildingAdvanced"
+    | "butcheryActionUsed"
+    | "toolsObtained"
+    | "farmingActionUsed"
+    | "workersExchangedForTools"
+    | "cardPlayedAfterGotten"
+    | "justHarvested"
+    | "jewelrySpent"
+    | "clearActionSpaces"
+    | "useActionSpace"
+    | "sowDoubleCrop"
+    | "moveSheepBackward"
+    | "doubleHarvest"
+    | "harvest"
+    | "harvestTotal"
+    | "harvestedSameTypeCrops"
+    | "exchange"
+    | "workerPlacementRequirement"
+    | "deckTile"
+    | "resourceTile"
+    | "activeCards"
+    | "homeBoard"
+    | "treasureChest"
+    | "turnTracker"
+    | "resourceTracker";
+  resources?: ResourceEntry;
 }
 
 export type DeckImage = any;
@@ -75,22 +484,12 @@ export interface DeckTile {
   title?: TitleText;
   row2?: WorkerPlacementLocation;
   row1?: WorkerPlacementLocation;
-  causeAndEffect?: CauseAndEffect;
+  reqAndEffect?: ReqAndEffect;
 }
 
 export interface Effect {
-  givesResources?: ResourceSet;
-  repeats?: boolean;
-  repeatPhase?:
-    | "turnStart"
-    | "refresh"
-    | "draw"
-    | "jelk"
-    | "selfTurn"
-    | "opponentTurn"
-    | "feed"
-    | "build";
-  nonPassive?: boolean;
+  givesResources?: ResourceEntry;
+  timing?: TimingRequirement;
 }
 
 export interface FarmLand {
@@ -99,28 +498,92 @@ export interface FarmLand {
   /** @format int32 */
   maxValue?: number;
   resource?:
-    | "meat"
-    | "milk"
-    | "wool"
-    | "wheat"
-    | "clay"
-    | "leather"
+    | "rye"
     | "flax"
     | "barley"
     | "hops"
+    | "meat"
+    | "milk"
+    | "wool"
+    | "clay"
+    | "leather"
     | "sheep"
-    | "victoryPoints"
+    | "vp"
     | "jewelry"
     | "boulder"
     | "worker"
     | "cock"
     | "tool"
-    | "field"
+    | "fieldAnyLvl"
+    | "fieldLvl2"
+    | "fieldLvl3"
+    | "fieldLvl4"
+    | "fieldLvl5"
+    | "fieldLvl5WithCrop"
+    | "fieldWithCrop"
+    | "fieldWithoutCrop"
     | "gatewayCard"
     | "farmyardCard"
     | "bonusCard"
     | "pointCard"
-    | "building";
+    | "workerSupply"
+    | "workersRemaining"
+    | "differentCrops"
+    | "anyGoods"
+    | "anyCrops"
+    | "actionSpace"
+    | "actionSpaceFullyOccupied"
+    | "sheepMovementDifferent"
+    | "farmyardCardsPlayed"
+    | "sheepOnSameFarmyard"
+    | "sheepOnFarmyard"
+    | "nextTurnSheepCard"
+    | "anyCard"
+    | "hand"
+    | "emptyFarmyardCards"
+    | "cardsPlayed"
+    | "nursery"
+    | "roundNumber"
+    | "quadrant"
+    | "craftBuilding"
+    | "row2"
+    | "row3"
+    | "fullTopRow"
+    | "level"
+    | "removeWorkersAction"
+    | "harvestAction"
+    | "sheepMovement"
+    | "sowAnyAction"
+    | "sowSpecificAction"
+    | "fieldUpgrade"
+    | "justBeforeLastAction"
+    | "sheepRemoval"
+    | "workersRemoved"
+    | "craftBuildingAdvanced"
+    | "butcheryActionUsed"
+    | "toolsObtained"
+    | "farmingActionUsed"
+    | "workersExchangedForTools"
+    | "cardPlayedAfterGotten"
+    | "justHarvested"
+    | "jewelrySpent"
+    | "clearActionSpaces"
+    | "useActionSpace"
+    | "sowDoubleCrop"
+    | "moveSheepBackward"
+    | "doubleHarvest"
+    | "harvest"
+    | "harvestTotal"
+    | "harvestedSameTypeCrops"
+    | "exchange"
+    | "workerPlacementRequirement"
+    | "deckTile"
+    | "resourceTile"
+    | "activeCards"
+    | "homeBoard"
+    | "treasureChest"
+    | "turnTracker"
+    | "resourceTracker";
 }
 
 export interface GameState {
@@ -161,9 +624,9 @@ export interface PlayerArea {
   hand?: Card[];
 }
 
-export interface ResourceSet {
-  resourceMap?: Record<string, number>;
-  or?: boolean;
+export interface ReqAndEffect {
+  req?: Requirement;
+  effect?: Effect;
 }
 
 export interface ResourceTile {
@@ -179,7 +642,7 @@ export interface ResourceTracker {
   farms?: FarmLand[];
   /** @format int32 */
   maxValue?: number;
-  resources?: ResourceSet;
+  resources?: ResourceEntry;
 }
 
 export interface SharedBoard {
@@ -211,14 +674,14 @@ export interface TitleText {
 }
 
 export interface TreasureChest {
-  rings?: ResourceSet;
+  rings?: ResourceEntry;
 }
 
 export interface TurnTracker {
   /** @format int32 */
   rounds?: number;
   cards?: Card[];
-  sheeps?: ResourceSet[];
+  sheeps?: ResourceEntry[];
 }
 
 export interface WorkerPlacementLocation {
@@ -495,6 +958,20 @@ export class Api<
      * No description
      *
      * @tags game-controller
+     * @name Undo
+     * @request POST:/api/game/undo
+     */
+    undo: (params: RequestParams = {}) =>
+      this.request<object, any>({
+        path: `/api/game/undo`,
+        method: "POST",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags game-controller
      * @name ApplyPatch
      * @request POST:/api/game/patch
      */
@@ -514,8 +991,8 @@ export class Api<
      * @name PerformAction
      * @request POST:/api/game/action
      */
-    performAction: (data: string, params: RequestParams = {}) =>
-      this.request<GameState, any>({
+    performAction: (data: ActionRequest, params: RequestParams = {}) =>
+      this.request<ActionResponse, any>({
         path: `/api/game/action`,
         method: "POST",
         body: data,

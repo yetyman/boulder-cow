@@ -54,15 +54,15 @@ public class ReqAndEffectBuilder {
     }
 
     // Convenience require methods - delegate to base methods
-    public static ReqAndEffectBuilder require(ResourceUnits unit, int amount) {
+    public static ReqAndEffectBuilder require(ResourceUnits unit, double amount) {
         return require(each(unit, amount));
     }
 
-    public static ReqAndEffectBuilder require(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2) {
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2) {
         return require(each(unit1, amt1), each(unit2, amt2));
     }
 
-    public static ReqAndEffectBuilder require(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2, ResourceUnits unit3, int amt3) {
+    public static ReqAndEffectBuilder require(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2, ResourceUnits unit3, double amt3) {
         return require(each(unit1, amt1), each(unit2, amt2), each(unit3, amt3));
     }
 
@@ -90,7 +90,7 @@ public class ReqAndEffectBuilder {
         return require(template(unit1, unit2, unit3, unit4, unit5, entry));
     }
 
-    public static ReqAndEffectBuilder require(TimingRequirement timing, ResourceUnits unit, int amount) {
+    public static ReqAndEffectBuilder require(TimingRequirement timing, ResourceUnits unit, double amount) {
         return require(timing, each(unit, amount));
     }
 
@@ -125,15 +125,15 @@ public class ReqAndEffectBuilder {
     }
 
     // Convenience consume methods - delegate to base methods
-    public static ReqAndEffectBuilder consume(ResourceUnits unit, int amount) {
+    public static ReqAndEffectBuilder consume(ResourceUnits unit, double amount) {
         return consume(each(unit, amount));
     }
 
-    public static ReqAndEffectBuilder consume(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2) {
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2) {
         return consume(each(unit1, amt1), each(unit2, amt2));
     }
 
-    public static ReqAndEffectBuilder consume(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2, ResourceUnits unit3, int amt3) {
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2, ResourceUnits unit3, double amt3) {
         return consume(each(unit1, amt1), each(unit2, amt2), each(unit3, amt3));
     }
 
@@ -157,7 +157,7 @@ public class ReqAndEffectBuilder {
         return consume(template(unit1, unit2, unit3, unit4, entry));
     }
 
-    public static ReqAndEffectBuilder consume(TimingRequirement timing, ResourceUnits unit, int amount) {
+    public static ReqAndEffectBuilder consume(TimingRequirement timing, ResourceUnits unit, double amount) {
         return consume(timing, each(unit, amount));
     }
 
@@ -165,7 +165,7 @@ public class ReqAndEffectBuilder {
         return consume(timing, template(unit, entry));
     }
 
-    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry template, int amt) {
+    public static ReqAndEffectBuilder consume(ResourceUnits unit1, ResourceEntry template, double amt) {
         ResourceEntry modifiedTemplate = ResourceEntry.create(template.resources, template.values, template.modifiers, template.referenceUnits, template.subEntries);
         modifiedTemplate.values.add(amt);
         return consume(template(unit1, modifiedTemplate));
@@ -183,15 +183,15 @@ public class ReqAndEffectBuilder {
     }
 
     // Convenience give methods - delegate to base methods
-    public ReqAndEffectBuilder give(ResourceUnits unit, int amount) {
+    public ReqAndEffectBuilder give(ResourceUnits unit, double amount) {
         return give(each(unit, amount));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2) {
         return give(each(unit1, amt1), each(unit2, amt2));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2, ResourceUnits unit3, int amt3) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2, ResourceUnits unit3, double amt3) {
         return give(each(unit1, amt1), each(unit2, amt2), each(unit3, amt3));
     }
 
@@ -219,35 +219,35 @@ public class ReqAndEffectBuilder {
         return give(template(unit1, unit2, unit3, unit4, unit5, entry));
     }
 
-    public ReqAndEffectBuilder give(ResourceEntry entry, ResourceUnits unit, int amount) {
+    public ReqAndEffectBuilder give(ResourceEntry entry, ResourceUnits unit, double amount) {
         return give(entry, each(unit, amount));
     }
 
-    public ReqAndEffectBuilder give(ResourceEntry entry, ResourceUnits unit1, int amt1, ResourceUnits unit2, int amt2) {
+    public ReqAndEffectBuilder give(ResourceEntry entry, ResourceUnits unit1, double amt1, ResourceUnits unit2, double amt2) {
         return give(entry, each(unit1, amt1), each(unit2, amt2));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, int amt2, ResourceUnits unit3, int amt3) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, double amt2, ResourceUnits unit3, double amt3) {
         return give(template(unit1, entry), each(unit2, amt2), each(unit3, amt3));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, int amt2, ResourceUnits unit3, int amt3, ResourceUnits unit4, int amt4) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, double amt2, ResourceUnits unit3, double amt3, ResourceUnits unit4, double amt4) {
         return give(template(unit1, entry), each(unit2, amt2), each(unit3, amt3), each(unit4, amt4));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, int amount) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceEntry entry, ResourceUnits unit2, double amount) {
         return give(template(unit1, entry), each(unit2, amount));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry, ResourceUnits unit3, int amount) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceEntry entry, ResourceUnits unit3, double amount) {
         return give(template(unit1, unit2, entry), each(unit3, amount));
     }
 
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry, ResourceUnits unit5, int amount) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, ResourceEntry entry, ResourceUnits unit5, double amount) {
         return give(template(unit1, unit2, unit3, unit4, entry), each(unit5, amount));
     }
 
-    public ReqAndEffectBuilder give(Effect effect, ResourceUnits unit, int amount) {
+    public ReqAndEffectBuilder give(Effect effect, ResourceUnits unit, double amount) {
         this.effect = and(effect, unit, amount);
         return this;
     }
@@ -257,20 +257,12 @@ public class ReqAndEffectBuilder {
         return this;
     }
 
-    public ReqAndEffectBuilder repeating(Phase phase) {
-        if (this.effect != null) {
-            this.effect.repeats = true;
-            this.effect.repeatPhase = phase;
-        }
-        return this;
-    }
-
     public ReqAndEffect build() {
         return new ReqAndEffect(requirement, effect);
     }
 
     // Static helper methods for staged requirements and effects
-    public static Requirement stagedReq(ResourceUnits unit, int... stages) {
+    public static Requirement stagedReq(ResourceUnits unit, double... stages) {
         ResourceEntry[] entries = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
             entries[i] = each(unit, stages[i]);
@@ -278,7 +270,7 @@ public class ReqAndEffectBuilder {
         return Requirement.staged(entries);
     }
 
-    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, int... stages) {
+    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, double... stages) {
         ResourceEntry[] entries = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
             entries[i] = each(unit1, unit2, stages[i]);
@@ -286,7 +278,7 @@ public class ReqAndEffectBuilder {
         return Requirement.staged(entries);
     }
 
-    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, int... stages) {
+    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, double... stages) {
         ResourceEntry[] entries = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
             entries[i] = each(unit1, unit2, unit3, stages[i]);
@@ -294,7 +286,7 @@ public class ReqAndEffectBuilder {
         return Requirement.staged(entries);
     }
 
-    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, int... stages) {
+    public static Requirement stagedReq(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, double... stages) {
         ResourceEntry[] entries = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
             entries[i] = each(unit1, unit2, unit3, unit4, stages[i]);
@@ -306,7 +298,7 @@ public class ReqAndEffectBuilder {
         return Requirement.staged(stages);
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int... stages) {
+    public static Effect stagedEff(ResourceUnits unit, double... stages) {
         ResourceEntry[] entries = new ResourceEntry[stages.length];
         for (int i = 0; i < stages.length; i++) {
             entries[i] = each(unit, stages[i]);
@@ -326,15 +318,15 @@ public class ReqAndEffectBuilder {
         return Effect.of(entries);
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, ResourceUnits unit2, int unit2Cnt) {
+    public static Effect stagedEff(ResourceUnits unit, double stage1, double stage2, double stage3, ResourceUnits unit2, double unit2Cnt) {
         return and(stagedEff(unit, stage1, stage2, stage3), unit2, unit2Cnt);
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, ResourceUnits unit2, int unit2Cnt) {
+    public static Effect stagedEff(ResourceUnits unit, double stage1, double stage2, double stage3, double stage4, ResourceUnits unit2, double unit2Cnt) {
         return and(stagedEff(unit, stage1, stage2, stage3, stage4), unit2, unit2Cnt);
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, int stage5, ResourceUnits unit2, int unit2Cnt) {
+    public static Effect stagedEff(ResourceUnits unit, double stage1, double stage2, double stage3, double stage4, double stage5, ResourceUnits unit2, double unit2Cnt) {
         return and(stagedEff(unit, stage1, stage2, stage3, stage4, stage5), unit2, unit2Cnt);
     }
 
@@ -348,7 +340,7 @@ public class ReqAndEffectBuilder {
         return combined;
     }
 
-    public static Effect and(Effect effect, ResourceUnits unit, int cnt) {
+    public static Effect and(Effect effect, ResourceUnits unit, double cnt) {
         return and(effect, Effect.of(each(unit, cnt)));
     }
 
@@ -364,14 +356,14 @@ public class ReqAndEffectBuilder {
         return combined;
     }
 
-    public static Effect and(Effect effect, ResourceUnits unit1, int cnt1, ResourceUnits unit2, int cnt2) {
+    public static Effect and(Effect effect, ResourceUnits unit1, double cnt1, ResourceUnits unit2, double cnt2) {
         Effect combined = new Effect();
         combined.givesResources = ResourceEntry.withSubEntries(EffectModifier.EACH, 
             effect.givesResources, each(unit1, cnt1), each(unit2, cnt2));
         return combined;
     }
 
-    public static Requirement and(Requirement req, ResourceUnits unit, int amount) {
+    public static Requirement and(Requirement req, ResourceUnits unit, double amount) {
         Requirement combined = new Requirement();
         combined.requiredResources = ResourceEntry.withSubEntries(EffectModifier.EACH, 
             req.requiredResources, each(unit, amount));
@@ -381,15 +373,15 @@ public class ReqAndEffectBuilder {
     }
 
     // Additional overloads for CardDefinitions compatibility
-    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, int amount) {
+    public ReqAndEffectBuilder give(ResourceUnits unit1, ResourceUnits unit2, ResourceUnits unit3, ResourceUnits unit4, double amount) {
         return give(each(unit1, unit2, unit3, unit4, amount));
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4) {
+    public static Effect stagedEff(ResourceUnits unit, double stage1, double stage2, double stage3, double stage4) {
         return stagedEff(unit, stage1, stage2, stage3, stage4);
     }
 
-    public static Effect stagedEff(ResourceUnits unit, int stage1, int stage2, int stage3, int stage4, int stage5) {
+    public static Effect stagedEff(ResourceUnits unit, double stage1, double stage2, double stage3, double stage4, double stage5) {
         return stagedEff(unit, stage1, stage2, stage3, stage4, stage5);
     }
 

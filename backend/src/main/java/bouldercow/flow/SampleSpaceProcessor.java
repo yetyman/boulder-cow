@@ -26,9 +26,9 @@ public class SampleSpaceProcessor implements ActionProcessor {
     public List<ActionChoice> getAvailableChoices(String locationId, GameState gameState) {
         return Arrays.asList(
             new ActionChoice("choice1", "Take 2 rye", 
-                Requirement.of(ResourceEntry.exactly(ResourceUnits.rye, 0), false)),
+                Requirement.of(ResourceEntry.exactly(ResourceUnits.rye, 0d), false)),
             new ActionChoice("choice2", "Trade 1 sheep for 2 barley", 
-                Requirement.of(ResourceEntry.exactly(ResourceUnits.sheep, 1), true))
+                Requirement.of(ResourceEntry.exactly(ResourceUnits.sheep, 1d), true))
         );
     }
 }

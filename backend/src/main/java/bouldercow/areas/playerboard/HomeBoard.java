@@ -4,6 +4,8 @@ package bouldercow.areas.playerboard;
 import bouldercow.flow.Phase;
 import bouldercow.flow.effects.*;
 
+import static bouldercow.flow.effects.EffectModifier.*;
+import static bouldercow.flow.effects.FluentReqAndEffectBuilder.require;
 import static bouldercow.flow.effects.Requirement.with;
 import static bouldercow.flow.effects.ResourceEntry.*;
 import static bouldercow.flow.effects.ResourceUnits.*;
@@ -30,11 +32,11 @@ public class HomeBoard implements IHoldsResources  {
         Requirement cost;
         //just for symbolic displays, include a resource set.
         // the 1max flax spot makes an object definition more complex than i want to encode in structure until i have a clearer picture
-        cost = Requirement.choose(
-            with(template(rye, barley, flax, total(4)), upTo(flax, 1), distinct(3)),//total 4, atleast one of each, max 1 flax
-            with(template(rye, barley, flax, total(5)), upTo(flax, 1), distinct(2)),//total 5, atleast two kinds, max 1 flax
-            with(template(rye, barley, flax, total(6)), upTo(flax, 1))//total 6, max 1 flax
-        );
+        cost = require()
+                .sub().u(rye, barley, flax).m(TOTAL, 4).m(DISTINCT, 3).m(UP_TO, flax).a(1).parent()//total 4, atleast one of each, max 1 flax
+                .sub().u(rye, barley, flax).m(TOTAL, 5).m(DISTINCT, 2).m(UP_TO, flax).a(1).parent()//total 5, atleast two kinds, max 1 flax
+                .sub().u(rye, barley, flax).m(TOTAL, 6).m(UP_TO, flax).a(1).parent()//total 6, max 1 flax
+                        .m(CHOOSE).give().complete().req;
 //        choose(of(rye, meat, total(3)), of(choose(rye,meat), 2), 1);
         //complex requirements being functional isn't ideal, we can't generate symbolic displays off of that,
         // but we'll break it down once we see how complicated it is, or just create symbolic displays manually for it.

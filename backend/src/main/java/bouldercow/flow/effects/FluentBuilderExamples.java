@@ -1,5 +1,7 @@
 package bouldercow.flow.effects;
 
+import bouldercow.flow.Phase;
+
 import static bouldercow.flow.effects.FluentReqAndEffectBuilder.*;
 import static bouldercow.flow.effects.ResourceUnits.*;
 import static bouldercow.flow.effects.EffectModifier.*;
@@ -14,7 +16,7 @@ public class FluentBuilderExamples {
 
         // Current: require(on(fieldAnyLvl, exactly(hops, 2))).give(barley, 2, rye, 1, bonusCard, 1)
         // Fluent:
-        require().units(hops).amount(2).mod(EXACTLY).on(fieldAnyLvl)
+        require().units(hops).amount(2).mod(EXACTLY).m(ON, fieldAnyLvl)
             .give().units(barley, rye, bonusCard).amounts(2, 1, 1).complete();
 
         // Current: require(sheep, staged(1, 2, 4, 7)).give(hops, meat, choose(1, 2, 3, 4))
@@ -31,7 +33,7 @@ public class FluentBuilderExamples {
 
         // Current: require(timing(actions), stagedReq(worker, 1, 2, 3)).give(fieldUpgrade, 1, bonusCard, 1)
         // Fluent:
-        require().timing(actions).units(worker).mod(STAGED, 1, 2, 3)
+        require().timing(Phase.actions).units(worker).mod(STAGED, 1, 2, 3)
             .give().units(fieldUpgrade, bonusCard).amounts(1, 1).complete();
     }
 }

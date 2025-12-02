@@ -2,7 +2,7 @@
   "name": "bouldercow",
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently \"cd backend && mvn spring-boot:run\" \"cd frontend && npm run dev\""
+    "run-both": "concurrently \"cd backend && mvn spring-boot:run\" \"cd frontend && npm run dev\""
   },
   "devDependencies": {
     "concurrently": "^7.6.0"
