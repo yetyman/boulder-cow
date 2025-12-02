@@ -3,6 +3,9 @@
     <div class="tile-header">
       <div class="tile-title">{{ tile.title?.title || 'Resource' }}</div>
     </div>
+    <div class="tile-body">
+      <div class="tile-content symbolic-display">{{ tile.symbolicDisplay?.description || 'Card description with visuals'}}</div>
+    </div>
     <div class="tile-grid">
       <div v-for="(location, i) in 3" :key="`row3-${i}`"
            class="worker-slot"
@@ -94,13 +97,15 @@ const clickRow = async (row: number) => {
 .resource-tile {
   border: 1px solid #999;
   background: #e0e0e0;
-  padding: 5px;
-  min-width: 80px;
+  padding: 4px;
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .tile-header {
   text-align: center;
-  margin-bottom: 5px;
 }
 
 .tile-title {
@@ -143,6 +148,7 @@ const clickRow = async (row: number) => {
   border: 1px solid #999;
   font-size: 8px;
   text-align: center;
-  line-height: 20px;
+  height: 70px;
+  width: 70px;
 }
 </style>

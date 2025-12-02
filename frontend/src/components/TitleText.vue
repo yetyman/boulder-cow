@@ -20,7 +20,7 @@ withDefaults(defineProps<Props>(), {
 .title-text {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 4px;
 }
 
 .title {

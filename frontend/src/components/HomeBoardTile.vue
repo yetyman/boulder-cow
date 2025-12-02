@@ -88,14 +88,14 @@ const moveBoulder = async (rowIndex: number, boulder : Boulder, boulderKey: stri
 <style scoped>
 .home-board {
   border: 1px solid #666;
-  padding: 10px;
+  padding: 4px;
   background: #f0f0f0;
 }
 
 .board-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 }
 
 .grid-container {

@@ -40,14 +40,14 @@ const currentPlayer = computed(() => GameStateStore.currentPlayer)
 <style scoped>
 .player-area {
   border: 1px solid #666;
-  padding: 8px;
+  padding: 4px;
   background: #fafafa;
 }
 
 .player-content {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 </style>

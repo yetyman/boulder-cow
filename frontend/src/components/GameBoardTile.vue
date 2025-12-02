@@ -86,7 +86,7 @@ const clearTopRows = async () => {
 <style scoped>
 .game-board {
   border: 2px solid #333;
-  padding: 20px;
+  padding: 4px;
   background: #f5f5f5;
   width: fit-content;
 }
@@ -94,7 +94,7 @@ const clearTopRows = async () => {
 .board-content {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 4px;
 }
 
 .resource-tiles {

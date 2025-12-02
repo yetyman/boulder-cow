@@ -40,7 +40,7 @@ withDefaults(defineProps<Props>(), {
 <style scoped>
 .turn-tracker {
   border: 1px solid #666;
-  padding: 10px;
+  padding: 4px;
   background: #f0f0f0;
 }
 
@@ -88,7 +88,7 @@ withDefaults(defineProps<Props>(), {
 }
 
 .sheep-bar {
-  width: 100%;
+  width: -webkit-fill-available;
   height: 25px;
   background: #e8f5e8;
   border: 1px solid #999;

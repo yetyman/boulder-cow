@@ -3,13 +3,11 @@
     <div class="top-row">
       <GameBoardTile />
       <LoadingPlaceholder :data="gameState.table.playerAreas" message="Loading players...">
-        <div class="other-players">
-          <PlayerAreaTile v-for="({ area, index }) in otherPlayerAreas" :key="index" :player="area.player" :playerIndex="index" />
-        </div>
+        <PlayerAreaTile v-if="currentPlayerArea" :player="currentPlayerArea.player" :playerIndex="currentPlayerIndex" />
+        <PlayerAreaTile v-for="({ area, index }) in otherPlayerAreas" :key="index" :player="area.player" :playerIndex="index" />
       </LoadingPlaceholder>
     </div>
     <div class="bottom-row">
-      <PlayerAreaTile v-if="currentPlayerArea" :player="currentPlayerArea.player" :playerIndex="currentPlayerIndex" />
       <ActiveCards v-if="currentPlayerActiveCards.length > 0" :active-cards="currentPlayerActiveCards" />
     </div>
   </div>
@@ -49,24 +47,26 @@ onMounted(() => {
 .game-table {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
 }
 
 .top-row {
   display: flex;
-  gap: 20px;
+  gap: 8px;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .bottom-row {
   display: flex;
-  gap: 20px;
+  gap: 4px;
   align-items: flex-start;
 }
 
 .other-players {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 8px;
 }
+
 </style>

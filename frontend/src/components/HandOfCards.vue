@@ -66,16 +66,14 @@ watch(() => props.cards, (newCards) => {
 <style scoped>
 .hand-of-cards {
   border: 1px solid #666;
-  padding: 10px;
+  padding: 4px;
   background: #f0f0f0;
-  margin-top: 10px;
 }
 
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 30px);
   height: 120px;
-  margin-top: 10px;
   width: 250px;
 }
 

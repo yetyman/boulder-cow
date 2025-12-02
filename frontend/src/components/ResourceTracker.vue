@@ -8,9 +8,9 @@
                :key="counter" 
                class="counter"
                :style="{ gridRow: i + 1, gridColumn: 1 }">
-            {{ 5-i }};
+            {{ 5-i }}
           </div>
-          
+
           <template v-for="(col, i) in farmLocations" :key="i">
             <FarmTile v-for="(row, j) in resourceData.maxValue-1"
                       :key="`${i}-${j}`" 
@@ -31,10 +31,8 @@
               Land {{ farm.value }}
             </div>
           </template>
-        </div>
-        <div class="one-row">
-          <div class="one-counter">1</div>
-          <div class="one-farm"></div>
+          <div class="counter">1</div>
+          <div class="one-farm" :style="{ gridRow: resourceData.maxValue, gridColumn: 2, gridColumnEnd: farmLocations.length+2 }"></div>
         </div>
       </div>
     </LoadingPlaceholder>
@@ -76,7 +74,7 @@ const moveTile = async (farm: FarmLand, col: number) => {
 <style scoped>
 .resource-tracker {
   border: 1px solid #666;
-  padding: 10px;
+  padding: 4px;
   background: #f0f0f0;
 }
 

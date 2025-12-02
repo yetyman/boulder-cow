@@ -80,13 +80,15 @@ const clickRow = async (row: number) => {
 .deck-tile {
   border: 1px solid #999;
   background: #d0d0d0;
-  padding: 10px;
+  padding: 4px;
   min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .tile-header {
   text-align: center;
-  margin-bottom: 5px;
 }
 
 .tile-title {
@@ -95,10 +97,9 @@ const clickRow = async (row: number) => {
 }
 
 .deck-area {
-  height: 90px;
+  height: 92px;
   background: #f8f8f8;
   border: 1px solid #aaa;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
