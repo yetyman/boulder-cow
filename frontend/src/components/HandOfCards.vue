@@ -7,8 +7,7 @@
       <div ref="items"
         v-for="(card, index) in localCards"
         :key="`card-${index}`"
-        class="card"
-        :style="{ zIndex: index }">
+        class="card">
         <div class="card-content">
           <div class="card-title">{{ card.title || `Card ${index + 1}` }}</div>
           <div class="card-description">{{ card.description || 'Card description' }}</div>
@@ -34,19 +33,34 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   isCurrentPlayer: false
 })
-const hoveredIndex = ref(-1)
 const { sendPatch } = useGameState()
 
 const localCards = ref([...props.cards])
 
 const el = ref();
+let draggedElement = null;
+
 const draggable = useDraggable(el, localCards, {
   animation: 150,
   ghostClass: 'ghost',
   dragClass: 'drag',
   disabled: !props.isCurrentPlayer,
-  onEnd: () => {
+  onEnd: (se) => {
+    //there's still a minor issue of the drag occasionally skipping over elements. i've narrowed this down to the
+    // vue draggable plus library just being kind of bad at always signalling a move. you notice that when it happens
+    // the mouse is already in a location that should have moved. so the double move is catch up.
+    // I have not found a solution yet.
+
+    //for just an instant the element doesn't have top index, in that instant a different card becomes hovered.
+    // here we're forcing the card we dragged to stay on top for just an instant so that the mouse hovers it for sure.
+    const targetElement = el.value.children[se.newIndex];
+    if (targetElement) {
+      targetElement.classList.add('tmp-hover');
+      setTimeout(() => targetElement.classList.remove('tmp-hover'), 200);
+    }
+
     if (props.isCurrentPlayer && props.playerIndex !== undefined) {
+      //a bit wasteful to send the whole hand to the server, but whatever
       const patches = localCards.value.map((card, index) => ({
         op: 'replace',
         path: `/table/playerAreas/${props.playerIndex}/hand/${index}`,
@@ -73,12 +87,11 @@ watch(() => props.cards, (newCards) => {
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 30px);
-  height: 120px;
+  height: 110px;
   width: 250px;
 }
 
 .card {
-  margin-right: -20px;
   width: 80px;
   height: 100px;
   background: #fff;
@@ -121,16 +134,21 @@ watch(() => props.cards, (newCards) => {
   transform: translateY(-15px) !important;
 }
 
+.tmp-hover {
+  /* CSS for when ending drag */
+  z-index: 999 !important;
+  transform: translateY(-15px);
+}
 .cards-container:not(:has([draggable="true"])) .card:hover {
   /* CSS for when no drag exists */
-  z-index: 999 !important;
+  z-index: 888 !important;
   transform: translateY(-15px);
 }
 
 .drag {
   opacity: 0 !important;
   position: fixed;
-  left: -100%;
+  left: 100%;
 }
 
 .cards-container:has([draggable="true"]) .card:not([draggable="true"]) {
